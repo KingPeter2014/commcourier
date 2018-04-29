@@ -10,9 +10,9 @@ if (empty($_POST['lname'])){
 	echo $lnameErr;
 	return $lnameErr;
 }
-	else{
-		$lastname = $securityguard->removeHackCharacters($_POST['lname']);
-	}
+else{
+	$lastname = $securityguard->removeHackCharacters($_POST['lname']);
+}
 
 
 
