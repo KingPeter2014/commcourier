@@ -1,6 +1,35 @@
 <?php
  class CourierUsers {
 	 //General user of the system. Could act as transporter, sender or receiver
+	 var	$lastname,$othernames,$username,$pword;
+	 //MD5($pword)
+	 function registerCourierUser($lastname,$othernames,$username,$pword){
+		 return "Not processed yet";
+	 }
+	 
+	 function loginCourierUser($username,$pword){
+		 
+	 }
+	 
+	 function editCourierUser($username){
+		 
+	 }
+	 
+	 function updateCourierUser($id){
+		 
+	 }
+	 
+	 function setSession($id, $username){
+		 //Set up session variables to identify user
+	 }
+	 
+	 function destroySession(){
+		 // Log out and cleanup after a session
+	 }
+	 
+	 function set_Username($username){
+		 $this->username = $username;
+	 }
 
  }
  
