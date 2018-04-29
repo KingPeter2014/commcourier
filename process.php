@@ -5,7 +5,16 @@ $securityguard = new SecurityManager();
 
 
 $postcode = 3065;
-$lastname = $securityguard->removeHackCharacters($_POST['lname']);
+if (empty($_POST['lname'])){
+	$lnameErr = "Last name is Required!";
+	echo $lnameErr;
+	return $lnameErr;
+}
+	else{
+		$lastname = $securityguard->removeHackCharacters($_POST['lname']);
+	}
+
+
 
 $othernames = $_POST['fname'];
 $username = $_POST['username'];
