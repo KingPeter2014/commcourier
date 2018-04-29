@@ -68,3 +68,11 @@
  class UserManager{
 	 // This handles user account management for all CourierUsers
  }
+  class SecurityManager{
+	  function removeHackCharacters($input){
+		  $input = trim($input); //remove extra white spaces
+		  $input = stripslashes($input);//Remove backslashes
+		  $input = htmlspecialchars($input);//Remove special HTML characters
+		  return $input;
+	  }
+  }
