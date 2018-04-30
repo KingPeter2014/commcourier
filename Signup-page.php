@@ -22,7 +22,7 @@
     <form action="process.php" method="post">
         <div class="row">
           <div class="col-md-6">
-           <input type="text" class="form-control" placeholder="First name" id="fname" name="fname">
+           <input type="text" class="form-control" placeholder="First name" id="fname" name="fname"><span class="error">*<?php echo $lnameErr;?></span>
           </div>
           <div class="col-md-6">
            <input type="text" class="form-control" placeholder= "Last name" id="lname" name="lname">
