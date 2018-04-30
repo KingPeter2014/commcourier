@@ -39,7 +39,9 @@ $telephone = $_POST['telephone'];
 $address = $_POST['address'];
 $state = $_POST['state'];
 $country = $_POST['country'];
-
+$dbconnect = new DatabaseManager();
+$db = $dbconnect->connectToDatabase();
+if($db) echo "Database Connection is successful</br>";
 $newCourierUser = new CourierUsers();
 $response = $newCourierUser->registerCourierUser($lastname,$othernames,$username,$pword,$gender,$telephone,$address,$state,$country,$postcode);
 echo $response;

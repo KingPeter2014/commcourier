@@ -4,7 +4,7 @@
 	 var	$lastname,$othernames,$username,$pword;
 	 //MD5($pword)
 	 function registerCourierUser($lastname,$othernames,$username,$pword){
-		 return "Not processed yet";
+		 return "User Registration Not processed yet";
 	 }
 	 
 	 function loginCourierUser($username,$pword){
@@ -74,5 +74,16 @@
 		  $input = stripslashes($input);//Remove backslashes
 		  $input = htmlspecialchars($input);//Remove special HTML characters
 		  return $input;
+	  }
+  }
+  class DatabaseManager{
+	  function connectToDatabase(){
+		  
+		// mysqli
+		$mysqli = new mysqli("localhost", "root", "", "commcourier");// A more secure method required for production database
+		//$result = $mysqli->query("SELECT 'Hello, dear MySQL user!' AS _message FROM DUAL");
+		//$row = $result->fetch_assoc();
+		//echo htmlentities($row['_message']);
+		return $mysqli;
 	  }
   }
