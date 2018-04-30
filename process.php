@@ -43,26 +43,15 @@ if (strcmp($pword,$cpword)!=0){
 	echo $error = "Password Mismatch!";
 	return;
 }
- 
+ $email = $_POST['email'];
 $gender = $_POST['gender'];
 $telephone = $_POST['telephone'];
 $address = $_POST['address'];
 $state = $_POST['state'];
 $country = $_POST['country'];
-$dbconnect = new DatabaseManager();
-$db = $dbconnect->connectToDatabase();
-if($db->connect_error){ 
-	echo "Database Connection Failed</br>";
-	 echo "Error: "  . $db->connect_error;
-	
-	return 'false';
-}
-else{
-	
-	echo "Database Connection is successful</br>";
-}
+
 $newCourierUser = new CourierUsers();
-$response = $newCourierUser->registerCourierUser($lastname,$othernames,$username,$pword,$gender,$telephone,$address,$state,$country,$postcode);
-$dbconnect->closeDatabase($db);
+$response = $newCourierUser->registerCourierUser($lastname,$othernames,$username,$pword,$email,$gender,$telephone,$address,$state,$country,$postcode);
+
 echo $response;
 ?>

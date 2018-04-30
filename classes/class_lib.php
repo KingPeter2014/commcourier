@@ -3,11 +3,25 @@
 	 //General user of the system. Could act as transporter, sender or receiver
 	 var	$lastname,$othernames,$username,$pword;
 	 //MD5($pword)
-	 function registerCourierUser($lastname,$othernames,$username,$pword){
+	 function registerCourierUser($lastname,$othernames,$username,$pword,$email,$gender,$telephone,$address,$state,$country,$postcode){
 		 $pword = MD5($pword);
+		 $response="";
 		 $sql = "INSERT INTO `commcourierusers` (lastname,othernames,username ,password,email,gender,telephone, address,state,country,postcode) VALUES ('".$lastname."','".$othernames;
-		$sql = $sql."','".$username ."','".$pword."')";
-		 return "User Registration Not processed yet:".$sql;
+		$sql = $sql."','".$username ."','".$pword."','".$email."','".$gender."','".$telephone."','".$address."','".$state."','".$country."','".$postcode."')";
+		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		if($db->connect_error){ 
+			$response= $response. "Database Connection Failed</br>";
+			$response= $response. "Error: "  . $db->connect_error;
+			return $response;
+	
+		}
+		else{
+	
+			$response= $response.$dbconnect->insertData($db,$sql);//Create new CommCourier user
+		}
+		$dbconnect->closeDatabase($db);
+		return $response;
 	 }
 	 
 	 function loginCourierUser($username,$pword){
@@ -91,7 +105,12 @@
 		//echo htmlentities($row['_message']);
 		return $connection;
 	  }
-	  function insertData($insertString){
+	  function insertData($connection,$insertString){
+		  if(mysqli_query($connection, $insertString)){
+			return "Records inserted successfully.";
+		} else{
+			return "ERROR: Could not able to execute $insertString. " . mysqli_error($connection);
+			}
 		  
 	  }
 	  function updateData($updateString){
