@@ -24,7 +24,7 @@
                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
               </li>
              <li class="nav-item">
-                 <a class="nav-link" href="C:\Users\Buchiano\Desktop\udemyhtml\commcourier\Signup-page.html">sign up</a>
+                 <a class="nav-link" href="http://localhost/commcourier/Signup-page.php">sign up</a>
              </li>
 
              <li class="nav-item">
