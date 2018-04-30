@@ -15,9 +15,23 @@ else{
 }
 
 
+if (empty($_POST['fname'])){
+	echo "At least first name is Required!"; 
+	return;
+}
+else{
+	$othernames = $_POST['fname'];
+}
 
-$othernames = $_POST['fname'];
-$username = $_POST['username'];
+if (empty($_POST['username'])){
+	echo $usernameErr = "Username is Required!";
+	return;
+}
+else{
+	$username = $securityguard->removeHackCharacters($_POST['username']);
+}
+
+
 $pword = $_POST['pword'];
 $cpword = $_POST['cpword'];
 $gender = $_POST['gender'];
