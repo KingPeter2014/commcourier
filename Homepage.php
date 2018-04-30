@@ -28,7 +28,7 @@
              </li>
 
              <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
+                <a class="nav-link" href="http://localhost/commcourier/login.php">Login</a>
              </li>
 
              <!-- This portion of the code creates the dropdown menu called Actors -->
