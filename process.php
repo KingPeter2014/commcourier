@@ -31,8 +31,15 @@ else{
 	$username = $securityguard->removeHackCharacters($_POST['username']);
 }
 
+if (empty($_POST['pword'])){
+	echo $usernameErr = "Password is Required!";
+	return;
+}
+else{
+	$pword = $securityguard->removeHackCharacters($_POST['pword']);
+}
 
-$pword = $_POST['pword'];
+
 $cpword = $_POST['cpword'];
 $gender = $_POST['gender'];
 $telephone = $_POST['telephone'];
@@ -41,12 +48,18 @@ $state = $_POST['state'];
 $country = $_POST['country'];
 $dbconnect = new DatabaseManager();
 $db = $dbconnect->connectToDatabase();
-if($db){ echo "Database Connection is successful</br>";}
-else{
-	echo "Database Connection is Failed</br>";
+if($db->connect_error){ 
+	echo "Database Connection Failed</br>";
+	 echo "Error: "  . $db->connect_error;
+	
 	return 'false';
+}
+else{
+	
+	echo "Database Connection is successful</br>";
 }
 $newCourierUser = new CourierUsers();
 $response = $newCourierUser->registerCourierUser($lastname,$othernames,$username,$pword,$gender,$telephone,$address,$state,$country,$postcode);
+$dbconnect->closeDatabase($db);
 echo $response;
 ?>

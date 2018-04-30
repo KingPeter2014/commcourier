@@ -4,7 +4,9 @@
 	 var	$lastname,$othernames,$username,$pword;
 	 //MD5($pword)
 	 function registerCourierUser($lastname,$othernames,$username,$pword){
-		 $sql = "INSERT INTO `commcourierusers` (lastname,othernames,username ,password,email,gender,telephone, address,state,country,postcode) VALUES ('".$lastname."')";
+		 $pword = MD5($pword);
+		 $sql = "INSERT INTO `commcourierusers` (lastname,othernames,username ,password,email,gender,telephone, address,state,country,postcode) VALUES ('".$lastname."','".$othernames;
+		$sql = $sql."','".$username ."','".$pword."')";
 		 return "User Registration Not processed yet:".$sql;
 	 }
 	 
@@ -78,14 +80,16 @@
 	  }
   }
   class DatabaseManager{
+	  var	$connection;
+	
 	  function connectToDatabase(){
-		  
-		// mysqli
-		$mysqli = new mysqli("localhost", "root", "", "commcourier");// A more secure method required for production database
+		$server1 = "localhost";$username = "root";$password="";
+		$connection = new mysqli($server1, $username, $password, "commcourier");// A more secure method required for production database
+		//$this->$connection = $connection;
 		//$result = $mysqli->query("SELECT 'Hello, dear MySQL user!' AS _message FROM DUAL");
 		//$row = $result->fetch_assoc();
 		//echo htmlentities($row['_message']);
-		return $mysqli;
+		return $connection;
 	  }
 	  function insertData($insertString){
 		  
@@ -98,6 +102,9 @@
 	  }
 	  function deleteData($deleteString){
 		  
+	  }
+	  function closeDatabase($connection){
+		$connection->close();
 	  }
 	  
   }
