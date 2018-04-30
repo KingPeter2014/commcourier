@@ -32,15 +32,18 @@ else{
 }
 
 if (empty($_POST['pword'])){
-	echo $usernameErr = "Password is Required!";
+	echo $error = "Password is Required!";
 	return;
 }
 else{
 	$pword = $securityguard->removeHackCharacters($_POST['pword']);
 }
-
-
-$cpword = $_POST['cpword'];
+$cpword = $securityguard->removeHackCharacters($_POST['cpword']);
+if (strcmp($pword,$cpword)!=0){
+	echo $error = "Password Mismatch!";
+	return;
+}
+ 
 $gender = $_POST['gender'];
 $telephone = $_POST['telephone'];
 $address = $_POST['address'];
