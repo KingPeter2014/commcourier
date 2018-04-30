@@ -4,7 +4,8 @@
 	 var	$lastname,$othernames,$username,$pword;
 	 //MD5($pword)
 	 function registerCourierUser($lastname,$othernames,$username,$pword){
-		 return "User Registration Not processed yet";
+		 $sql = "INSERT INTO `commcourierusers` (lastname,othernames,username ,password,email,gender,telephone, address,state,country,postcode) VALUES ('".$lastname."')";
+		 return "User Registration Not processed yet:".$sql;
 	 }
 	 
 	 function loginCourierUser($username,$pword){
@@ -86,4 +87,17 @@
 		//echo htmlentities($row['_message']);
 		return $mysqli;
 	  }
+	  function insertData($insertString){
+		  
+	  }
+	  function updateData($updateString){
+		  
+	  }
+	  function queryData($queryString){
+		  
+	  }
+	  function deleteData($deleteString){
+		  
+	  }
+	  
   }
