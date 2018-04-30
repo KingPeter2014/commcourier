@@ -14,7 +14,7 @@
       <!--This portion of the code creates the title- welcome to the sign up page  -->
     <div class="container">
       <div class="jumbotron">
-        <center><img src = "images/cclogo.png"/> </center><br/>
+        <center><img src = "images/ccimagelogo.png"/> </center><br/>
 		<h3 style="text-align: center;"><font color = 'orange'>CommCourier </font> - Sign up!</h3>
         <br>
 
