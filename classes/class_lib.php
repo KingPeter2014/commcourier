@@ -49,13 +49,13 @@
 		if($courieruser->num_rows == 1){
 			//Login by creating session variable and redirect to homepage
 			$row = $courieruser->fetch_assoc();
-			return htmlentities($row['username']);
+			$securityguard = new SecurityManager();
+			$securityguard->setUpSession($row['username']);
 		}
 		else{
 			return "Wrong Username/email or Password Or User does not exist";
 		}
 		
-		 
 	 }
 	 
 	 function editCourierUser($username){
@@ -121,6 +121,14 @@
 		  $input = stripslashes($input);//Remove backslashes
 		  $input = htmlspecialchars($input);//Remove special HTML characters
 		  return $input;
+	  }
+	  function setUpSession($username){
+		  @session_start();
+		  if ( ! isset($_SESSION['username'])){
+			  $_SESSION['username']= $username;
+			  header('Location: Homepage.php'); 
+			  
+		  }
 	  }
   }
   class DatabaseManager{
