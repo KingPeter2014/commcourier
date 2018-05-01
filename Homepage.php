@@ -24,11 +24,14 @@
                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
               </li>
              <li class="nav-item">
-                 <a class="nav-link" href="http://localhost/commcourier/Signup-page.php">sign up</a>
+                 <a class="nav-link" href="listjourney.php">List Your Journey</a>
              </li>
 
              <li class="nav-item">
                 <a class="nav-link" href="http://localhost/commcourier/login.php">Login</a>
+             </li>
+			 <li class="nav-item">
+                <a class="nav-link" href="logout.php">Log out</a>
              </li>
 
              <!-- This portion of the code creates the dropdown menu called Actors -->
