@@ -56,6 +56,22 @@ if(isset($_POST['signUpSubmitBtn'])){//Check if signUpSubmitBtn was clicked to r
 	}//End Signup Page Processing
 	
 if(isset($_POST['loginSubmitBtn'])){//Login a  courier user
+	
+	if (empty($_POST['username'])){
+	echo $usernameErr = "Username is Required!";
+	return;
+	}
+	else{
+	$username = $securityguard->removeHackCharacters($_POST['username']);
+	}
+	if (empty($_POST['pword'])){
+	echo $error = "Password is Required!";
+	return;
+	}
+	else{
+	$pword = $securityguard->removeHackCharacters($_POST['pword']);
+	}
+	
 	echo "Login will be processed here! Under Construction";
 }
 
