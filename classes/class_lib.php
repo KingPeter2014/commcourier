@@ -45,14 +45,14 @@
 		 $dbconnect = new DatabaseManager();
 		$db = $dbconnect->connectToDatabase();
 		$sql = "SELECT * FROM commcourierusers WHERE username='".$username."' OR email='".$username."' AND password='".MD5($pword)."'";
-		$courieruser = queryData($db,$sql);
+		$courieruser = $dbconnect->queryData($db,$sql);
 		if($courieruser->num_rows == 1){
 			//Login by creating session variable and redirect to homepage
-			//$row = $result->fetch_assoc();
-			//echo htmlentities($row['_message']);
+			$row = $courieruser->fetch_assoc();
+			return htmlentities($row['username']);
 		}
 		else{
-			return "Wrong Username/email or Password.";
+			return "Wrong Username/email or Password Or User does not exist";
 		}
 		
 		 

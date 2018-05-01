@@ -71,8 +71,9 @@ if(isset($_POST['loginSubmitBtn'])){//Login a  courier user
 	else{
 	$pword = $securityguard->removeHackCharacters($_POST['pword']);
 	}
-	
-	echo "Login will be processed here! Under Construction";
+	$loginUser = new CourierUsers();
+	$response = $loginUser->loginCourierUser($username,$pword);
+	echo $response;
 }
 
 ?>
