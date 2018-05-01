@@ -1,13 +1,26 @@
 <?php
  class CourierUsers {
 	 //General user of the system. Could act as transporter, sender or receiver
-	 var	$lastname,$othernames,$username,$pword;
+	 var	$lastname,$othernames,$username,$pword,$db;
+		function __construct() {
+			$dbconnect = new DatabaseManager();
+			$db = $dbconnect->connectToDatabase();		
+		}		
+ 
+		function set_db($db) {
+		 	 $this->db = $db;
+		}	
+ 
+		function get_db() {		
+		 	 return $this->db;		
+		 }		
 	 //MD5($pword)
 	 function registerCourierUser($lastname,$othernames,$username,$pword,$email,$gender,$telephone,$address,$state,$country,$postcode){
 		 $pword = MD5($pword);
 		 $response="";
 		 $sql = "INSERT INTO `commcourierusers` (lastname,othernames,username ,password,email,gender,telephone, address,state,country,postcode) VALUES ('".$lastname."','".$othernames;
 		$sql = $sql."','".$username ."','".$pword."','".$email."','".$gender."','".$telephone."','".$address."','".$state."','".$country."','".$postcode."')";
+		//$db=$this->get_db();
 		$dbconnect = new DatabaseManager();
 		$db = $dbconnect->connectToDatabase();
 		if($db->connect_error){ 
