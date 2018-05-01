@@ -129,6 +129,9 @@
 			  header('Location: Homepage.php'); 
 			  
 		  }
+		  else{
+			  header('Location: Homepage.php'); 
+		  }
 	  }
   }
   class DatabaseManager{
