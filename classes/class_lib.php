@@ -14,11 +14,15 @@
 			$response= $response. "Database Connection Failed</br>";
 			$response= $response. "Error: "  . $db->connect_error;
 			return $response;
-	
 		}
 		else{
-	
-			$response= $response.$dbconnect->insertData($db,$sql);//Create new CommCourier user
+			$isInserted=$dbconnect->insertData($db,$sql);//Create new CommCourier user
+			if($isInserted){
+				$response= $response. $lastname.' has been successfully registered. <a href="login.php"> Login Here</a>';
+			} else{
+				$response= $response. "ERROR: Could not execute $sql. " . mysqli_error($db);
+			}
+			
 		}
 		$dbconnect->closeDatabase($db);
 		return $response;
@@ -106,20 +110,16 @@
 		return $connection;
 	  }
 	  function insertData($connection,$insertString){
-		  if(mysqli_query($connection, $insertString)){
-			return "Records inserted successfully.";
-		} else{
-			return "ERROR: Could not able to execute $insertString. " . mysqli_error($connection);
-			}
+		  return mysqli_query($connection, $insertString);
 		  
 	  }
-	  function updateData($updateString){
+	  function updateData($connection,$updateString){
 		  
 	  }
-	  function queryData($queryString){
+	  function queryData($connection,$queryString){
 		  
 	  }
-	  function deleteData($deleteString){
+	  function deleteData($connection,$deleteString){
 		  
 	  }
 	  function closeDatabase($connection){
