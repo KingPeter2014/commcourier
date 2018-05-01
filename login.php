@@ -17,7 +17,7 @@
   </div>
 </div>
 
-<form>
+<form action="process.php" method="post">
  <div class="form-group">
    <label for="exampleInputEmail1">Email address</label>
    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -31,7 +31,7 @@
    <input type="checkbox" class="form-check-input" id="exampleCheck1">
    <label class="form-check-label" for="exampleCheck1">Keep me logged in</label>
  </div>
- <button type="submit" class="btn btn-primary col-md-2">Submit</button>
+ <button type="submit" class="btn btn-primary col-md-2" name="loginSubmitBtn">Submit</button>
  <button type="reset" class="btn btn-primary col-md-2">Reset</button>
 </form>
 

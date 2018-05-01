@@ -15,7 +15,7 @@
     <div class="container">
       <div class="jumbotron">
         <center><img src = "images/ccimagelogo.png"/> </center><br/>
-		<h3 style="text-align: center;"><font color = 'orange'>CommCourier </font> - Sign up!</h3>
+		<h3 style="text-align: center;"><font color = 'orange'>CommCourier </font> - Sign up! or <a href="login.php"> Login Here</a> </h3>  
         <br>
 
      <!--  This section of code creates the form containing first and last name, email, password etc  -->
@@ -104,7 +104,7 @@
 	</div> 
 	<div class="form-row">
       <div class="form-group col-md-6">
-          <input type="Submit" class="form-control" id="btnSubmit" name="signUpSubmitBtn">
+          <button type="Submit" class="form-control" id="btnSubmit" name="signUpSubmitBtn">Submit</button>
       </div>
       <div class="form-group col-md-6">
          <input type="Reset" class="form-control" id="btnCancel">
