@@ -1,7 +1,7 @@
 <?php
  class CourierUsers {
 	 //General user of the system. Could act as transporter, sender or receiver
-	 var	$lastname,$othernames,$username,$pword,$db;
+	 var	$lastname,$othernames,$username,$pword,$db,$dbconnect;
 		function __construct() {
 			$dbconnect = new DatabaseManager();
 			$db = $dbconnect->connectToDatabase();		
@@ -42,6 +42,19 @@
 	 }
 	 
 	 function loginCourierUser($username,$pword){
+		 $dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$sql = "SELECT * FROM commcourierusers WHERE username='".$username."' OR email='".$username."' AND password='".MD5($pword)."'";
+		$courieruser = queryData($db,$sql);
+		if($courieruser->num_rows == 1){
+			//Login by creating session variable and redirect to homepage
+			//$row = $result->fetch_assoc();
+			//echo htmlentities($row['_message']);
+		}
+		else{
+			return "Wrong Username/email or Password.";
+		}
+		
 		 
 	 }
 	 
@@ -117,9 +130,8 @@
 		$server1 = "localhost";$username = "root";$password="";
 		$connection = new mysqli($server1, $username, $password, "commcourier");// A more secure method required for production database
 		//$this->$connection = $connection;
-		//$result = $mysqli->query("SELECT 'Hello, dear MySQL user!' AS _message FROM DUAL");
-		//$row = $result->fetch_assoc();
-		//echo htmlentities($row['_message']);
+		
+		
 		return $connection;
 	  }
 	  function insertData($connection,$insertString){
@@ -130,6 +142,8 @@
 		  
 	  }
 	  function queryData($connection,$queryString){
+		  $result = $connection->query($queryString);
+		  return $result;
 		  
 	  }
 	  function deleteData($connection,$deleteString){
