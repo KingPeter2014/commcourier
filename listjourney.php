@@ -9,7 +9,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
   <body>
-
+<?php if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+	  
+	echo "<br/>Welcome:".$_SESSION['username'];?>
   <div class="container"><br>
       <div class="card" style="width: 45rem; height: 35rem;">
   <div class="card-body">
