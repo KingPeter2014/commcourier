@@ -76,13 +76,8 @@
   </div>
 
   <div class="form-group">
-<<<<<<< HEAD
   <label for="traveldocument">Upload your travel document and a valid ID</label>
   <input type="file" class="form-control-file" id="traveldocument">
-=======
-  <label for="traveldocument">Upload your travel document</label>
-  <input type="file" class="form-control-file" name = "fileToUpload" id="traveldocument">
->>>>>>> 29ca3f7f47d157c109210de9fa87df61dc99b44a
   </div>
   <button type="submit" class="btn btn-primary col-md-2" id="Submit" name = "listjourneySubmitBtn">Submit</button>
   <button type="reset" class="btn btn-secondary col-md-2" id="Reset">Cancel</button>
