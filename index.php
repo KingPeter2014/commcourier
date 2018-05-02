@@ -24,7 +24,6 @@
   <h2 style="text-align: center; color: brown;"><b>Welcome to CommCourier</b></h2><br>
   <h5 style="text-align: center;"><b>Sign up! </b> or <a href="login.php"> Login Here</a> </h5>
   <br>
-<<<<<<< HEAD
 
  <form action="process.php" method="post">
   <div class="form-group row">
@@ -127,7 +126,7 @@
   <input type="text" class="form-control" id="inputZip" name="zip">
   </div>
   </div>
-  
+
  <button type="submit" class="btn btn-primary col-md-2" id="Submit" name="signUpSubmitBtn">Submit</button>
  <button type="reset" class="btn btn-secondary col-md-2" id="Reset" name="signUpCancelBtn">Cancel</button>
  </form>
