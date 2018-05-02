@@ -27,11 +27,8 @@
 <<<<<<< HEAD
 
  <form action="process.php" method="post">
-=======
-<form action="process.php" method="post">
->>>>>>> 7a92f8b7054a38106d0dc62af649c34af078c750
   <div class="form-group row">
-   
+
   <label for="fname" class="col-sm-4 col-form-label">First name</label>
   <div class="col-sm-8">
   <input type="text" class="form-control" id="fname" placeholder="" name="fname">
@@ -130,11 +127,7 @@
   <input type="text" class="form-control" id="inputZip" name="zip">
   </div>
   </div>
-
-<<<<<<< HEAD
-=======
->
->>>>>>> 7a92f8b7054a38106d0dc62af649c34af078c750
+  
  <button type="submit" class="btn btn-primary col-md-2" id="Submit" name="signUpSubmitBtn">Submit</button>
  <button type="reset" class="btn btn-secondary col-md-2" id="Reset" name="signUpCancelBtn">Cancel</button>
  </form>
