@@ -26,9 +26,9 @@
   </header>
 
   <div class="container"><br>
-  <div class="card" style="width: 45rem; height: 35rem; ">
+  <div class="card" style="width: 45rem; height: 50rem; ">
   <div class="card-body">
-  <h4 style="text-align: center;">Traveller Details</h4>
+  <h3 style="text-align: center;"><b>Traveller Details</b></h3><br>
   <form action = "process.php" method = "POST" enctype = "multipart/form-data">
   <input type = "hidden" name = "uname" value = "<?php echo($_SESSION['username']); ?>"/>
   <select class="custom-select" name = "dep-country">
@@ -76,9 +76,20 @@
   </div>
 
   <div class="form-group">
-  <label for="traveldocument">Upload your travel document and a valid ID</label>
+  <label for="traveldocument">Upload your photo</label>
   <input type="file" class="form-control-file" id="traveldocument">
   </div>
+
+  <div class="form-group">
+  <label for="traveldocument">Upload your travel document</label>
+  <input type="file" class="form-control-file" id="traveldocument">
+  </div>
+
+  <div class="form-group">
+  <label for="traveldocument">Upload a valid ID</label>
+  <input type="file" class="form-control-file" id="traveldocument">
+  </div>
+
   <button type="submit" class="btn btn-primary col-md-2" id="Submit" name = "listjourneySubmitBtn">Submit</button>
   <button type="reset" class="btn btn-secondary col-md-2" id="Reset">Cancel</button>
   </form>
