@@ -24,8 +24,9 @@
   <h2 style="text-align: center; color: brown;"><b>Welcome to CommCourier</b></h2><br>
   <h5 style="text-align: center;"><b>Sign up! </b> or <a href="login.php"> Login Here</a> </h5>
   <br>
-
+<form action="process.php" method="post">
   <div class="form-group row">
+   
   <label for="fname" class="col-sm-4 col-form-label">First name</label>
   <div class="col-sm-8">
   <input type="text" class="form-control" id="fname" placeholder="" name="fname">
@@ -125,7 +126,7 @@
   </div>
   </div
 
- <form action="process.php" method="post">
+>
  <button type="submit" class="btn btn-primary col-md-2" id="Submit" name="signUpSubmitBtn">Submit</button>
  <button type="reset" class="btn btn-secondary col-md-2" id="Reset" name="signUpCancelBtn">Cancel</button>
  </form>
