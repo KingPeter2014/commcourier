@@ -29,56 +29,62 @@
   <div class="card" style="width: 45rem; height: 35rem; ">
   <div class="card-body">
   <h4 style="text-align: center;">Traveller Details</h4>
-  <select class="custom-select">
-  <option selected>Choose your departure country</option>
-  <option value="1">Nigeria</option>
-  <option value="2">United States</option>
-  <option value="3">United Kingdom</option>
+  <form action = "process.php" method = "POST" enctype = "multipart/form-data">
+  <input type = "hidden" name = "uname" value = "<?php echo($_SESSION['username']); ?>"/>
+  <select class="custom-select" name = "dep-country">
+  <option value = "" selected>Choose your departure country</option>
+  <option value="Nigeria">Nigeria</option>
+  <option value="United States">United States</option>
+  <option value="United Kingdom">United Kingdom</option>
   </select><br>
   <br>
 
-  <select class="custom-select">
-  <option selected>Choose your destination country</option>
-  <option value="1">Nigeria</option>
-  <option value="2">United States</option>
-  <option value="3">United Kingdom</option>
+  <select class="custom-select" name = "des-country">
+  <option value = "" selected>Choose your destination country</option>
+  <option value="Nigeria">Nigeria</option>
+  <option value="United States">United States</option>
+  <option value="United Kingdom">United Kingdom</option>
   </select><br>
   <br>
 
   <div class="form-group row">
   <label for="departuredate" class="col-sm-4 col-form-label">Departure date</label>
   <div class="col-sm-8">
-  <input type="date" class="form-control" id="departuredate" placeholder="" name="departure date">
+  <input type="date" class="form-control" id="departuredate" name = "departuredate" placeholder="" name="departure date">
   </div>
   </div>
 
   <div class="form-group row">
   <label for="arrivaldate" class="col-sm-4 col-form-label">Arrival date</label>
   <div class="col-sm-8">
-  <input type="date" class="form-control" id="arrivaldate" placeholder="" name="arrival date">
+  <input type="date" class="form-control" id="arrivaldate" name = "arrivaldate" placeholder="" name="arrival date">
   </div>
   </div>
 
   <div class="form-group row">
   <label for="arrivalport" class="col-sm-4 col-form-label">Arrival port</label>
   <div class="col-sm-8">
-  <input type="text" class="form-control" id="arrivalport" placeholder="Murtala Mohammed Airport. " name="address">
+  <input type="text" class="form-control" id="arrivalport" name = "arrivalport" placeholder="Murtala Mohammed Airport. " name="address">
   </div>
   </div>
 
   <div class="form-group row">
   <label for="travellernote" class="col-sm-4 col-form-label">Traveller Note</label>
   <div class="col-sm-8">
-  <textarea class="form-control" id="travellernote" placeholder="Leave a note here " name="Traveller Note"></textarea>
+  <textarea class="form-control" id="travellernote" name = "travellernote" placeholder="Leave a note here " name="Traveller Note"></textarea>
   </div>
   </div>
 
-  <form>
   <div class="form-group">
+<<<<<<< HEAD
   <label for="traveldocument">Upload your travel document and a valid ID</label>
   <input type="file" class="form-control-file" id="traveldocument">
+=======
+  <label for="traveldocument">Upload your travel document</label>
+  <input type="file" class="form-control-file" name = "fileToUpload" id="traveldocument">
+>>>>>>> 29ca3f7f47d157c109210de9fa87df61dc99b44a
   </div>
-  <button type="submit" class="btn btn-primary col-md-2" id="Submit" >Submit</button>
+  <button type="submit" class="btn btn-primary col-md-2" id="Submit" name = "listjourneySubmitBtn">Submit</button>
   <button type="reset" class="btn btn-secondary col-md-2" id="Reset">Cancel</button>
   </form>
 

@@ -23,17 +23,18 @@
 <div class="card-body">
   <h2  style="text-align: center;"><b>Login In</b></h2>
 <br>
+<form action="process.php" method="post">
 <div class="form-group row">
 <label for="loginemail" class="col-sm-4 col-form-label">Email address</label>
   <div class="col-sm-8">
-   <input type="email" class="form-control" id="loginemail" placeholder="" name="login email">
+   <input type="email" class="form-control" id="loginemail" placeholder="" name="username">
 </div>
 </div>
 
 <div class="form-group row">
 <label for="userpassword" class="col-sm-4 col-form-label">Password</label>
   <div class="col-sm-8">
-   <input type="password" class="form-control" id="userpassword" placeholder="" name="user password">
+   <input type="password" class="form-control" id="userpassword" placeholder="" name="pword">
 </div>
 </div>
 
@@ -42,8 +43,8 @@
   <label class="form-check-label" for="exampleCheck1">Keep me logged in</label>
 </div>
 
-<form action="process.php" method="post">
-<button type="submit" class="btn btn-primary col-md-2" id="Submit" >Submit</button>
+
+<button type="submit" class="btn btn-primary col-md-2" id="Submit" name="loginSubmitBtn">Submit</button>
 <button type="reset" class="btn btn-secondary col-md-2" id="Reset">Cancel</button>
 </form>
 
