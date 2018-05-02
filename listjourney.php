@@ -16,7 +16,7 @@
     }
 
       echo "<br/>Welcome:".$_SESSION['username'];?>
-    
+
 
   <header>
     <div class="imagelogo">
@@ -75,7 +75,7 @@
 
   <form>
   <div class="form-group">
-  <label for="traveldocument">Upload your travel document</label>
+  <label for="traveldocument">Upload your travel document and a valid ID</label>
   <input type="file" class="form-control-file" id="traveldocument">
   </div>
   <button type="submit" class="btn btn-primary col-md-2" id="Submit" >Submit</button>
