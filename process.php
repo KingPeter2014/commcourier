@@ -58,7 +58,7 @@ if(isset($_POST['signUpSubmitBtn'])){//Check if signUpSubmitBtn was clicked to r
 if(isset($_POST['loginSubmitBtn'])){//Login a  courier user
 	
 	if (empty($_POST['username'])){
-	echo $usernameErr = "Username is Required!";
+	echo $usernameErr = "Username/Email is Required!";
 	return;
 	}
 	else{
