@@ -22,6 +22,7 @@
   <div class="card" style="width: 45rem; height: 24rem; ">
   <div class="card-body">
   <h3 style="text-align: center;"><b>Search Traveller</b></h3><br>
+  
   <form action = "process.php" method = "POST">
   <input type = "hidden" name = "uname" >
   <select class="custom-select" name = "dep-country">
