@@ -82,7 +82,67 @@
  
  class Journeys {
 	 //A transporter CourierUser indicates he will travel from one location to another on a given date 
-
+	var	$username,$db,$dbconnect;
+		function __construct() {
+			$dbconnect = new DatabaseManager();
+			$db = $dbconnect->connectToDatabase();		
+		}		
+ 
+		function set_db($db) {
+		 	 $this->db = $db;
+		}	
+ 
+		function get_db() {		
+		 	 return $this->db;		
+		 }		
+	 //MD5($pword)
+	 function listJourney($username,$depcountry,$descountry,$departuredate,$arrivaldate,$arrivalport,$travellernote,$docpath){
+		 $response="";
+		 date_default_timezone_set("Africa/Lagos");
+		 $datecreated = date("Y-m-d h:i:sa");
+		 $datetimenumber = time();
+		 $sql = "INSERT INTO `listjourney` (username,departurecountry,destinationcountry,departuredate,arrivaldate,arrivalport,travellernote,docpath,datecreated, datetimenumber) VALUES ('".$username."','".$depcountry."','".$descountry."','".$departuredate."','".$arrivaldate."','".$arrivalport."','".$travellernote."','".$docpath."','".$datecreated."','".$datetimenumber."')";
+		//$db=$this->get_db();
+		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		if($db->connect_error){ 
+			$response= $response. "Database Connection Failed</br>";
+			$response= $response. "Error: "  . $db->connect_error;
+			return $response;
+		}
+		else{
+			$isInserted=$dbconnect->insertData($db,$sql);//Create new CommCourier user
+			if($isInserted){
+				$response= $response.'Dear '.$username.',<br>Your journey list has been successfully registered. <a href="homepage.php"> Home Page</a>';
+			} else{
+				$response= $response. "ERROR: Could not execute $sql. " . mysqli_error($db);
+			}
+			
+		}
+		$dbconnect->closeDatabase($db);
+		return $response;
+	 }
+	 
+	 
+	 function editListJourney($username){
+		 
+	 }
+	 
+	 function updateListJourney($id){
+		 
+	 }
+	 
+	 function setSession($id, $username){
+		 //Set up session variables to identify user
+	 }
+	 
+	 function destroySession(){
+		 // Log out and cleanup after a session
+	 }
+	 
+	 function set_Username($username){
+		 $this->username = $username;
+	 }
  }
  
  class DeliveryItems{
