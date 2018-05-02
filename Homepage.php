@@ -28,11 +28,11 @@
                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
               </li>
              <li class="nav-item">
-                 <a class="nav-link" href="listjourney.php">List Your Journey</a>
+                 <a class="nav-link" href="listjourney.php">New Journey</a>
              </li>
 
              <li class="nav-item">
-                <a class="nav-link" href="http://localhost/commcourier/login.php">Login</a>
+                <a class="nav-link" href="submit-item.php">New Item</a>
              </li>
 			 <li class="nav-item">
                 <a class="nav-link" href="logout.php">Log out</a>
