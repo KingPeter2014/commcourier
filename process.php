@@ -151,6 +151,28 @@ if(isset($_POST['listjourneySubmitBtn'])){//List Journey
 if(isset($_POST['listitemSubmitBtn'])){
 //Processes listing Item a courier user wants to send
 	echo "Item listing will be processes here";
+	ini_set('upload_max_filesize', '10M');
+	ini_set('post_max_size', '10M');
+	ini_set('max_input_time', 600);
+	ini_set('max_execution_time', 600);
+
+	$itemname = $securityguard->removeHackCharacters($_POST['iname']);
+	$recievername = $securityguard->removeHackCharacters($_POST['rname']);
+	$telephone = $securityguard->removeHackCharacters($_POST['tphone']);
+	$address = $securityguard->removeHackCharacters($_POST['address']);
+	if (!(empty($_FILES["itempicture"]["name"]))){
+		$target_dir = "Listed Items/";
+		$target_file = $target_dir . basename($_FILES["itempicture"]["name"]);
+		$fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+		$docName = "Listed Items/".$uname."_travel_doc_".time()."";
+		$docpath = "".$docName.".".$fileType."";
+		move_uploaded_file($_FILES["itempicture"]["tmp_name"], $docpath);
+		echo "File upload successful";
+	}
+	{
+		echo "No file uploaded";
+		return;
+	}
 
 	}
 

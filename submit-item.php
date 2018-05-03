@@ -41,7 +41,7 @@
     <div class="form-group row">
     <label for="inputTelephone" class="col-sm-4 col-form-label">Receiver phone number</label>
     <div class="col-sm-8">
-    <input type="tel" class="form-control" id="inputTelephone" placeholder="(000)-111-2222" name="telephone" required="true">
+    <input type="tel" class="form-control" id="inputTelephone" placeholder="(000)-111-2222" name="tphone" required="true">
     </div>
     </div>
 
@@ -54,13 +54,10 @@
 
     <div class="form-group">
     <label for="itempicture">Upload the item picture</label>
-    <input type="file" class="form-control-file" id="itempicture" name="ipicture" required="true">
+    <input type="file" class="form-control-file" id="itempicture" name="ipicture" required="true" name="itempicture">
     </div>
 
    
-
-
-
    <button type="submit" class="btn btn-primary col-md-2" id="Submit" name = "listitemSubmitBtn">Submit</button>
    <button type="reset" class="btn btn-secondary col-md-2" id="Reset">Cancel</button>
    </form>
