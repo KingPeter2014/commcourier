@@ -26,7 +26,7 @@
   </header>
 
   <div class="container"><br>
-  <div class="card" style="width: 45rem; height: 50rem; ">
+  <div class="card" style="width: 45rem; height: 45rem; ">
   <div class="card-body">
   <h3 style="text-align: center;"><b>Traveller Details</b></h3><br>
   <form action = "process.php" method = "POST" enctype = "multipart/form-data">
@@ -76,18 +76,8 @@
   </div>
 
   <div class="form-group">
-  <label for="traveldocument">Upload your photo</label>
-  <input type="file" class="form-control-file" id="traveldocument">
-  </div>
-
-  <div class="form-group">
   <label for="traveldocument">Upload your travel document</label>
   <input type="file" class="form-control-file" id="traveldocument">
-  </div>
-
-  <div class="form-group">
-  <label for="traveldocument">Upload a valid ID</label>
-  <input type="file" class="form-control-file" id="traveldocument" name="fileToUpload">
   </div>
 
   <button type="submit" class="btn btn-primary col-md-2" id="Submit" name = "listjourneySubmitBtn">Submit</button>
