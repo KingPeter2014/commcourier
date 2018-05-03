@@ -87,7 +87,7 @@
 
   <div class="form-group">
   <label for="traveldocument">Upload a valid ID</label>
-  <input type="file" class="form-control-file" id="traveldocument">
+  <input type="file" class="form-control-file" id="traveldocument" name="fileToUpload">
   </div>
 
   <button type="submit" class="btn btn-primary col-md-2" id="Submit" name = "listjourneySubmitBtn">Submit</button>
