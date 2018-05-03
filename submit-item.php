@@ -12,18 +12,26 @@
   <body>
 
   <header>
+    <div class="container">
+      <?php if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+      echo "<br/>Welcome:".$_SESSION['username'];?>
+      <br>
+    
   <div class="imagelogo">
   <img src="images/picturelogo.png" alt="">
   <h6><i>Making money while journeying!!!</i></h6>
   </div>
   </header>
 
-  <div class="container"><br>
+  
+
   <div class="card" style="width: 45rem; height: 40rem; ">
   <div class="card-body">
   <h3 style="text-align: center;"><b>Submit Item</b></h3><br>
   <form action = "process.php" method = "POST" enctype = "multipart/form-data">
-
+    <input type = "hidden" name = "uname" value = "<?php echo($_SESSION['username']); ?>"/>
     <div class="form-group row">
     <label for="iname" class="col-sm-4 col-form-label">Item name</label>
     <div class="col-sm-8">
@@ -52,9 +60,16 @@
     </div>
     </div>
 
+    <div class="form-group row">
+    <label for="travellernote" class="col-sm-4 col-form-label">Sender Note</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" id="travellernote" name = "senderernote" placeholder="Leave a note here for TRansporter "></textarea>
+    </div>
+    </div>
+
     <div class="form-group">
     <label for="itempicture">Upload the item picture</label>
-    <input type="file" class="form-control-file" id="itempicture" name="ipicture" required="true" name="itempicture">
+    <input type="file" class="form-control-file" id="itempicture" name="itempicture" required="true" >
     </div>
 
    

@@ -150,7 +150,7 @@ if(isset($_POST['listjourneySubmitBtn'])){//List Journey
 
 if(isset($_POST['listitemSubmitBtn'])){
 //Processes listing Item a courier user wants to send
-	echo "Item listing will be processes here";
+	
 	ini_set('upload_max_filesize', '10M');
 	ini_set('post_max_size', '10M');
 	ini_set('max_input_time', 600);
@@ -160,19 +160,31 @@ if(isset($_POST['listitemSubmitBtn'])){
 	$recievername = $securityguard->removeHackCharacters($_POST['rname']);
 	$telephone = $securityguard->removeHackCharacters($_POST['tphone']);
 	$address = $securityguard->removeHackCharacters($_POST['address']);
+	$notes = $securityguard->removeHackCharacters($_POST['senderernote']);
+	if (empty($_POST['uname'])){
+		echo $error = "Username is Required!";
+		return;
+	}
+	else{
+		$uname = $securityguard->removeHackCharacters($_POST['uname']); // Listed by current user
+	}
+
 	if (!(empty($_FILES["itempicture"]["name"]))){
-		$target_dir = "Listed Items/";
+		$target_dir = "ListedItems/";
 		$target_file = $target_dir . basename($_FILES["itempicture"]["name"]);
 		$fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-		$docName = "Listed Items/".$uname."_travel_doc_".time()."";
+		$docName = "ListedItems/".$uname."_listeditem_".time()."";
 		$docpath = "".$docName.".".$fileType."";
 		move_uploaded_file($_FILES["itempicture"]["tmp_name"], $docpath);
 		echo "File upload successful";
-	}
-	{
+		}
+	else{
 		echo "No file uploaded";
 		return;
 	}
+	$list_item = new DeliveryItems();
+	$response = $list_item->listItem($uname,$itemname,$recievername,$telephone,$address,$notes,$docpath);
+	echo $response;
 
 	}
 

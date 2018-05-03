@@ -102,7 +102,6 @@
 		 $datecreated = date("Y-m-d h:i:sa");
 		 $datetimenumber = time();
 		 $sql = "INSERT INTO `listjourney` (username,departurecountry,destinationcountry,departuredate,arrivaldate,arrivalport,travellernote,docpath,datecreated, datetimenumber) VALUES ('".$username."','".$depcountry."','".$descountry."','".$departuredate."','".$arrivaldate."','".$arrivalport."','".$travellernote."','".$docpath."','".$datecreated."','".$datetimenumber."')";
-		//$db=$this->get_db();
 		$dbconnect = new DatabaseManager();
 		$db = $dbconnect->connectToDatabase();
 		if($db->connect_error){ 
@@ -147,6 +146,12 @@
  
  class DeliveryItems{
 	 //A sender CourierUser lists items that he/she would want to be transported from one destination to another on a given date and time 
+ 	function listItem($listedby,$description,$receivername,$receiverphone,$receiveraddress,$notes,$itempixpath){
+ 		$status = "notassigned";
+ 		$sql = "INSERT INTO `listeditems` (listedby,description,receivername,receiverphone,receiveraddress,notes,itempixpath,status) VALUES ('". $listedby."','".$description."','".$receivername."','".$receiverphone."','".$receiveraddress."','".$notes."','".$itempixpath."','".$status."')";
+ 		return $sql;
+
+ 	}
 	 
  }
  
