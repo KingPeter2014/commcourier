@@ -75,7 +75,7 @@ if(isset($_POST['loginSubmitBtn'])){//Login a  courier user
 	$response = $loginUser->loginCourierUser($username,$pword);
 	echo $response;
 }	
-if(isset($_POST['listjourneySubmitBtn'])){//Login a  courier user
+if(isset($_POST['listjourneySubmitBtn'])){//List Journey
 	ini_set('upload_max_filesize', '10M');
 	ini_set('post_max_size', '10M');
 	ini_set('max_input_time', 600);
@@ -147,5 +147,13 @@ if(isset($_POST['listjourneySubmitBtn'])){//Login a  courier user
 	$response = $register_journey->listJourney($uname,$depcountry,$descountry,$departuredate,$arrivaldate,$arrivalport,$travellernote,$docpath);
 	echo $response;
 }
+
+if(isset($_POST['listitemSubmitBtn'])){
+//Processes listing Item a courier user wants to send
+	echo "Item listing will be processes here";
+
+	}
+
+
 
 ?>

@@ -69,7 +69,7 @@
 
 
 
-   <button type="submit" class="btn btn-primary col-md-2" id="Submit" name = "listjourneySubmitBtn">Submit</button>
+   <button type="submit" class="btn btn-primary col-md-2" id="Submit" name = "listitemSubmitBtn">Submit</button>
    <button type="reset" class="btn btn-secondary col-md-2" id="Reset">Cancel</button>
    </form>
 
