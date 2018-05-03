@@ -37,14 +37,14 @@
   <div class="form-group row">
   <label for="lname" class="col-sm-4 col-form-label">Last name</label>
   <div class="col-sm-8">
-  <input type="email" class="form-control" id="lname" placeholder="" name="lname">
+  <input type="text" class="form-control" id="lname" placeholder="" name="lname">
   </div>
   </div>
 
  <div class="form-group row">
  <label for="username" class="col-sm-4 col-form-label">Username</label>
  <div class="col-sm-8">
- <input type="email" class="form-control" id="username" placeholder="" name="username">
+ <input type="text" class="form-control" id="username" placeholder="" name="username">
  </div>
  </div>
 
