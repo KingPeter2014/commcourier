@@ -27,45 +27,37 @@
     <div class="form-group row">
     <label for="iname" class="col-sm-4 col-form-label">Item name</label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="iname" placeholder="" name="iname">
+    <input type="text" class="form-control" id="iname" placeholder="" name="iname" required="true">
     </div>
     </div>
 
     <div class="form-group row">
     <label for="rname" class="col-sm-4 col-form-label">Receiver name</label>
     <div class="col-sm-8">
-    <input type="email" class="form-control" id="rname" placeholder="" name="rname">
+    <input type="text" class="form-control" id="rname" placeholder="" name="rname" required="true">
     </div>
     </div>
 
     <div class="form-group row">
     <label for="inputTelephone" class="col-sm-4 col-form-label">Receiver phone number</label>
     <div class="col-sm-8">
-    <input type="tel" class="form-control" id="inputTelephone" placeholder="(000)-111-2222" name="telephone">
+    <input type="tel" class="form-control" id="inputTelephone" placeholder="(000)-111-2222" name="telephone" required="true">
     </div>
     </div>
 
     <div class="form-group row">
     <label for="inputAddress" class="col-sm-4 col-form-label"> Receiver Address</label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="inputAddress" placeholder="House 346 maxwell lugbe" name="address">
+    <input type="text" class="form-control" id="inputAddress" placeholder="347 Maxwell Street Karu, Post code: 3098" name="address" required="true">
     </div>
     </div>
 
     <div class="form-group">
     <label for="itempicture">Upload the item picture</label>
-    <input type="file" class="form-control-file" id="itempicture" name="ipicture">
+    <input type="file" class="form-control-file" id="itempicture" name="ipicture" required="true">
     </div>
 
-    <div class="form-group">
-    <label for="personalpicture">Upload your photo</label>
-    <input type="file" class="form-control-file" id="personalpicture" name="ppicture">
-    </div>
-
-    <div class="form-group">
-    <label for="personalpicture">Upload a valid ID</label>
-    <input type="file" class="form-control-file" id="personalpicture" name="ppicture">
-    </div>
+   
 
 
 
