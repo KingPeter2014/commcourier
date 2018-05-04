@@ -116,13 +116,9 @@ if(isset($_POST['listjourneySubmitBtn'])){//List Journey
 	else{
 		$arrivalport = $securityguard->removeHackCharacters($_POST['arrivalport']);
 	}
-	if (empty($_POST['travellernote'])){
-		echo $error = "Traveller Note is Required!";
-		return;
-	}
-	else{
-		$travellernote = $securityguard->removeHackCharacters($_POST['travellernote']);
-	}
+	
+	$travellernote = $securityguard->removeHackCharacters($_POST['travellernote']);
+	
 	if (empty($_POST['uname'])){
 		echo $error = "Username is Required!";
 		return;

@@ -31,7 +31,7 @@
   <h3 style="text-align: center;"><b>Traveller Details</b></h3><br>
   <form action = "process.php" method = "POST" enctype = "multipart/form-data">
   <input type = "hidden" name = "uname" value = "<?php echo($_SESSION['username']); ?>"/>
-  <select class="custom-select" name = "dep-country">
+  <select class="custom-select" name = "dep-country" required="true">
   <option value = "" selected>Choose your departure country</option>
   <option value="Nigeria">Nigeria</option>
   <option value="United States">United States</option>
@@ -39,7 +39,7 @@
   </select><br>
   <br>
 
-  <select class="custom-select" name = "des-country">
+  <select class="custom-select" name = "des-country" required="true">
   <option value = "" selected>Choose your destination country</option>
   <option value="Nigeria">Nigeria</option>
   <option value="United States">United States</option>
@@ -50,34 +50,34 @@
   <div class="form-group row">
   <label for="departuredate" class="col-sm-4 col-form-label">Departure date</label>
   <div class="col-sm-8">
-  <input type="date" class="form-control" id="departuredate" name = "departuredate" placeholder="" name="departure date">
+  <input type="date" class="form-control" id="departuredate" name = "departuredate" placeholder="" required="true">
   </div>
   </div>
 
   <div class="form-group row">
   <label for="arrivaldate" class="col-sm-4 col-form-label">Arrival date</label>
   <div class="col-sm-8">
-  <input type="date" class="form-control" id="arrivaldate" name = "arrivaldate" placeholder="" name="arrival date">
+  <input type="date" class="form-control" id="arrivaldate" name = "arrivaldate" placeholder="" required="true">
   </div>
   </div>
 
   <div class="form-group row">
   <label for="arrivalport" class="col-sm-4 col-form-label">Arrival port</label>
   <div class="col-sm-8">
-  <input type="text" class="form-control" id="arrivalport" name = "arrivalport" placeholder="Murtala Mohammed Airport. " name="address">
+  <input type="text" class="form-control" id="arrivalport" name = "arrivalport" placeholder="Murtala Mohammed Airport. " required="true">
   </div>
   </div>
 
   <div class="form-group row">
   <label for="travellernote" class="col-sm-4 col-form-label">Traveller Note</label>
   <div class="col-sm-8">
-  <textarea class="form-control" id="travellernote" name = "travellernote" placeholder="Leave a note here " name="Traveller Note"></textarea>
+  <textarea class="form-control" id="travellernote" name = "travellernote" placeholder="Leave detailed note here for Item senders" name="Traveller Note"></textarea>
   </div>
   </div>
 
   <div class="form-group">
   <label for="traveldocument">Upload your travel document</label>
-  <input type="file" class="form-control-file" id="traveldocument">
+  <input type="file" class="form-control-file" id="traveldocument" name="fileToUpload">
   </div>
 
   <button type="submit" class="btn btn-primary col-md-2" id="Submit" name = "listjourneySubmitBtn">Submit</button>
