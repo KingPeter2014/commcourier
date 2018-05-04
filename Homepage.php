@@ -12,13 +12,14 @@
   <body>
 <?php if (session_status() == PHP_SESSION_NONE) {
 		session_start();
+    $username = $_SESSION['username'];
 }
   ?>
 
 <!--  This section of the code creates the navbar containing the home, sign up, login, actors etc-->
      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container"> 
-        <a class="navbar-brand" href="#">CommCOURIER</a> <div> <?php echo "<br/>Welcome:".$_SESSION['username'];?></div>
+        <a class="navbar-brand" href="#">CommCOURIER</a> <div> <?php echo "<br/>Welcome:".$username;?></div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
