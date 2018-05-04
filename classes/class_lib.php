@@ -148,8 +148,27 @@
 	 //A sender CourierUser lists items that he/she would want to be transported from one destination to another on a given date and time 
  	function listItem($listedby,$description,$receivername,$receiverphone,$receiveraddress,$notes,$itempixpath){
  		$status = "notassigned";
+ 		$response="";
  		$sql = "INSERT INTO `listeditems` (listedby,description,receivername,receiverphone,receiveraddress,notes,itempixpath,status) VALUES ('". $listedby."','".$description."','".$receivername."','".$receiverphone."','".$receiveraddress."','".$notes."','".$itempixpath."','".$status."')";
- 		return $sql;
+ 		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		if($db->connect_error){ 
+			$response= $response. "Database Connection Failed</br>";
+			$response= $response. "Error: "  . $db->connect_error;
+			return $response;
+		}
+		else{
+			$isInserted=$dbconnect->insertData($db,$sql);//List a new item to be sent
+			if($isInserted){
+				$response= $response.'Dear '.$listedby.',<br>Your Item has been successfully listed for sending. <a href="homepage.php"> Home Page</a>';
+			} else{
+				$response= $response. "ERROR: Could not execute $sql. " . mysqli_error($db);
+			}
+			
+		}
+		$dbconnect->closeDatabase($db);
+		return $response;
+ 	
 
  	}
 	 
