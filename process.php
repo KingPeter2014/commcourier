@@ -102,12 +102,20 @@ if(isset($_POST['listjourneySubmitBtn'])){//List Journey
 	else{
 		$departuredate = $securityguard->removeHackCharacters($_POST['departuredate']);
 	}
+	if (strtotime($departuredate) < time()){
+		echo $error = "Departure Date is in the Past";
+		return;
+	}
 	if (empty($_POST['arrivaldate'])){
 		echo $error = "Arrival Date is Required!";
 		return;
 	}
 	else{
 		$arrivaldate = $securityguard->removeHackCharacters($_POST['arrivaldate']);
+	}
+	if (strtotime($departuredate) > strtotime($arrivaldate)){
+		echo $error = "Arrival Date Is Earlier Than Departure Date";
+		return;
 	}
 	if (empty($_POST['arrivalport'])){
 		echo $error = "Arrival Port is Required!";
