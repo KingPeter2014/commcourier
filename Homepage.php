@@ -8,6 +8,7 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="jquery-3.3.1.min.js"></script>
   </head>
   <body>
 <?php if (session_status() == PHP_SESSION_NONE) {
@@ -16,7 +17,7 @@
 }
   ?>
 
-<!--  This section of the code creates the navbar containing the home, sign up, login, actors etc-->
+<!--  This section of the code creates the navbar containing the home, actors etc-->
      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container"> 
         <a class="navbar-brand" href="#">CommCOURIER</a> <div> <?php echo "<br/>Welcome:".$username;?></div>
@@ -63,11 +64,13 @@
       </div>
    </nav> 
 	
-   <div class="container" id="centralcontainer">
+ 
 
-      <h1> Use JQuery to load all contents to this div dynamically</h1>
+     <div id="centralcontainer" style="top:15rem;" class="card" style="width: 45rem; height: 40rem; ">
+      <h1> <font color="red"> Use JQuery to load all contents to this div dynamically. Use $("#centralcontainer").load("filename.php");</font> </h1>
+    </div>
 
-   </div>
+   
 	
   </body>
 </html>
