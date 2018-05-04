@@ -9,6 +9,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="jquery-3.3.1.min.js"></script>
+<script src="scripts/pageloads.js"></script>
+
   </head>
   <body>
 <?php if (session_status() == PHP_SESSION_NONE) {
@@ -30,7 +32,8 @@
                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
               </li>
              <li class="nav-item">
-                 <a class="nav-link" href="listjourney.php">New Journey</a>
+                 <!-- <a class="nav-link" id="newjourney"  href="listjourney.php">New Journey</a> -->
+                 <a class="nav-link" id="newjourney"  href="#">New Journey</a>
              </li>
 
              <li class="nav-item">
