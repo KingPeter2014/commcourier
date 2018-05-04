@@ -63,6 +63,11 @@
       </div>
    </nav> 
 	
+   <div class="container" id="centralcontainer">
+
+      <h1> Use JQuery to load all contents to this div dynamically</h1>
+
+   </div>
 	
   </body>
 </html>

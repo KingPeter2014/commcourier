@@ -27,14 +27,14 @@
 <div class="form-group row">
 <label for="loginemail" class="col-sm-4 col-form-label">Email address</label>
   <div class="col-sm-8">
-   <input type="email" class="form-control" id="loginemail" placeholder="" name="username">
+   <input type="email" class="form-control" id="loginemail" placeholder="" name="username" required="true">
 </div>
 </div>
 
 <div class="form-group row">
 <label for="userpassword" class="col-sm-4 col-form-label">Password</label>
   <div class="col-sm-8">
-   <input type="password" class="form-control" id="userpassword" placeholder="" name="pword">
+   <input type="password" class="form-control" id="userpassword" placeholder="" name="pword" required="true">
 </div>
 </div>
 
