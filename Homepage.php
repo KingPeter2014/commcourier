@@ -16,6 +16,12 @@
         $('#newjourney').on("click",function(){
         $('#centralcontainer').load("listjourney.php");//listjourney.php
         alert('List your new journey!');
+        //alert('List your new journey!');
+       }); 
+
+        $('#newitem').on("click",function(){
+        $('#centralcontainer').load("submit-item.php");//submit-item.php
+        //alert('List your new Item!');
        }); 
       
      });
@@ -24,7 +30,7 @@
   </head>
   <body>
 <?php if (session_status() == PHP_SESSION_NONE) {
-		session_start();
+    session_start();
     $username = $_SESSION['username'];
 }
   ?>
@@ -47,7 +53,7 @@
            <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                 <a class="nav-link" href="Homepage.php">Home <span class="sr-only">(current)</span></a>
               </li>
              <li class="nav-item">
                  <!-- <a class="nav-link" id="newjourney"  href="listjourney.php">New Journey</a> -->
@@ -55,9 +61,9 @@
              </li>
 
              <li class="nav-item">
-                <a class="nav-link" href="submit-item.php">New Item</a>
+                <a class="nav-link" id="newitem" href="#">New Item</a>
              </li>
-			       
+             
 
              <!-- This portion of the code creates the dropdown menu called Actors -->
              <li class="nav-item dropdown">
@@ -74,7 +80,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="logout.php">Log out</a>
              </li>
-			
+      
           </ul>
 
           <!--This portion of the code creates the search button-->
@@ -85,14 +91,17 @@
         </div>
       </div>
    </nav> 
-	
+  
  
 
-     <div id="centralcontainer" style="top:5rem;" class="card" style="width: 45rem; height: 40rem; ">
-      <h1> <font color="red"> <?php echo "<br/>Welcome:".$username;?></font> </h1>
+     <div id="welcome" style="top:6rem;" class="card">
+      <h3> <font color="red"> <?php echo "<br/>Welcome:".$username;?></font> </h3>
+      <span id="centralcontainer" ></span> <!--style="width: 45rem; height: 40rem;" -->
+      
+      
     </div>
 
    
-	
+  
   </body>
 </html>

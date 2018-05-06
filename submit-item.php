@@ -1,3 +1,6 @@
+
+<!--
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -12,21 +15,20 @@
   <body>
 
   <header>
-    <div class="container">
-      <?php if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
-      echo "<br/>Welcome:".$_SESSION['username'];?>
-      <br>
+    
+      
     
   <div class="imagelogo">
   <img src="images/picturelogo.png" alt="">
   <h6><i>Making money while journeying!!!</i></h6>
   </div>
   </header>
-
-  
-
+-->
+  <?php if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+     // echo "<br/>Welcome:".$_SESSION['username'];?>
+<div class="container">
   <div class="card" style="width: 45rem; height: 40rem; ">
   <div class="card-body">
   <h3 style="text-align: center;"><b>Submit Item</b></h3><br>
@@ -81,8 +83,7 @@
   </div>
   </div>
 
-
-  <footer>Copyright&copy;commcourier.com</footer>
-
+<!--
   </body>
   </html>
+  -->
