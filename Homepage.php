@@ -32,7 +32,11 @@
     session_start();
     $username = $_SESSION['username'];
 }
+else{
+  header('Location: login.php');
+  }
   ?>
+}
 
 <!--  This section of the code creates the navbar containing the home, actors etc-->
 
