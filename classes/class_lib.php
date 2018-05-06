@@ -121,6 +121,35 @@
 		$dbconnect->closeDatabase($db);
 		return $response;
 	 }
+
+	 function getAllJourneys(){
+	 	//Get all Journies from database
+	 	$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$sql = "SELECT * FROM `listjourney`";
+		$alljournies = $dbconnect->queryData($db,$sql);
+		$response ='<table><th><td> Traveller</td><td>Depature </td><td>Destination </td><td>Date From </td><td>Arrival Date</td><td>Arrival Port </td><td>Actions </td></th>';
+		if($alljournies->num_rows > 1){
+			while ( $row = $alljournies->fetch_assoc()) {
+				$response =$response.'<tr><td>'. $row['username'].'</td><td>'.$row['departurecountry'].'</td><td>'.$row['destinationcountry'].'</td><td>'.$row['depaturedate'].'</td><td>'.$row['arrivaldate'].'</td><td>'.$row['arrivalport'].'</td><td><a href="journeydetails.php?journey='.$row['id'].'">Details</a>'.'</td></tr>';
+			}
+		}
+		else{
+			return "No Journey was found";
+		}
+		$response =$response.'<table>';
+		return $response;
+		
+
+	 }
+
+	 function getMyJournies($username){
+
+	 }
+
+	 function getClassOfJourney($filter){
+
+	 }
 	 
 	 
 	 function editListJourney($username){
