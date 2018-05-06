@@ -15,20 +15,14 @@
         session_start();
     }
 
-      echo "<br/>Welcome:".$_SESSION['username'];?>
+      //echo "<br/>Welcome:".$_SESSION['username'];
+      ?>
 
-
-  <header>
-    <div class="imagelogo">
-      <img src="images/picturelogo.png" alt="">
-      <h6><i>Making money while journeying!!!</i></h6>
-    </div>
-  </header>
 
   <div class="container"><br>
   <div class="card" style="width: 45rem; height: 45rem; ">
   <div class="card-body">
-  <h3 style="text-align: center;"><b>Traveller Details</b></h3><br>
+  <h3 style="text-align: center;"><b>New Travel Details</b></h3><br>
   <form action = "process.php" method = "POST" enctype = "multipart/form-data">
   <input type = "hidden" name = "uname" value = "<?php echo($_SESSION['username']); ?>"/>
   <select class="custom-select" name = "dep-country" required="true">
