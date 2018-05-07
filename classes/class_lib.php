@@ -128,10 +128,10 @@
 		$db = $dbconnect->connectToDatabase();
 		$sql = "SELECT * FROM `listjourney`";
 		$alljournies = $dbconnect->queryData($db,$sql);
-		$response ='<table><th><td> Traveller</td><td>Depature </td><td>Destination </td><td>Date From </td><td>Arrival Date</td><td>Arrival Port </td><td>Actions </td></th>';
+		$response ='<h3>All Journeys</h3><table border="1"><tr><th> Traveller</th><th>Depature </th><th>Destination </th><th>Date From </th><th>Arrival Date</th><th>Arrival Port </th><th>Actions </th></tr>';
 		if($alljournies->num_rows > 1){
 			while ( $row = $alljournies->fetch_assoc()) {
-				$response =$response.'<tr><td>'. $row['username'].'</td><td>'.$row['departurecountry'].'</td><td>'.$row['destinationcountry'].'</td><td>'.$row['depaturedate'].'</td><td>'.$row['arrivaldate'].'</td><td>'.$row['arrivalport'].'</td><td><a href="journeydetails.php?journey='.$row['id'].'">Details</a>'.'</td></tr>';
+				$response =$response.'<tr><td>'. $row['username'].'</td><td>'.$row['departurecountry'].'</td><td>'.$row['destinationcountry'].'</td><td>'.$row['departuredate'].'</td><td>'.$row['arrivaldate'].'</td><td>'.$row['arrivalport'].'</td><td><a href="journeydetails.php?journey='.$row['id'].'">Details</a>'.'</td></tr>';
 			}
 		}
 		else{

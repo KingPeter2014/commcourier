@@ -99,7 +99,16 @@ else{
 
      <div id="welcome" style="top:6rem;" class="card">
       <h3> <font color="red"> <?php echo "<br/>Welcome:".$username;?></font> </h3>
-      <span id="centralcontainer" ></span> <!--style="width: 45rem; height: 40rem;" -->
+      <span id="centralcontainer" >
+        <?php 
+        include("classes/class_lib.php");
+        $journey = new Journeys();
+        $response = $journey->getAllJourneys();
+        echo $response;
+
+        ?>
+
+      </span> <!--style="width: 45rem; height: 40rem;" -->
       
       
     </div>

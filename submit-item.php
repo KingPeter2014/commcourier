@@ -31,7 +31,7 @@
 <div class="container">
   <div class="card" style="width: 45rem; height: 40rem; ">
   <div class="card-body">
-  <h3 style="text-align: center;"><b>Submit Item</b></h3><br>
+  <h3 style="text-align: center;"><b>List Item to Send</b></h3><br>
   <form action = "process.php" method = "POST" enctype = "multipart/form-data">
     <input type = "hidden" name = "uname" value = "<?php echo($_SESSION['username']); ?>"/>
     <div class="form-group row">
