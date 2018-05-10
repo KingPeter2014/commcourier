@@ -38,7 +38,7 @@
     </footer>
     </div>
 
-    <script src="javascripts/commcourier.js"></script>
+    <script src="javascripts/confirmdelivery.js"></script>
 
   </body>
 </html>
