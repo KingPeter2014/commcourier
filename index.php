@@ -222,7 +222,7 @@
  </footer>
  </div>
 
- <script src="javascripts/colorchange.js"></script>
+ <script src="scripts/colorchange.js"></script>
 
  </body>
  </html>
