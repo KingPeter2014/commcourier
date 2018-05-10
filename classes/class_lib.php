@@ -129,17 +129,24 @@
 		$sql = "SELECT * FROM `listjourney`";
 		$alljournies = $dbconnect->queryData($db,$sql);
 		$response ='<h3>All Journeys</h3><table border="1"><tr><th> Traveller</th><th>Depature </th><th>Destination </th><th>Date From </th><th>Arrival Date</th><th>Arrival Port </th><th>Actions </th></tr>';
-		if($alljournies->num_rows > 1){
-			while ( $row = $alljournies->fetch_assoc()) {
+		$response =$response.$this->formatJourneysForDisplay($alljournies);
+		$response =$response.'<table>';
+		return $response;
+		
+	 }
+
+	 function formatJourneysForDisplay($queryResult){
+	 	//Format a query to display journey as a table
+	 	$response="";
+	 	if($queryResult->num_rows > 1){
+			while ( $row = $queryResult->fetch_assoc()) {
 				$response =$response.'<tr><td>'. $row['username'].'</td><td>'.$row['departurecountry'].'</td><td>'.$row['destinationcountry'].'</td><td>'.$row['departuredate'].'</td><td>'.$row['arrivaldate'].'</td><td>'.$row['arrivalport'].'</td><td><a href="journeydetails.php?journey='.$row['id'].'">Details</a>'.'</td></tr>';
 			}
 		}
 		else{
-			return "No Journey was found";
+			$response =$response. "No Journey was found";
 		}
-		$response =$response.'<table>';
 		return $response;
-		
 
 	 }
 
