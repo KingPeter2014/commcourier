@@ -15,12 +15,16 @@ footer{
   background-color: black;
   text-align:center;
   color: orange;
-  padding: 1rem;
+  padding: 0.3rem;
 }
 
 .card{
   width: 990px;
   margin: 40px auto;
+}
+
+.card-body{
+  background-color: #eaeff7;
 }
 
 #Submit{

@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="css files/index.css">
+    <link rel="stylesheet" href="css files/header.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -18,42 +19,57 @@
   </div>
   </header>
 
-  <div class="container"><br>
-  <div class="card" style="width: 45rem; height: 50rem; ">
-  <div class="card-body">
-  <h2 style="text-align: center; color: brown;"><b>Welcome to CommCourier</b></h2><br>
-  <h5 style="text-align: center;"><b>Sign up! </b> or <a href="login.php"> Login Here</a> </h5>
-  <br>
 
- <form action="process.php" method="post">
-  <div class="form-group row">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Login</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="about" aria-selected="false">About Us</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact Us</a>
+  </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-  <label for="fname" class="col-sm-4 col-form-label">First name</label>
-  <div class="col-sm-8">
-  <input type="text" class="form-control" id="fname" placeholder="" name="fname">
-  </div>
-  </div>
+    <div class="container"><br>
+    <div class="card" style="width: 45rem; height: 55rem; ">
+    <div class="card-body">
+    <h2 style="text-align: center; color: brown;"><b>Welcome to CommCourier</b></h2><br>
+    <h5 style="text-align: center;"><b>Sign up! </b> or <a href="login.php"> Login Here</a> </h5>
+    <br>
 
-  <div class="form-group row">
-  <label for="lname" class="col-sm-4 col-form-label">Last name</label>
-  <div class="col-sm-8">
-  <input type="text" class="form-control" id="lname" placeholder="" name="lname">
-  </div>
-  </div>
+    <form action="process.php" method="post">
+    <div class="form-group row">
 
- <div class="form-group row">
- <label for="username" class="col-sm-4 col-form-label">Username</label>
- <div class="col-sm-8">
- <input type="text" class="form-control" id="username" placeholder="" name="username">
- </div>
- </div>
+   <label for="fname" class="col-sm-4 col-form-label">First name</label>
+   <div class="col-sm-8">
+   <input type="text" class="form-control" id="fname" placeholder="" name="fname">
+   </div>
+   </div>
 
- <div class="form-group row">
- <label for="email" class="col-sm-4 col-form-label">Email address</label>
- <div class="col-sm-8">
- <input type="email" class="form-control" id="email" placeholder="" name="email">
- </div>
- </div>
+   <div class="form-group row">
+   <label for="lname" class="col-sm-4 col-form-label">Last name</label>
+   <div class="col-sm-8">
+   <input type="text" class="form-control" id="lname" placeholder="" name="lname">
+   </div>
+   </div>
+
+   <div class="form-group row">
+   <label for="username" class="col-sm-4 col-form-label">Username</label>
+   <div class="col-sm-8">
+   <input type="text" class="form-control" id="username" placeholder="" name="username">
+   </div>
+   </div>
+
+   <div class="form-group row">
+   <label for="email" class="col-sm-4 col-form-label">Email address</label>
+   <div class="col-sm-8">
+   <input type="email" class="form-control" id="email" placeholder="" name="email">
+   </div>
+   </div>
 
  <div class="form-group row">
  <label for="password" class="col-sm-4 col-form-label">Password</label>
@@ -133,7 +149,80 @@
  </div>
  </div>
  </div>
+ </div>
 
- <footer>Copyright&copy;commcourier.com</footer>
+ <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+ <div class="container-fluid">
+ <div class="jumbotron jumbotron-fluid">
+ <h2 id="aboutus" > Who we are </h2><br>
+ <p id="aboutcontent">We are a start-up company geared towards providing information, computer and technology(ICT)
+ based business solutions. The Commcourier (which stands for community courier) website is one of our product. </p>
+ </div>
+ </div>
+
+ <div class="container-fluid">
+ <div class="jumbotron jumbotron-fluid">
+ <h2 id="aboutus" >What we do </h2><br>
+ <p id="aboutcontent">Commcourier website is a platform that connects verified travellers with verified senders wishing to send packages through the travellers.
+  There are situations in life where an item or package needs to be sent in the next minute without waiting for scheduled parcel or cargo companies to
+  take and transport the package. Our platform connects people in this situation with potential travelers who are going to such
+  destination in real time. People with such intent list their intention and connect with verified travelers who can deliver
+  such items immediately. The sender contributes to the transport fare of the sender.</p>
+ </div>
+ </div>
+
+ <div class="container-fluid">
+ <div class="jumbotron jumbotron-fluid">
+ <h2 id="aboutus" >Our goal </h2><br>
+ <p id="aboutcontent">Our first goal is to get the development of this website completed. Also, we aim to create
+   a user friendly and reliable commcourier website which is useable round the world. </p>
+ </div>
+ </div>
+</div>
+
+ <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+ <div class="row">
+ <div class="col-sm-6">
+ <div class="card" id="maincontact">
+ <div class="card-body" id="contact">
+ <h5 class="card-title">Reach us on the following emails:</h5>
+ <ul id="list">
+ <li>commcourier@commcourier.com</li>
+ <li>tochukwu.idika@commcourier.com</li>
+ <li>peter.eze@commcourier.com</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+
+ <div class="col-sm-6">
+ <div class="card" id= "maincontact">
+ <div class="card-body" id="contact">
+ <h5 class="card-title">Reach us on the following numbers:</h5>
+ <ul id="list">
+ <li>Tochi- +1 573 289 9576</li>
+ <li>Peter- +61 469 716 871</li>
+ <li>Chinazom- +234 703 924 7359</li>
+ <li>Nonso- +234 803 925 1728</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="fixed-bottom">
+ <footer>
+ Copyright&copy;commcourier.com
+ <p><a href="#">Privacy policy</a> -
+ <a href="#">Terms and condition</a> -
+ <a href="#">Contact Us</a></p>
+ </footer>
+ </div>
+
+ <script src="javascripts/colorchange.js"></script>
+
  </body>
  </html>

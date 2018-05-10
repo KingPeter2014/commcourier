@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Confirm delivery page</title>
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="css files/header.css">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -27,8 +27,18 @@
     </div>
     </div>
     </div>
-    <footer>Copyright&copy;commcourier.com</footer>
-    <script src="commcourier.js"></script>
+
+
+    <div class="fixed-bottom">
+    <footer>
+    Copyright&copy;commcourier.com
+    <p><a href="#">Privacy policy</a> -
+    <a href="#">Terms and condition</a> -
+    <a href="#">Contact Us</a></p>
+    </footer>
+    </div>
+
+    <script src="javascripts/commcourier.js"></script>
 
   </body>
 </html>
