@@ -180,7 +180,7 @@ if(isset($_POST['listitemSubmitBtn'])){
 		$docName = "ListedItems/".$uname."_listeditem_".time()."";
 		$docpath = "".$docName.".".$fileType."";
 		move_uploaded_file($_FILES["itempicture"]["tmp_name"], $docpath);
-		echo "File upload successful";
+		echo "File upload successful</br>";
 		}
 	else{
 		echo "No file uploaded";

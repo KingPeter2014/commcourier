@@ -110,7 +110,14 @@
         $journey = new Journeys();
         //$response = $journey->getAllJourneys();
         $response = $journey->getMyJournies($username);
-        echo $response;
+        echo $response."</br>";
+
+        $listedItems = new DeliveryItems();
+        //$response = $listedItems->getAllListedItems();
+        $response = $listedItems->getMyListedItems($username);
+        echo $response."</br>";
+        $response = $listedItems->getOtherListedItems($username);
+        echo $response."</br>";
 
         ?>
 

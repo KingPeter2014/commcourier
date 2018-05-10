@@ -138,7 +138,7 @@
 	 function formatJourneysForDisplay($queryResult){
 	 	//Format a query to display journey as a table
 	 	$response="";
-	 	if($queryResult->num_rows > 1){
+	 	if($queryResult->num_rows > 0){
 			while ( $row = $queryResult->fetch_assoc()) {
 				$response =$response.'<tr><td>'. $row['username'].'</td><td>'.$row['departurecountry'].'</td><td>'.$row['destinationcountry'].'</td><td>'.$row['departuredate'].'</td><td>'.$row['arrivaldate'].'</td><td>'.$row['arrivalport'].'</td><td><a href="journeydetails.php?journey='.$row['id'].'">Details</a>'.'</td></tr>';
 			}
@@ -181,9 +181,7 @@
 		 //Set up session variables to identify user
 	 }
 	 
-	 function destroySession(){
-		 // Log out and cleanup after a session
-	 }
+	 
 	 
 	 function set_Username($username){
 		 $this->username = $username;
@@ -217,6 +215,59 @@
  	
 
  	}
+
+ 	function getAllListedItems(){
+ 		//Get all Listed items from database
+	 	$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$sql = "SELECT * FROM `listeditems`";
+		$allitems = $dbconnect->queryData($db,$sql);
+		$response ='<h3>All Listed Items</h3><table border="1"><tr><th> Listed By</th><th>Description </th><th>Receiver Address </th><th>Time Listed </th><th>Status</th><th>Actions </th></tr>';
+		$response =$response.$this->formatListedItemsForDisplay($allitems);
+		$response =$response.'<table>';
+		return $response;
+
+ 	}
+ 	function formatListedItemsForDisplay($queryResult){
+	 	//Format a query to display journey as a table
+	 	$response="";
+	 	if($queryResult->num_rows > 0){
+			while ( $row = $queryResult->fetch_assoc()) {
+				$response =$response.'<tr><td>'. $row['listedby'].'</td><td>'.$row['description'].'</td><td>'.$row['receiveraddress'].'</td><td>'.$row['timelisted'].'</td><td>'.$row['status'].'</td>'.'<td><a href="itemdetails.php?item='.$row['id'].'">Details</a>'.'</td></tr>';
+			}
+		}
+		else{
+			$response =$response. "No Listed Items found";
+		}
+		return $response;
+
+	 }
+
+	 function getMyListedItems($username){
+		//Get Listed items belonging to current user
+	 	$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$sql = "SELECT * FROM `listeditems` WHERE listedby = '". $username."'";
+		$allitems = $dbconnect->queryData($db,$sql);
+		$response ='<h3>My Listed Items</h3><table border="1"><tr><th> Listed By</th><th>Description </th><th>Receiver Address </th><th>Time Listed </th><th>Status</th><th>Actions </th></tr>';
+		$response =$response.$this->formatListedItemsForDisplay($allitems);
+		$response =$response.'<table>';
+		return $response;
+
+	}
+
+	function getOtherListedItems($username){
+		//Get Other Listed items not belonging to current user
+	 	$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$sql = "SELECT * FROM `listeditems` WHERE listedby <> '". $username."'";
+		$allitems = $dbconnect->queryData($db,$sql);
+		$response ='<h3>Other Listed Items</h3><table border="1"><tr><th> Listed By</th><th>Description </th><th>Receiver Address </th><th>Time Listed </th><th>Status</th><th>Actions </th></tr>';
+		$response =$response.$this->formatListedItemsForDisplay($allitems);
+		$response =$response.'<table>';
+		return $response;
+
+	}
 	 
  }
  
