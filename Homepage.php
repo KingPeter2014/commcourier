@@ -30,14 +30,18 @@
   </head>
   <body>
 <?php if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-    $username = $_SESSION['username'];
-}
-else{
-  header('Location: login.php');
-  }
-  ?>
-}
+        session_start();
+        if (!isset($_SESSION['username'])){
+          header('Location: login.php');
+        }
+        else{
+            $username = $_SESSION['username'];
+        }
+    
+      }
+
+?>
+
 
 <!--  This section of the code creates the navbar containing the home, actors etc-->
 
