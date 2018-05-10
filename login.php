@@ -21,7 +21,7 @@
       <div class="container"><br>
     <div class="card" style="width: 45rem; height: 21rem; ">
 <div class="card-body">
-  <h2  style="text-align: center;"><b>Login In</b></h2>
+  <h2  style="text-align: center;"><b>Login Details</b></h2>
 <br>
 <form action="process.php" method="post">
 <div class="form-group row">
