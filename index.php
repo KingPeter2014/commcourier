@@ -22,7 +22,7 @@
 
   <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
-  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Login</a>
+  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Sign Up</a>
   </li>
   <li class="nav-item">
   <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="about" aria-selected="false">About Us</a>
@@ -38,7 +38,7 @@
     <div class="card" style="width: 45rem; height: 55rem; ">
     <div class="card-body">
     <h2 style="text-align: center; color: brown;"><b>Welcome to CommCourier</b></h2><br>
-    <h5 style="text-align: center;"><b>Sign up! </b> or <a href="login.php"> Login Here</a> </h5>
+    <h5 style="text-align: center;"><b>Sign up! </b> or <a href="login.php"> Login here</a> </h5>
     <br>
 
     <form action="process.php" method="post">
