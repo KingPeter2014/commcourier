@@ -155,27 +155,25 @@
  <div class="container-fluid">
  <div class="jumbotron jumbotron-fluid">
  <h2 id="aboutus" > Who we are </h2><br>
- <p id="aboutcontent">We are a start-up company geared towards providing information, computer and technology(ICT)
- based business solutions. The Commcourier (which stands for community courier) website is one of our product. </p>
+ <p id="aboutcontent">CommCourier stands for Community Courier. We are a start-up company geared towards providing information, computer and technology(ICT)-based business solutions.  Commcourier.com is one of such products. </p>
  </div>
  </div>
 
  <div class="container-fluid">
  <div class="jumbotron jumbotron-fluid">
  <h2 id="aboutus" >What we do </h2><br>
- <p id="aboutcontent">Commcourier website is a platform that connects verified travellers with verified senders wishing to send packages through the travellers.
+ <p id="aboutcontent">Commcourier is a platform that connects verified travellers with verified senders wishing to send packages through the travellers.
   There are situations in life where an item or package needs to be sent in the next minute without waiting for scheduled parcel or cargo companies to
   take and transport the package. Our platform connects people in this situation with potential travelers who are going to such
   destination in real time. People with such intent list their intention and connect with verified travelers who can deliver
-  such items immediately. The sender contributes to the transport fare of the sender.</p>
+  such items immediately. The sender contributes to the transport fare of the traveler.</p>
  </div>
  </div>
 
  <div class="container-fluid">
  <div class="jumbotron jumbotron-fluid">
  <h2 id="aboutus" >Our goal </h2><br>
- <p id="aboutcontent">Our first goal is to get the development of this website completed. Also, we aim to create
-   a user friendly and reliable commcourier website which is useable round the world. </p>
+ <p id="aboutcontent">Our goal is to enable real-time courier services through the community as well as provide extra income for participants. </p>
  </div>
  </div>
 </div>
