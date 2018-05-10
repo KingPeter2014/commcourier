@@ -151,6 +151,16 @@
 	 }
 
 	 function getMyJournies($username){
+	 	//Get all Journies from database
+	 	$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$sql = "SELECT * FROM `listjourney` WHERE username='".$username."'";
+		$alljournies = $dbconnect->queryData($db,$sql);
+		$response ='<h3>My Journies</h3><table border="1"><tr><th> Traveller</th><th>Depature </th><th>Destination </th><th>Date From </th><th>Arrival Date</th><th>Arrival Port </th><th>Actions </th></tr>';
+		$response =$response.$this->formatJourneysForDisplay($alljournies);
+		$response =$response.'<table>';
+		return $response;
+
 
 	 }
 

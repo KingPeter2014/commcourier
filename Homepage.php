@@ -108,7 +108,8 @@
         <?php
         include("classes/class_lib.php");
         $journey = new Journeys();
-        $response = $journey->getAllJourneys();
+        //$response = $journey->getAllJourneys();
+        $response = $journey->getMyJournies($username);
         echo $response;
 
         ?>
