@@ -164,6 +164,46 @@
 
 	 }
 
+	 function getJourneyById($id){
+	 	//Get details of a particular journey
+	 	$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$sql = "SELECT * FROM `listjourney` WHERE id = '". $id."'";
+		$thisjourney = $dbconnect->queryData($db,$sql);
+		$response ='<h3>Journey Details</h3><table border="1">';
+		$response =$response.$this->formatJourneyDetailsForDisplay($thisjourney);
+		$response =$response.'<table>';
+		return $response;
+
+		return $response;
+
+	 }
+
+	 function formatJourneyDetailsForDisplay($queryResult){
+	 	$cur_user= $_SESSION['username'];
+	 	$response="";
+	 	if($queryResult->num_rows > 0){
+			while ( $row = $queryResult->fetch_assoc()) {
+				$response =$response.'<tr><th> Traveller</th><td><a href="viewprofile.php?username='.$row['username'].'"">'.$row['username'].'</a></td></tr><tr><th>Depature Country </th><td>'.$row['departurecountry'].'</td><tr><th>Destination Country </th><td>'.$row['destinationcountry'].'</td></tr><tr><th>Depature Date </th><td>'.$row['departuredate'].'</td></tr><th>Arrival Date</th><td>'.$row['arrivaldate'].'</td></tr><tr><th> Arrival Port</th><td>'. $row['arrivalport'].'</td></tr><tr>'.'<th>Documents</th><td><a  href="'.$row['docpath'].'">View Itinerary</a>'.'</td></tr><tr><th>Actions</th><td>';
+				if (strcmp($cur_user, $row['username'])==0){
+					$response =$response.'|<a href="editjourney.php?journey='.$row['id'].'">Edit</a>';
+					$response =$response.'|<a href="deletejourney.php?journey='.$row['id'].'">Delete</a>';
+
+				}
+				else{
+					$response =$response.'<a href="interestedinsending.php?item='.$row['id'].'">Indicate interest to Send this Item</a>';
+				}
+				$response =$response.'</td></tr>';
+			}
+		}
+		else{
+			$response =$response. "Item Details not found";
+		}
+		return $response;
+
+
+	 }
+
 	 function getClassOfJourney($filter){
 
 	 }
