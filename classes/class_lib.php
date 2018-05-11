@@ -289,7 +289,7 @@
 	 	$response="";
 	 	if($queryResult->num_rows > 0){
 			while ( $row = $queryResult->fetch_assoc()) {
-				$response =$response.'<tr><th> Listed By</th><td>'. $row['listedby'].'</td></tr><tr><th>Description </th><td>'.$row['description'].'</td><tr><th>Receiver Address </th><td>'.$row['receiveraddress'].'</td></tr><tr><th>Time Listed </th><td>'.$row['timelisted'].'</td></tr><th>Status</th><td>'.$row['status'].'</td></tr><tr>'.'<th>Image</th><td><img  src="'.$row['itempixpath'].'"></td></tr><tr><th>Actions</th><td>';
+				$response =$response.'<tr><th> Listed By</th><td>'. $row['listedby'].'</td></tr><tr><th>Description </th><td>'.$row['description'].'</td><tr><th>Receiver Address </th><td>'.$row['receiveraddress'].'</td></tr><tr><th>Time Listed </th><td>'.$row['timelisted'].'</td></tr><th>Status</th><td>'.$row['status'].'</td></tr><tr>'.'<th>Image</th><td><img  src="'.$row['itempixpath'].'" style="max-height: 200px; max-width: 200px;"></td></tr><tr><th>Actions</th><td>';
 				if (strcmp($cur_user, $row['listedby'])==0){
 					$response =$response.'<a href="assignitem.php?item='.$row['id'].'">Assign</a>';
 					$response =$response.'|<a href="edititem.php?item='.$row['id'].'">Edit</a>';
