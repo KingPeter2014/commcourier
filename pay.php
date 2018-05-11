@@ -21,9 +21,11 @@
     <div class="container"><br>
     <div class="card" style="width: 45rem; height: 21rem; ">
     <div class="card-body">
+    <?php require_once('config.php'); ?>
     <h3 style="text-align: center;"><b>Pay Here</b></h3><br>
 
-    <form action = "process.php" method = "POST" enctype = "multipart/form-data">
+    <form action="charge.php" method = "POST" enctype = "multipart/form-data">
+      <input type = "hidden" name = "amount" value = "<?php echo "512"; ?>"/>
       <select class="custom-select custom-select-lg mb-3" name = "des-country">
       <option value = "" selected>Choose your traveller</option>
       <option value="MS">Micheal smith</option>
@@ -32,12 +34,20 @@
       </select><br>
       <br>
 
-      <button type="submit" class="btn btn-primary col-md-2" id="Submit" name = "listjourneySubmitBtn">Pay</button>
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<?php echo $stripe['publishable_key']; ?>"
+          data-description="Commcourier Package Delivery"
+          data-amount="<?php echo "512"; ?>"
+          data-locale="auto"></script>
+
+      <!--<button type="submit" class="btn btn-primary col-md-2" id="Submit" name = "listjourneySubmitBtn">Pay</button> -->
       <button type="reset" class="btn btn-secondary col-md-2" id="Reset">Cancel</button>
     </form>
     </div>
     </div>
     </div>
+
+    
 
     <div class="fixed-bottom">
     <footer>
