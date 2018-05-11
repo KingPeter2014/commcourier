@@ -233,7 +233,7 @@
 	 	$response="";
 	 	if($queryResult->num_rows > 0){
 			while ( $row = $queryResult->fetch_assoc()) {
-				$response =$response.'<tr><td>'. $row['listedby'].'</td><td>'.$row['description'].'</td><td>'.$row['receiveraddress'].'</td><td>'.$row['timelisted'].'</td><td>'.$row['status'].'</td>'.'<td><a href="itemdetails.php?item='.$row['id'].'">Details</a>'.'</td></tr>';
+				$response =$response.'<tr><td>'. $row['listedby'].'</td><td>'.$row['description'].'</td><td>'.$row['receiveraddress'].'</td><td>'.$row['timelisted'].'</td><td>'.$row['status'].'</td>'.'<td><a href="itemdetails.php?item='.$row['id'].'">Details</a>|'.'<a href="assignitem.php?item='.$row['id'].'">Assign</a>|'.'<a href="edititem.php?item='.$row['id'].'">Edit</a></td></tr>';
 			}
 		}
 		else{
@@ -251,6 +251,19 @@
 		$allitems = $dbconnect->queryData($db,$sql);
 		$response ='<h3>My Listed Items</h3><table border="1"><tr><th> Listed By</th><th>Description </th><th>Receiver Address </th><th>Time Listed </th><th>Status</th><th>Actions </th></tr>';
 		$response =$response.$this->formatListedItemsForDisplay($allitems);
+		$response =$response.'<table>';
+		return $response;
+
+	}
+
+	function getListedItemById($id){
+		//Get Listed item by its id field
+	 	$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$sql = "SELECT * FROM `listeditems` WHERE id = '". $id."'";
+		$thisitem = $dbconnect->queryData($db,$sql);
+		$response ='<h3>Item Details</h3><table border="1"><tr><th> Listed By</th><th>Description </th><th>Receiver Address </th><th>Time Listed </th><th>Status</th><th>Actions </th></tr>';
+		$response =$response.$this->formatListedItemsForDisplay($thisitem);
 		$response =$response.'<table>';
 		return $response;
 
