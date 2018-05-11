@@ -229,11 +229,11 @@
 
  	}
  	function formatListedItemsForDisplay($queryResult){
-	 	//Format a query to display journey as a table
+	 	//Format a query to display Item as a table
 	 	$response="";
 	 	if($queryResult->num_rows > 0){
 			while ( $row = $queryResult->fetch_assoc()) {
-				$response =$response.'<tr><td>'. $row['listedby'].'</td><td>'.$row['description'].'</td><td>'.$row['receiveraddress'].'</td><td>'.$row['timelisted'].'</td><td>'.$row['status'].'</td>'.'<td><a href="itemdetails.php?item='.$row['id'].'">Details</a>|'.'<a href="assignitem.php?item='.$row['id'].'">Assign</a>|'.'<a href="edititem.php?item='.$row['id'].'">Edit</a></td></tr>';
+				$response =$response.'<tr><td>'. $row['listedby'].'</td><td>'.$row['description'].'</td><td>'.$row['receiveraddress'].'</td><td>'.$row['timelisted'].'</td><td>'.$row['status'].'</td>'.'<td><a href="itemdetails.php?item='.$row['id'].'">See Details</a></td></tr>';
 			}
 		}
 		else{
@@ -242,6 +242,8 @@
 		return $response;
 
 	 }
+
+	 
 
 	 function getMyListedItems($username){
 		//Get Listed items belonging to current user
@@ -256,19 +258,7 @@
 
 	}
 
-	function getListedItemById($id){
-		//Get Listed item by its id field
-	 	$dbconnect = new DatabaseManager();
-		$db = $dbconnect->connectToDatabase();
-		$sql = "SELECT * FROM `listeditems` WHERE id = '". $id."'";
-		$thisitem = $dbconnect->queryData($db,$sql);
-		$response ='<h3>Item Details</h3><table border="1"><tr><th> Listed By</th><th>Description </th><th>Receiver Address </th><th>Time Listed </th><th>Status</th><th>Actions </th></tr>';
-		$response =$response.$this->formatListedItemsForDisplay($thisitem);
-		$response =$response.'<table>';
-		return $response;
-
-	}
-
+	
 	function getOtherListedItems($username){
 		//Get Other Listed items not belonging to current user
 	 	$dbconnect = new DatabaseManager();
@@ -281,6 +271,54 @@
 		return $response;
 
 	}
+	function getListedItemById($id){
+		//Get Listed item by its id field
+	 	$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$sql = "SELECT * FROM `listeditems` WHERE id = '". $id."'";
+		$thisitem = $dbconnect->queryData($db,$sql);
+		$response ='<h3>Item Details</h3><table border="1">';
+		$response =$response.$this->formatListedItemDetailsForDisplay($thisitem);
+		$response =$response.'<table>';
+		return $response;
+
+	}
+	function formatListedItemDetailsForDisplay($queryResult){
+	 	//Format a query to display single item details
+	 	$cur_user= $_SESSION['username'];
+	 	$response="";
+	 	if($queryResult->num_rows > 0){
+			while ( $row = $queryResult->fetch_assoc()) {
+				$response =$response.'<tr><th> Listed By</th><td>'. $row['listedby'].'</td></tr><tr><th>Description </th><td>'.$row['description'].'</td><tr><th>Receiver Address </th><td>'.$row['receiveraddress'].'</td></tr><tr><th>Time Listed </th><td>'.$row['timelisted'].'</td></tr><th>Status</th><td>'.$row['status'].'</td></tr><tr>'.'<th>Image</th><td><img  src="'.$row['itempixpath'].'"></td></tr><tr><th>Actions</th><td>';
+				if (strcmp($cur_user, $row['listedby'])==0){
+					$response =$response.'<a href="assignitem.php?item='.$row['id'].'">Assign</a>';
+					$response =$response.'|<a href="edititem.php?item='.$row['id'].'">Edit</a>';
+					$response =$response.'|<a href="deleteitem.php?item='.$row['id'].'">Delete</a>';
+
+				}
+				else{
+					$response =$response.'<a href="interestedinsending.php?item='.$row['id'].'">Indicate interest to Send this Item</a>';
+				}
+				$response =$response.'</td></tr>';
+			}
+		}
+		else{
+			$response =$response. "Item Details not found";
+		}
+		return $response;
+
+
+	 }
+
+	 function includeItemAssignment($item){
+
+	 }
+
+	 function includeInterestedInSendingItem($item){
+
+	 }
+
+	
 	 
  }
  
