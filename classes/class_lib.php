@@ -204,6 +204,30 @@
 
 	 }
 
+	 function getActiveJourniesForCurrentUser($username){
+	 	//Bids for current users that are in the future
+	 	$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$sql = "SELECT * FROM `listjourney` WHERE username = '". $username."'";
+		$thisjourney = $dbconnect->queryData($db,$sql);
+		$response="";
+		if($thisjourney->num_rows > 0){
+			while ( $row = $thisjourney->fetch_assoc()) {
+				if (strtotime($row['departuredate']) > time())
+					$response =$response. '<option value="'.$row['id'].'">'.$row['departuredate'].'('.$row['arrivalport'].')</option>';
+
+			}
+
+		}
+		else{
+			$response = '<option value="">No active Journey</option>';
+
+		}
+		
+
+		return $response;
+	 }
+
 	 function getClassOfJourney($filter){
 
 	 }

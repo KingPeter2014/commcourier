@@ -1,7 +1,7 @@
 <?php if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
-
+    $username = $_SESSION['username'];
     $item = $_GET['item'];
     ?>
 
@@ -17,10 +17,15 @@
 
     <form action="process.php" method = "POST" enctype = "multipart/form-data">
       <input type = "hidden" name = "item" value = "<?php echo $item; ?>"/>
+      <input type = "hidden" name = "bidder" value = "<?php echo $username; ?>"/>
       <input type = "number" name = "amount" placeholder="Cost of Sending"/>
       <select class="custom-select custom-select-lg mb-3" name = "journey">
       <option value = "" selected>Choose your journey</option>
       <?php 
+      	require_once("classes/class_lib.php"); 
+      	$getjourneys = new Journeys();
+		$response = $getjourneys->getActiveJourniesForCurrentUser($username);
+		echo $response;
 
       ?>
       

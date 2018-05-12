@@ -212,13 +212,20 @@ if(isset($_POST['listitemSubmitBtn'])){
 		}
 
 		if (empty($_POST['journey'])){
-			echo $error = "You need to have active journey in order to bid for an item";
+			echo $error = "You need to select an active journey in order to bid for an item";
 			return;
 		}
 		else{
-			$amount = $securityguard->removeHackCharacters($_POST['journey']); 
+			$journey = $securityguard->removeHackCharacters($_POST['journey']); 
 		}
-
+		if (empty($_POST['bidder'])){
+			echo $error = "You need to be logged in to bid for an item";
+			return;
+		}
+		else{
+			$bidder = $securityguard->removeHackCharacters($_POST['bidder']); 
+		}
+		
 		$bidding = new InterestedTransporters();
 		$response = $bidding->registerBid($bidder,$item,$journey,$amount);
 		echo $response;
