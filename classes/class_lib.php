@@ -364,6 +364,11 @@
  
  class InterestedTransporters{
 	 //For listed DeliveryItems, a transporter CourierUser indicates interest on which DeliveryItem to send and at what cost
+ 	function registerBid($bidder,$item,$journey,$amount){
+
+ 		$response = "Not recorded yet";
+
+ 	}
 	 
  }
  

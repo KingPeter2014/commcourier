@@ -18,6 +18,13 @@
     <form action="process.php" method = "POST" enctype = "multipart/form-data">
       <input type = "hidden" name = "item" value = "<?php echo $item; ?>"/>
       <input type = "number" name = "amount" placeholder="Cost of Sending"/>
+      <select class="custom-select custom-select-lg mb-3" name = "journey">
+      <option value = "" selected>Choose your journey</option>
+      <?php 
+
+      ?>
+      
+      </select><br>
       
       <button type="submit" class="btn btn-primary col-md-2" id="Submit" name = "bidToSendItemBtn">Send Bid</button> 
       <button type="reset" class="btn btn-secondary col-md-2" id="Reset">Cancel</button>

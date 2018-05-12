@@ -211,6 +211,18 @@ if(isset($_POST['listitemSubmitBtn'])){
 		$amount = $securityguard->removeHackCharacters($_POST['amount']); 
 		}
 
+		if (empty($_POST['journey'])){
+			echo $error = "You need to have active journey in order to bid for an item";
+			return;
+		}
+		else{
+			$amount = $securityguard->removeHackCharacters($_POST['journey']); 
+		}
+
+		$bidding = new InterestedTransporters();
+		$response = $bidding->registerBid($bidder,$item,$journey,$amount);
+		echo $response;
+
 	}
 	
 
