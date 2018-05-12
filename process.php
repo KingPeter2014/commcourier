@@ -193,5 +193,25 @@ if(isset($_POST['listitemSubmitBtn'])){
 	}
 
 
+	if(isset($_POST['bidToSendItemBtn'])){
+		//Creating a bid to send an item by a traveller
+		if (empty($_POST['item'])){
+		echo $error = "Item to bid for is required!";
+		return;
+		}
+		else{
+		$item = $securityguard->removeHackCharacters($_POST['item']); 
+		}
+
+		if (empty($_POST['amount'])){
+		echo $error = "At what amount would you send the item?";
+		return;
+		}
+		else{
+		$amount = $securityguard->removeHackCharacters($_POST['amount']); 
+		}
+
+	}
+	
 
 ?>
