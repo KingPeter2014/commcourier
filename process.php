@@ -231,6 +231,22 @@ if(isset($_POST['listitemSubmitBtn'])){
 		echo $response;
 
 	}
+
+	if(isset($_POST['submitAssignmentBtn'])){
+		//To submit the assignment of an item to the best bid (bidder and journey)
+		if (empty($_POST['assignitem'])){
+			echo $error = "Please select the traveler that will send your item";
+			return;
+		}
+		else{
+			$bestbid = $securityguard->removeHackCharacters($_POST['assignitem']); 
+		}
+
+		$assitem = new SelectedTransporters();
+		$response = $assitem->assignItemToBestBid($bestbid);
+		echo $response;
+
+	}
 	
 
 ?>

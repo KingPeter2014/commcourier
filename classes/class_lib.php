@@ -416,7 +416,7 @@
  	}
 
  	function getBidsForItem($item){
-
+ 		//Return a list of the bids for a particular item.These are bids by travelers to send the particular listed item
  		$sql = "SELECT b.id AS bidid,b.bidder,b.item,b.journey,b.amount,b.timeofbid,b.status,l.id,j.username,j.departuredate,j.arrivaldate,j.arrivalport from bids b, listeditems l, listjourney j WHERE l.id = b.item AND b.bidder = j.username AND j.id = b.journey AND b.item=$item";
  		$response ='<form action="process.php" METHOD="POST">';
 
@@ -441,6 +441,14 @@
  
  class SelectedTransporters{
 	 //the sender CourierUser who listed DeliveryItem then chooses the best InterestedTransporter that he wants
+ 	function assignItemToBestBid($bidid){
+ 		// Record the bid that worn the bid to send an item
+ 		$response = " Yet to record the winning bid:".$bidid;
+
+
+ 		return $response;
+
+ 	}
 	 
  }
  
