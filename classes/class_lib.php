@@ -414,6 +414,22 @@
 		return $response;
 
  	}
+
+ 	function getBidsForItem($item){
+
+ 		$sql = "SELECT b.*,l.id,j.username,j.departuredate,j.arrivaldate,j.arrivalport from bids b, listeditems l, listjourney j WHERE l.id = b.item AND b.bidder = j.username AND j.id = b.journey AND b.item=$item";
+ 		$response ='<form action="process.php" METHOD="POST"';
+ 		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$bids = $dbconnect->queryData($db,$sql);
+		if($bids->num_rows > 0){
+
+		}
+		else{
+			return "No bids found for this item/package";
+		}
+		
+ 	}
 	 
  }
  
