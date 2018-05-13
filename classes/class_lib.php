@@ -417,17 +417,23 @@
 
  	function getBidsForItem($item){
 
- 		$sql = "SELECT b.*,l.id,j.username,j.departuredate,j.arrivaldate,j.arrivalport from bids b, listeditems l, listjourney j WHERE l.id = b.item AND b.bidder = j.username AND j.id = b.journey AND b.item=$item";
- 		$response ='<form action="process.php" METHOD="POST"';
+ 		$sql = "SELECT b.id AS bidid,b.bidder,b.item,b.journey,b.amount,b.timeofbid,b.status,l.id,j.username,j.departuredate,j.arrivaldate,j.arrivalport from bids b, listeditems l, listjourney j WHERE l.id = b.item AND b.bidder = j.username AND j.id = b.journey AND b.item=$item";
+ 		$response ='<form action="process.php" METHOD="POST">';
+
  		$dbconnect = new DatabaseManager();
 		$db = $dbconnect->connectToDatabase();
 		$bids = $dbconnect->queryData($db,$sql);
 		if($bids->num_rows > 0){
-
+			while ( $row = $bids->fetch_assoc()) {
+			$response =$response.'<input type="radio" name="assignitem" value="'.$row['bidid'].'"/>'.'<a href="viewprofile.php?username='.$row['username'].'">'.$row['username'].'</a>('.$row['departuredate'].','.$row['arrivalport'].'), Amount:'.$row['amount'].'</br>';
+			}
 		}
 		else{
 			return "No bids found for this item/package";
 		}
+		$response =$response.'<button type="submit" name="submitAssignmentBtn"> Submit</button>';
+		$response =$response.'<button type="reset" > Cancel</button>';
+		return $response;
 		
  	}
 	 
