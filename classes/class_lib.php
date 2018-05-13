@@ -390,7 +390,28 @@
 	 //For listed DeliveryItems, a transporter CourierUser indicates interest on which DeliveryItem to send and at what cost
  	function registerBid($bidder,$item,$journey,$amount){
 
- 		$response = "Not recorded yet";
+ 		
+ 		$status = "notassigned";
+ 		$response="";
+ 		$sql = "INSERT INTO `bids`(bidder,item,journey,amount,status) VALUES ('". $bidder."','".$item."','".$journey."','".$amount."','".$status."')";
+ 		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		if($db->connect_error){ 
+			$response= $response. "Database Connection Failed</br>";
+			$response= $response. "Error: "  . $db->connect_error;
+			return $response;
+		}
+		else{
+			$isInserted=$dbconnect->insertData($db,$sql);//Register interest to send an item
+			if($isInserted){
+				$response= $response.'Dear '.$bidder.',<br>Your bid has been successfully recorded. <a href="homepage.php"> Home Page</a>';
+			} else{
+				$response= $response. "ERROR: Could not execute $sql. " . mysqli_error($db);
+			}
+			
+		}
+		$dbconnect->closeDatabase($db);
+		return $response;
 
  	}
 	 
