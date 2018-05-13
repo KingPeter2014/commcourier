@@ -517,3 +517,20 @@
 	  }
 	  
   }
+
+  class Utilities{
+  	function loadCountries(){
+  		$sql = "SELECT * FROM `apps_countries`";
+  		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$countries = $dbconnect->queryData($db,$sql);
+		if($countries->num_rows > 0){
+			while ( $row = $thisjourney->fetch_assoc()) {
+				
+				$response =$response. '<option value="'.$row['country_code'].'">'.$row['country_name'].'</option>';
+
+			}
+
+		}
+  	}
+  }
