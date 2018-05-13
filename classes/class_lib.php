@@ -436,14 +436,47 @@
 		return $response;
 		
  	}
+ 	function getBidByID($id){
+ 		$sql = "SELECT * FROM bids WHERE id=$id";
+ 		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$thisbid = $dbconnect->queryData($db,$sql);
+		return $thisbid;
+		$dbconnect->closeDatabase($db);
+ 	}
 	 
  }
  
  class SelectedTransporters{
 	 //the sender CourierUser who listed DeliveryItem then chooses the best InterestedTransporter that he wants
- 	function assignItemToBestBid($bidid){
+ 	function assignItemToBestBid($bidid,$sender){
  		// Record the bid that worn the bid to send an item
- 		$response = " Yet to record the winning bid:".$bidid;
+ 		//$sender is the current logged in user
+ 		$response='';
+ 		$bids = new InterestedTransporters();
+ 		$thisbid = $bids->getBidByID($bidid);
+ 		$item = 0;
+ 		if($thisbid->num_rows == 1){
+ 			$row = $thisbid->fetch_assoc();
+ 			$sql = "INSERT into assigneditems(sender,transporter,agreedprice,bidid) VALUES('$sender','".$row['bidder']."',".$row['amount'].",$bidid)";
+ 			$item = $row['item'];
+ 			$dbconnect = new DatabaseManager();
+			$db = $dbconnect->connectToDatabase();
+			$createAssignment = $dbconnect->insertData($db,$sql);
+ 			if($createAssignment){
+ 				//Send email or SMS to transporter and update the status in listeditems to 'assigned'
+ 				$response= $response."Your choice of traveler has been successfully recorded";
+ 			}
+ 			else{
+
+ 				$response= $response." Error Recording your choice of Traveler: ".mysqli_error($db);
+ 			}
+
+ 		}
+ 		else{
+ 			return "Could not retrieve the traveller details to update your choice";
+ 		}
+ 		
 
 
  		return $response;
@@ -524,6 +557,7 @@
   		$dbconnect = new DatabaseManager();
 		$db = $dbconnect->connectToDatabase();
 		$countries = $dbconnect->queryData($db,$sql);
+		$response='';
 		if($countries->num_rows > 0){
 			while ( $row = $thisjourney->fetch_assoc()) {
 				
@@ -532,5 +566,6 @@
 			}
 
 		}
+		return $response;
   	}
   }

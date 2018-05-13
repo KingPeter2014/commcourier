@@ -1,10 +1,13 @@
 <?php 
-
+if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    
 include("classes/class_lib.php"); 
 $securityguard = new SecurityManager();
 
 if(isset($_POST['signUpSubmitBtn'])){//Check if signUpSubmitBtn was clicked to register a new courier user
-	$postcode = 3065;
+	$postcode = $_POST['zip'];
 	if (empty($_POST['lname'])){
 	$lnameErr = "Last name is Required!";
 	echo $lnameErr;
@@ -243,7 +246,8 @@ if(isset($_POST['listitemSubmitBtn'])){
 		}
 
 		$assitem = new SelectedTransporters();
-		$response = $assitem->assignItemToBestBid($bestbid);
+		$username = $_SESSION['username'];
+		$response = $assitem->assignItemToBestBid($bestbid,$username);
 		echo $response;
 
 	}
