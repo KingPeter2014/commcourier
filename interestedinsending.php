@@ -12,7 +12,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <div class="card-body">
-    <?php require_once('config.php'); ?>
+    <?php //require_once('config.php'); ?>
     <h3 style="text-align: center;"><b>Bid to Send Item</b></h3><br>
 
     <form action="process.php" method = "POST" enctype = "multipart/form-data">

@@ -112,7 +112,7 @@
 		else{
 			$isInserted=$dbconnect->insertData($db,$sql);//Create new CommCourier user
 			if($isInserted){
-				$response= $response.'Dear '.$username.',<br>Your journey list has been successfully registered. <a href="homepage.php"> Home Page</a>';
+				$response= $response.'Dear '.$username.',<br>Your journey list has been successfully registered. <a href="Homepage.php"> Home Page</a>';
 			} else{
 				$response= $response. "ERROR: Could not execute $sql. " . mysqli_error($db);
 			}
@@ -406,7 +406,7 @@
 		else{
 			$isInserted=$dbconnect->insertData($db,$sql);//Register interest to send an item
 			if($isInserted){
-				$response= $response.'Dear '.$bidder.',<br>Your bid has been successfully recorded. <a href="homepage.php"> Home Page</a>';
+				$response= $response.'Dear '.$bidder.',<br>Your bid has been successfully recorded. <a href="Homepage.php"> Home Page</a>';
 			} else{
 				$response= $response. "ERROR: Could not execute $sql. " . mysqli_error($db);
 			}
