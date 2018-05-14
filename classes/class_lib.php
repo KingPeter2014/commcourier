@@ -268,7 +268,7 @@
 		else{
 			$isInserted=$dbconnect->insertData($db,$sql);//List a new item to be sent
 			if($isInserted){
-				$response= $response.'Dear '.$listedby.',<br>Your Item has been successfully listed for sending. <a href="homepage.php"> Home Page</a>';
+				$response= $response.'Dear '.$listedby.',<br>Your Item has been successfully listed for sending. <a href="Homepage.php"> Home Page</a>';
 			} else{
 				$response= $response. "ERROR: Could not execute $sql. " . mysqli_error($db);
 			}
@@ -407,6 +407,8 @@
 			$isInserted=$dbconnect->insertData($db,$sql);//Register interest to send an item
 			if($isInserted){
 				$response= $response.'Dear '.$bidder.',<br>Your bid has been successfully recorded. <a href="Homepage.php"> Home Page</a>';
+				
+
 			} else{
 				$response= $response. "ERROR: Could not execute $sql. " . mysqli_error($db);
 			}
@@ -467,6 +469,9 @@
 			$createAssignment = $dbconnect->insertData($db,$sql);
  			if($createAssignment){
  				//Send email or SMS to transporter and update the status in listeditems to 'assigned'
+ 				//Now update the status of the item to assigned
+ 				$sql="UPDATE listeditems SET status = 'assigned' WHERE id=$item";
+ 				$upd=$dbconnect->updateData($db,$sql);
  				$response= $response."Your choice of traveler has been successfully recorded";
  			}
  			else{
