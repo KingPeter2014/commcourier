@@ -11,7 +11,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
   <body>
+    <?php 
+    //Site visit counter
+    include("classes/class_lib.php");
+    $visitor = new Utilities();
+    $response = $visitor->updateSiteVisitCounter();
+    echo "You are visitor number:".$response;
 
+    ?>
   <header>
   <div class="imagelogo">
   <img src="images/picturelogo.png" alt="">

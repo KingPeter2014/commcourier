@@ -382,7 +382,9 @@
 
 	 }
 
-	
+	function getItemAssignment($item){
+		//Get the assigments and status and possibly link to payment page if transporter has accepted to transport
+	}
 	 
  }
  
@@ -535,7 +537,7 @@
 		  
 	  }
 	  function updateData($connection,$updateString){
-		  
+		  return mysqli_query($connection, $updateString);
 	  }
 	  function queryData($connection,$queryString){
 		  $result = $connection->query($queryString);
@@ -568,4 +570,18 @@
 		}
 		return $response;
   	}
+  	function updateSiteVisitCounter(){
+  		$sql="UPDATE counter SET counter = counter + 1";
+  		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$upd=$dbconnect->updateData($db,$sql);
+		//Retrieves the current count
+		$sql="SELECT counter FROM counter";
+		$count = $dbconnect->queryData($db,$sql);
+		if($count->num_rows > 0){
+			$row = $count->fetch_assoc();
+			return $row['counter'];
+		}
+  	}
+
   }
