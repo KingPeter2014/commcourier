@@ -561,7 +561,7 @@
 		$countries = $dbconnect->queryData($db,$sql);
 		$response='';
 		if($countries->num_rows > 0){
-			while ( $row = $thisjourney->fetch_assoc()) {
+			while ( $row = $countries->fetch_assoc()) {
 				
 				$response =$response. '<option value="'.$row['country_code'].'">'.$row['country_name'].'</option>';
 
