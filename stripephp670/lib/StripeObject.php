@@ -7,8 +7,7 @@ namespace Stripe;
  *
  * @package Stripe
  */
-class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
-{
+class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable{
     protected $_opts;
     protected $_originalValues;
     protected $_values;

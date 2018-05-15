@@ -1,10 +1,13 @@
 <?php 
-
+if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    
 include("classes/class_lib.php"); 
 $securityguard = new SecurityManager();
 
 if(isset($_POST['signUpSubmitBtn'])){//Check if signUpSubmitBtn was clicked to register a new courier user
-	$postcode = 3065;
+	$postcode = $_POST['zip'];
 	if (empty($_POST['lname'])){
 	$lnameErr = "Last name is Required!";
 	echo $lnameErr;
@@ -193,5 +196,61 @@ if(isset($_POST['listitemSubmitBtn'])){
 	}
 
 
+	if(isset($_POST['bidToSendItemBtn'])){
+		//Creating a bid to send an item by a traveller
+		if (empty($_POST['item'])){
+		echo $error = "Item to bid for is required!";
+		return;
+		}
+		else{
+		$item = $securityguard->removeHackCharacters($_POST['item']); 
+		}
+
+		if (empty($_POST['amount'])){
+		echo $error = "At what amount would you send the item?";
+		return;
+		}
+		else{
+		$amount = $securityguard->removeHackCharacters($_POST['amount']); 
+		}
+
+		if (empty($_POST['journey'])){
+			echo $error = "You need to select an active journey in order to bid for an item";
+			return;
+		}
+		else{
+			$journey = $securityguard->removeHackCharacters($_POST['journey']); 
+		}
+		if (empty($_POST['bidder'])){
+			echo $error = "You need to be logged in to bid for an item";
+			return;
+		}
+		else{
+			$bidder = $securityguard->removeHackCharacters($_POST['bidder']); 
+		}
+		
+		$bidding = new InterestedTransporters();
+		$response = $bidding->registerBid($bidder,$item,$journey,$amount);
+		echo $response;
+
+	}
+
+	if(isset($_POST['submitAssignmentBtn'])){
+		//To submit the assignment of an item to the best bid (bidder and journey)
+		if (empty($_POST['assignitem'])){
+			echo $error = "Please select the traveler that will send your item";
+			return;
+		}
+		else{
+			$bestbid = $securityguard->removeHackCharacters($_POST['assignitem']); 
+		}
+
+		$assitem = new SelectedTransporters();
+		$username = $_SESSION['username'];
+		$response = $assitem->assignItemToBestBid($bestbid,$username);
+		echo $response;
+
+	}
+	
 
 ?>

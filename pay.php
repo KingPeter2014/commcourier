@@ -32,7 +32,6 @@
       <option value="SI">Shaibu Ibrahim</option>
       <option value="CI">Chuks Ifeanyi</option>
       </select><br>
-      <br>
 
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<?php echo $stripe['publishable_key']; ?>"

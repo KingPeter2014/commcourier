@@ -11,7 +11,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
   <body>
-
+    
   <header>
   <div class="imagelogo">
   <img src="images/picturelogo.png" alt="">
@@ -33,7 +33,14 @@
   </ul>
   <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+<?php 
+    //Site visit counter
+    include("classes/class_lib.php");
+    $visitor = new Utilities();
+    $response = $visitor->updateSiteVisitCounter();
+    echo "You are visitor number:".$response;
 
+    ?>
     <div class="container"><br>
     <div class="card" style="width: 45rem; height: 55rem; ">
     <div class="card-body">
@@ -46,42 +53,42 @@
 
    <label for="fname" class="col-sm-4 col-form-label">First name</label>
    <div class="col-sm-8">
-   <input type="text" class="form-control" id="fname" placeholder="" name="fname">
+   <input type="text" class="form-control" id="fname" placeholder="" name="fname" required="true">
    </div>
    </div>
 
    <div class="form-group row">
    <label for="lname" class="col-sm-4 col-form-label">Last name</label>
    <div class="col-sm-8">
-   <input type="text" class="form-control" id="lname" placeholder="" name="lname">
+   <input type="text" class="form-control" id="lname" placeholder="" name="lname" required="true">
    </div>
    </div>
 
    <div class="form-group row">
    <label for="username" class="col-sm-4 col-form-label">Username</label>
    <div class="col-sm-8">
-   <input type="text" class="form-control" id="username" placeholder="" name="username">
+   <input type="text" class="form-control" id="username" placeholder="" name="username" required="true">
    </div>
    </div>
 
    <div class="form-group row">
    <label for="email" class="col-sm-4 col-form-label">Email address</label>
    <div class="col-sm-8">
-   <input type="email" class="form-control" id="email" placeholder="" name="email">
+   <input type="email" class="form-control" id="email" placeholder="" name="email" required="true">
    </div>
    </div>
 
  <div class="form-group row">
  <label for="password" class="col-sm-4 col-form-label">Password</label>
  <div class="col-sm-8">
- <input type="password" class="form-control" id="pword" placeholder="" name="pword">
+ <input type="password" class="form-control" id="pword" placeholder="" name="pword" required="true">
  </div>
  </div>
 
  <div class="form-group row">
  <label for="cpword" class="col-sm-4 col-form-label">Confirm password</label>
  <div class="col-sm-8">
- <input type="password" class="form-control" id="cpword" placeholder="" name="cpword">
+ <input type="password" class="form-control" id="cpword" placeholder="" name="cpword" required="true">
  </div>
  </div>
 
@@ -90,7 +97,7 @@
  <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
  <div class="col-sm-10">
  <div class="form-check">
- <input class="form-check-input" type="radio" name="gender" id="genderF" value="Female" checked>
+ <input class="form-check-input" type="radio" name="gender" id="genderF" value="Female">
  <label class="form-check-label" for="gridRadios1">
     Female
  </label>
@@ -114,28 +121,30 @@
  <div class="form-group row">
  <label for="inputAddress" class="col-sm-4 col-form-label">Home address</label>
  <div class="col-sm-8">
- <input type="text" class="form-control" id="inputAddress" placeholder="House 346 maxwell lugbe" name="address">
+ <input type="text" class="form-control" id="inputAddress" placeholder="House 346 maxwell lugbe" name="address" required="true">
  </div>
  </div>
 
   <div class="form-row">
-  <div class="form-group col-md-4">
-  <label for="inputstate">State</label>
-  <input type="text" class="form-control" id="inputstate" name="state">
-  </div>
+  
+
   <div class="form-group col-md-6">
   <label for="inputcountry">Country</label>
-  <select id="inputcountry" class="form-control" name="country">
+  <select id="inputcountry" class="form-control" name="country" required="true">
     <option selected>Choose</option>
-    <option>Nigeria</option>
-    <option>Australia</option>
-    <option>Canada</option>
-    <option>Ghana</option>
-    <option>United kingdom</option>
-    <option>United states</option>
-    <option>Italy</option>
-    <option>Germany</option>
+    <?php 
+    //Site visit counter
+    require_once("classes/class_lib.php");
+    $countries = new Utilities();
+    $response = $countries->loadCountries();
+    echo $response;
+
+    ?>
   </select>
+  </div>
+  <div class="form-group col-md-4">
+  <label for="inputstate">State</label>
+  <input type="text" class="form-control" id="inputstate" name="state" required="true">
   </div>
   <div class="form-group col-md-2">
   <label for="inputZip">Zip</label>

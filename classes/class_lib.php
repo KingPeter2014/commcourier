@@ -112,7 +112,7 @@
 		else{
 			$isInserted=$dbconnect->insertData($db,$sql);//Create new CommCourier user
 			if($isInserted){
-				$response= $response.'Dear '.$username.',<br>Your journey list has been successfully registered. <a href="homepage.php"> Home Page</a>';
+				$response= $response.'Dear '.$username.',<br>Your journey list has been successfully registered. <a href="Homepage.php"> Home Page</a>';
 			} else{
 				$response= $response. "ERROR: Could not execute $sql. " . mysqli_error($db);
 			}
@@ -204,6 +204,30 @@
 
 	 }
 
+	 function getActiveJourniesForCurrentUser($username){
+	 	//Bids for current users that are in the future
+	 	$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$sql = "SELECT * FROM `listjourney` WHERE username = '". $username."'";
+		$thisjourney = $dbconnect->queryData($db,$sql);
+		$response="";
+		if($thisjourney->num_rows > 0){
+			while ( $row = $thisjourney->fetch_assoc()) {
+				if (strtotime($row['departuredate']) > time())
+					$response =$response. '<option value="'.$row['id'].'">'.$row['departuredate'].'('.$row['arrivalport'].')</option>';
+
+			}
+
+		}
+		else{
+			$response = '<option value="">No active Journey</option>';
+
+		}
+		
+
+		return $response;
+	 }
+
 	 function getClassOfJourney($filter){
 
 	 }
@@ -244,7 +268,7 @@
 		else{
 			$isInserted=$dbconnect->insertData($db,$sql);//List a new item to be sent
 			if($isInserted){
-				$response= $response.'Dear '.$listedby.',<br>Your Item has been successfully listed for sending. <a href="homepage.php"> Home Page</a>';
+				$response= $response.'Dear '.$listedby.',<br>Your Item has been successfully listed for sending. <a href="Homepage.php"> Home Page</a>';
 			} else{
 				$response= $response. "ERROR: Could not execute $sql. " . mysqli_error($db);
 			}
@@ -358,17 +382,113 @@
 
 	 }
 
-	
+	function getItemAssignment($item){
+		//Get the assigments and status and possibly link to payment page if transporter has accepted to transport
+	}
 	 
  }
  
  class InterestedTransporters{
 	 //For listed DeliveryItems, a transporter CourierUser indicates interest on which DeliveryItem to send and at what cost
+ 	function registerBid($bidder,$item,$journey,$amount){
+
+ 		
+ 		$status = "notassigned";
+ 		$response="";
+ 		$sql = "INSERT INTO `bids`(bidder,item,journey,amount,status) VALUES ('". $bidder."','".$item."','".$journey."','".$amount."','".$status."')";
+ 		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		if($db->connect_error){ 
+			$response= $response. "Database Connection Failed</br>";
+			$response= $response. "Error: "  . $db->connect_error;
+			return $response;
+		}
+		else{
+			$isInserted=$dbconnect->insertData($db,$sql);//Register interest to send an item
+			if($isInserted){
+				$response= $response.'Dear '.$bidder.',<br>Your bid has been successfully recorded. <a href="Homepage.php"> Home Page</a>';
+				
+
+			} else{
+				$response= $response. "ERROR: Could not execute $sql. " . mysqli_error($db);
+			}
+			
+		}
+		$dbconnect->closeDatabase($db);
+		return $response;
+
+ 	}
+
+ 	function getBidsForItem($item){
+ 		//Return a list of the bids for a particular item.These are bids by travelers to send the particular listed item
+ 		$sql = "SELECT b.id AS bidid,b.bidder,b.item,b.journey,b.amount,b.timeofbid,b.status,l.id,j.username,j.departuredate,j.arrivaldate,j.arrivalport from bids b, listeditems l, listjourney j WHERE l.id = b.item AND b.bidder = j.username AND j.id = b.journey AND b.item=$item";
+ 		$response ='<form action="process.php" METHOD="POST">';
+
+ 		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$bids = $dbconnect->queryData($db,$sql);
+		if($bids->num_rows > 0){
+			while ( $row = $bids->fetch_assoc()) {
+			$response =$response.'<input type="radio" name="assignitem" value="'.$row['bidid'].'"/>'.'<a href="viewprofile.php?username='.$row['username'].'">'.$row['username'].'</a>('.$row['departuredate'].','.$row['arrivalport'].'), Amount:'.$row['amount'].'</br>';
+			}
+		}
+		else{
+			return "No bids found for this item/package";
+		}
+		$response =$response.'<button type="submit" name="submitAssignmentBtn"> Submit</button>';
+		$response =$response.'<button type="reset" > Cancel</button>';
+		return $response;
+		
+ 	}
+ 	function getBidByID($id){
+ 		$sql = "SELECT * FROM bids WHERE id=$id";
+ 		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$thisbid = $dbconnect->queryData($db,$sql);
+		return $thisbid;
+		$dbconnect->closeDatabase($db);
+ 	}
 	 
  }
  
  class SelectedTransporters{
 	 //the sender CourierUser who listed DeliveryItem then chooses the best InterestedTransporter that he wants
+ 	function assignItemToBestBid($bidid,$sender){
+ 		// Record the bid that worn the bid to send an item
+ 		//$sender is the current logged in user
+ 		$response='';
+ 		$bids = new InterestedTransporters();
+ 		$thisbid = $bids->getBidByID($bidid);
+ 		$item = 0;
+ 		if($thisbid->num_rows == 1){
+ 			$row = $thisbid->fetch_assoc();
+ 			$sql = "INSERT into assigneditems(sender,transporter,agreedprice,bidid) VALUES('$sender','".$row['bidder']."',".$row['amount'].",$bidid)";
+ 			$item = $row['item'];
+ 			$dbconnect = new DatabaseManager();
+			$db = $dbconnect->connectToDatabase();
+			$createAssignment = $dbconnect->insertData($db,$sql);
+ 			if($createAssignment){
+ 				//Send email or SMS to transporter and update the status in listeditems to 'assigned'
+ 				//Now update the status of the item to assigned
+ 				$sql="UPDATE listeditems SET status = 'assigned' WHERE id=$item";
+ 				$upd=$dbconnect->updateData($db,$sql);
+ 				$response= $response."Your choice of traveler has been successfully recorded";
+ 			}
+ 			else{
+
+ 				$response= $response." Error Recording your choice of Traveler: ".mysqli_error($db);
+ 			}
+
+ 		}
+ 		else{
+ 			return "Could not retrieve the traveller details to update your choice";
+ 		}
+ 		
+
+
+ 		return $response;
+
+ 	}
 	 
  }
  
@@ -422,7 +542,7 @@
 		  
 	  }
 	  function updateData($connection,$updateString){
-		  
+		  return mysqli_query($connection, $updateString);
 	  }
 	  function queryData($connection,$queryString){
 		  $result = $connection->query($queryString);
@@ -436,4 +556,37 @@
 		$connection->close();
 	  }
 	  
+  }
+
+  class Utilities{
+  	function loadCountries(){
+  		$sql = "SELECT * FROM `apps_countries`";
+  		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$countries = $dbconnect->queryData($db,$sql);
+		$response='';
+		if($countries->num_rows > 0){
+			while ( $row = $countries->fetch_assoc()) {
+				
+				$response =$response. '<option value="'.$row['country_code'].'">'.$row['country_name'].'</option>';
+
+			}
+
+		}
+		return $response;
+  	}
+  	function updateSiteVisitCounter(){
+  		$sql="UPDATE counter SET counter = counter + 1";
+  		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$upd=$dbconnect->updateData($db,$sql);
+		//Retrieves the current count
+		$sql="SELECT counter FROM counter";
+		$count = $dbconnect->queryData($db,$sql);
+		if($count->num_rows > 0){
+			$row = $count->fetch_assoc();
+			return $row['counter'];
+		}
+  	}
+
   }

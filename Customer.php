@@ -24,7 +24,7 @@ namespace Stripe;
  *
  * @package Stripe
  */
-class Customer extends ApiResource{
+class Customer extends \Stripe\ApiResource{
     use ApiOperations\All;
     use ApiOperations\Create;
     use ApiOperations\Delete;
