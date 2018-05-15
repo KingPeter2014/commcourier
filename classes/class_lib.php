@@ -355,9 +355,16 @@
 			while ( $row = $queryResult->fetch_assoc()) {
 				$response =$response.'<tr><th> Listed By</th><td>'. $row['listedby'].'</td></tr><tr><th>Description </th><td>'.$row['description'].'</td><tr><th>Receiver Address </th><td>'.$row['receiveraddress'].'</td></tr><tr><th>Time Listed </th><td>'.$row['timelisted'].'</td></tr><th>Status</th><td>'.$row['status'].'</td></tr><tr>'.'<th>Image</th><td><img  src="'.$row['itempixpath'].'" style="max-height: 200px; max-width: 200px;"></td></tr><tr><th>Actions</th><td>';
 				if (strcmp($cur_user, $row['listedby'])==0){
-					$response =$response.'<a href="assignitem.php?item='.$row['id'].'">Assign</a>';
-					$response =$response.'|<a href="edititem.php?item='.$row['id'].'">Edit</a>';
-					$response =$response.'|<a href="deleteitem.php?item='.$row['id'].'">Delete</a>';
+					if(strcmp("notassigned", $row['status'])==0){
+						//Only display assign link if not assigned
+						$response =$response.'<a href="assignitem.php?item='.$row['id'].'">Assign</a>';
+						$response =$response.'|<a href="edititem.php?item='.$row['id'].'">Edit</a>';
+						$response =$response.'|<a href="deleteitem.php?item='.$row['id'].'">Delete</a>';
+					}
+					else{
+						$response =$response.'Waiting for traveller\'s acceptance';
+					}
+					
 
 				}
 				else{
@@ -499,7 +506,7 @@
 		if($wonbids->num_rows > 0){
 			while ( $row = $wonbids->fetch_assoc()) {
 				$response =$response.'<form action="process.php" METHOD="POST"><table border="1"';
-				$response =$response.'<tr><th><input type="hidden" name="assignitem" value="'.$row['id'].'"/>'.'<a href="viewprofile.php?username='.$row['sender'].'">'.$row['sender'].'</a>(At the Cost of:'.$row['agreedprice'].')</th></br>';
+				$response =$response.'<tr><th><input type="hidden" name="assignitem" value="'.$row['id'].'"/>'.'<a href="viewprofile.php?username='.$row['sender'].'">'.$row['sender'].'</a>(You will receive:'.$row['agreedprice'].')</th></br>';
 				$response =$response.'<td><button type="submit" name="submitBidAcceptance"> Accept</button></td>';
 			$response =$response.'<td><button type="submit" name="submitBidRejection"> Reject</button></td></tr></table>';
 			}
@@ -514,7 +521,7 @@
  	}
  	function getConfirmedBidsAssignedByUser($username){
  		//Get the list of bids that this user has assigned to other travellers and of which those travelers have accepted to deliver. This will now enable this user to pay to the commcourier platform
- 		$response = " <h3>Bids Ready for Payment</h3>";
+ 		$response = " <h3>Items Waiting for Payment</h3>";
 
  		return $response;
  	}
