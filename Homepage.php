@@ -119,6 +119,13 @@
         $response = $listedItems->getOtherListedItems($username);
         echo $response."</br>";
 
+        //Get Bids won by user and the bids of this user won by others
+        $wonbids = new SelectedTransporters();
+        $response = $wonbids->getBidsAssignedToTraveler($username);
+        echo $response."</br>";
+        $response = $wonbids->getConfirmedBidsAssignedByUser($username);
+        echo $response."</br>";
+
         ?>
 
       </span> <!--style="width: 45rem; height: 40rem;" -->

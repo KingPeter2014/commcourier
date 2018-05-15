@@ -489,6 +489,35 @@
  		return $response;
 
  	}
+
+ 	function getBidsAssignedToTraveler($currentuser){
+ 		$sql="SELECT * FROM `assigneditems` WHERE transporter='$currentuser'";
+ 		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$wonbids = $dbconnect->queryData($db,$sql);
+		$response ='<h3>Bids You have won</h3><form action="process.php" METHOD="POST">';
+		if($wonbids->num_rows > 0){
+			while ( $row = $wonbids->fetch_assoc()) {
+				$response =$response.'<form action="process.php" METHOD="POST"><table border="1"';
+				$response =$response.'<tr><th><input type="hidden" name="assignitem" value="'.$row['id'].'"/>'.'<a href="viewprofile.php?username='.$row['sender'].'">'.$row['sender'].'</a>(At the Cost of:'.$row['agreedprice'].')</th></br>';
+				$response =$response.'<td><button type="submit" name="submitBidAcceptance"> Accept</button></td>';
+			$response =$response.'<td><button type="submit" name="submitBidRejection"> Reject</button></td></tr></table>';
+			}
+
+		}
+		else{
+			return "You have not won any bids";
+		}
+		
+		return $response;
+
+ 	}
+ 	function getConfirmedBidsAssignedByUser($username){
+ 		//Get the list of bids that this user has assigned to other travellers and of which those travelers have accepted to deliver. This will now enable this user to pay to the commcourier platform
+ 		$response = " <h3>Bids Ready for Payment</h3>";
+
+ 		return $response;
+ 	}
 	 
  }
  
