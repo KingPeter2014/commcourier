@@ -211,12 +211,13 @@
  </div>
 
 
- <div class="fixed-bottom">
- <footer>
- Copyright&copy;commcourier.com
- <p><a href="#">Privacy policy</a> -
+ <div class="fixed-bottom" id="foot">
+ <footer >
+ Copyright&copy;commcourier.com <br>
+ <a href="#">Privacy policy</a> -
  <a href="#">Terms and condition</a> -
- <a href="#">Contact Us</a></p>
+ <a href="#">Contact Us</a>
+
  </footer>
  </div>
 
@@ -224,3 +225,8 @@
 
  </body>
  </html>
+
+
+
+ <header>
+  <div class="container">
