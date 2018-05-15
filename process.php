@@ -251,6 +251,22 @@ if(isset($_POST['listitemSubmitBtn'])){
 		echo $response;
 
 	}
+	if(isset($_POST['submitBidAcceptance'])){
+		$response = "Yet to process offer acceptance";
+
+
+		echo $response;
+
+	}
+
+	if(isset($_POST['submitBidRejection'])){
+		$response = "Yet to process offer Rejection";
+
+
+		echo $response;
+
+	}
+	
 	
 
 ?>
