@@ -11,10 +11,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
   <body>
-    
+
   <header>
   <div class="imagelogo">
-  <img src="images/picturelogo.png" alt="">
+  <img src="images/picturelogo.PNG" alt="">
   <h6><i>Making money while journeying!!!</i></h6>
   </div>
   </header>
@@ -33,7 +33,7 @@
   </ul>
   <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-<?php 
+<?php
     //Site visit counter
     include("classes/class_lib.php");
     $visitor = new Utilities();
@@ -126,13 +126,13 @@
  </div>
 
   <div class="form-row">
-  
+
 
   <div class="form-group col-md-6">
   <label for="inputcountry">Country</label>
   <select id="inputcountry" class="form-control" name="country" required="true">
     <option selected>Choose</option>
-    <?php 
+    <?php
     //Site visit counter
     require_once("classes/class_lib.php");
     $countries = new Utilities();
@@ -171,7 +171,7 @@
  <div class="container-fluid">
  <div class="jumbotron jumbotron-fluid">
  <h2 id="aboutus" >What we do </h2><br>
- <p id="aboutcontent">Commcourier is a platform that connects verified travellers with verified senders wishing to send packages through the travellers.
+ <p id="aboutcontent">Commcourier is a platform that connects verified travelers with verified senders wishing to send packages through the travelers.
   There are situations in life where an item or package needs to be sent in the next minute without waiting for scheduled parcel or cargo companies to
   take and transport the package. Our platform connects people in this situation with potential travelers who are going to such
   destination in real time. People with such intent list their intention and connect with verified travelers who can deliver
@@ -220,12 +220,11 @@
  </div>
 
 
- <div class="fixed-bottom">
- <footer>
- Copyright&copy;commcourier.com
- <p><a href="#">Privacy policy</a> -
- <a href="#">Terms and condition</a> -
- <a href="#">Contact Us</a></p>
+ <div class="fixed-bottom" id="foot">
+ <footer >
+ Copyright&copy;commcourier.com <br>
+ <a href="#">Privacy policy</a> -
+ <a href="#">Terms and condition</a>
  </footer>
  </div>
 
@@ -233,3 +232,8 @@
 
  </body>
  </html>
+
+
+
+ <header>
+  <div class="container">
