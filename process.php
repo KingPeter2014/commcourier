@@ -128,7 +128,13 @@ if(isset($_POST['listjourneySubmitBtn'])){//List Journey
 		$arrivalport = $securityguard->removeHackCharacters($_POST['arrivalport']);
 	}
 	
-	$travellernote = $securityguard->removeHackCharacters($_POST['travellernote']);
+	if (empty($_POST['travellernote'])){
+		echo $error = "Traveller Note is Required!";
+		return;
+	}
+	else{
+		$travellernote = $securityguard->removeHackCharacters($_POST['travellernote']);
+	}
 	
 	if (empty($_POST['uname'])){
 		echo $error = "Username is Required!";
@@ -193,7 +199,7 @@ if(isset($_POST['listitemSubmitBtn'])){
 	$response = $list_item->listItem($uname,$itemname,$recievername,$telephone,$address,$notes,$docpath);
 	echo $response;
 
-	}
+}
 
 
 	if(isset($_POST['bidToSendItemBtn'])){
