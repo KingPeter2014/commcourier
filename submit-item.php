@@ -14,20 +14,12 @@
   </head>
   <body>
 
-  <header>
 
-
-
-  <div class="imagelogo">
-  <img src="images/picturelogo.png" alt="">
-  <h6><i>Making money while journeying!!!</i></h6>
-  </div>
-  </header>
--->
   <?php if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
      // echo "<br/>Welcome:".$_SESSION['username'];?>
+     
 <div class="container">
   <div class="card" style="width: 45rem; height: 40rem; ">
   <div class="card-body">
@@ -86,9 +78,8 @@
   <div class="fixed-bottom">
   <footer>
   Copyright&copy;commcourier.com
-  <p><a href="#">Privacy policy</a> -
-  <a href="#">Terms and condition</a> -
-  <a href="#">Contact Us</a></p>
+  <a href="#">Privacy policy</a> -
+  <a href="#">Terms and condition</a>
   </footer>
   </div>
 

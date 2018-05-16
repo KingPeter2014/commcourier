@@ -13,7 +13,7 @@
 
     <header>
     <div class="imagelogo">
-    <img src="images/picturelogo.png" alt="">
+    <img src="images/picturelogo.PNG" alt="">
     <h6><i>Making money while journeying!!!</i></h6>
     </div>
     </header>
@@ -46,14 +46,13 @@
     </div>
     </div>
 
-    
+
 
     <div class="fixed-bottom">
     <footer>
     Copyright&copy;commcourier.com
     <p><a href="#">Privacy policy</a> -
-    <a href="#">Terms and condition</a> -
-    <a href="#">Contact Us</a></p>
+    <a href="#">Terms and condition</a>
     </footer>
     </div>
 

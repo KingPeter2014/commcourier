@@ -67,6 +67,12 @@
   <option value="Nigeria">Nigeria</option>
   <option value="United States">United States</option>
   <option value="United Kingdom">United Kingdom</option>
+  <option value="Algeria">Algeria</option>
+  <option value="Cameroon">Cameroon</option>
+  <option value="Malawi"> Malawi</option>
+  <option value="Egypt">Egypt</option>
+  <option value="Kenya">Kenya</option>
+  <option value="Ghana">Ghana</option>
   </select><br>
   <br>
 
@@ -75,6 +81,12 @@
   <option value="Nigeria">Nigeria</option>
   <option value="United States">United States</option>
   <option value="United Kingdom">United Kingdom</option>
+  <option value="Algeria">Algeria</option>
+  <option value="Cameroon">Cameroon</option>
+  <option value="Malawi"> Malawi</option>
+  <option value="Egypt">Egypt</option>
+  <option value="Kenya">Kenya</option>
+  <option value="Ghana">Ghana</option>
   </select><br>
   <br>
 
@@ -100,7 +112,7 @@
   </div>
 
   <div class="form-group row">
-  <label for="travellernote" class="col-sm-4 col-form-label">Traveller Note</label>
+  <label for="travellernote" class="col-sm-4 col-form-label">Traveler Note</label>
   <div class="col-sm-8">
   <textarea class="form-control" id="travellernote" name = "travellernote" placeholder="Leave detailed note here for Item senders" name="Traveller Note"></textarea>
   </div>
@@ -114,7 +126,7 @@
   <button type="submit" class="btn btn-primary col-md-2" id="Submit" name = "listjourneySubmitBtn" onclick = "ProcessJourney(); return false">Submit</button>
   <button type="reset" class="btn btn-secondary col-md-2" id="Reset">Cancel</button>
   </form>
-  
+
   <br><div align = "center"><div id = "result-show"></div></div>
 
   </div>
@@ -123,10 +135,9 @@
 
   <div class="fixed-bottom">
   <footer>
-  Copyright&copy;commcourier.com
-  <p><a href="#">Privacy policy</a> -
-  <a href="#">Terms and condition</a> -
-  <a href="#">Contact Us</a></p>
+  Copyright&copy;commcourier.com <br>
+  <a href="#">Privacy policy</a> -
+  <a href="#">Terms and condition</a>
   </footer>
   </div>
 
