@@ -355,13 +355,26 @@
 			while ( $row = $queryResult->fetch_assoc()) {
 				$response =$response.'<tr><th> Listed By</th><td>'. $row['listedby'].'</td></tr><tr><th>Description </th><td>'.$row['description'].'</td><tr><th>Receiver Address </th><td>'.$row['receiveraddress'].'</td></tr><tr><th>Time Listed </th><td>'.$row['timelisted'].'</td></tr><th>Status</th><td>'.$row['status'].'</td></tr><tr>'.'<th>Image</th><td><img  src="'.$row['itempixpath'].'" style="max-height: 200px; max-width: 200px;"></td></tr><tr><th>Actions</th><td>';
 				if (strcmp($cur_user, $row['listedby'])==0){
-					$response =$response.'<a href="assignitem.php?item='.$row['id'].'">Assign</a>';
-					$response =$response.'|<a href="edititem.php?item='.$row['id'].'">Edit</a>';
-					$response =$response.'|<a href="deleteitem.php?item='.$row['id'].'">Delete</a>';
+					if(strcmp("notassigned", $row['status'])==0){
+						//Only display assign link if not assigned
+						$response =$response.'<a href="assignitem.php?item='.$row['id'].'">Assign</a>';
+						$response =$response.'|<a href="edititem.php?item='.$row['id'].'">Edit</a>';
+						$response =$response.'|<a href="deleteitem.php?item='.$row['id'].'">Delete</a>';
+					}
+					else{
+						$response =$response.'Waiting for traveller\'s acceptance';
+					}
+					
 
 				}
-				else{
-					$response =$response.'<a href="interestedinsending.php?item='.$row['id'].'">Indicate interest to Send this Item</a>';
+				else{//Handle listed items not belonging to current loggen User
+					if(strcmp("notassigned", $row['status'])==0 ||strcmp("rejected", $row['status'])==0){
+						$response =$response.'<a href="interestedinsending.php?item='.$row['id'].'">Indicate interest to Send this Item</a>';
+					}
+					else{
+						$response =$response.'Bidding to send this Item has closed';
+
+					}
 				}
 				$response =$response.'</td></tr>';
 			}
@@ -374,13 +387,7 @@
 
 	 }
 
-	 function includeItemAssignment($item){
-
-	 }
-
-	 function includeInterestedInSendingItem($item){
-
-	 }
+	 
 
 	function getItemAssignment($item){
 		//Get the assigments and status and possibly link to payment page if transporter has accepted to transport
@@ -489,6 +496,80 @@
  		return $response;
 
  	}
+
+ 	function getBidsAssignedToTraveler($currentuser){
+ 		$sql="SELECT * FROM `assigneditems` WHERE transporter='$currentuser'";
+ 		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$wonbids = $dbconnect->queryData($db,$sql);
+		$response ='<h3>Bids You have won</h3><form action="process.php" METHOD="POST">';
+		if($wonbids->num_rows > 0){
+			while ( $row = $wonbids->fetch_assoc()) {
+				$response =$response.'<form action="process.php" METHOD="POST"><table border="1"';
+				$response =$response.'<tr><th><input type="hidden" name="assignitem" value="'.$row['id'].'"/>'.'<a href="viewprofile.php?username='.$row['sender'].'">'.$row['sender'].'</a>(You will receive:'.$row['agreedprice'].')</th></br>';
+				$response =$response.'<td><button type="submit" name="submitBidAcceptance"> Accept</button></td>';
+			$response =$response.'<td><button type="submit" name="submitBidRejection"> Reject</button></td></tr></table>';
+			}
+
+		}
+		else{
+			return "You have not won any bids";
+		}
+		
+		return $response;
+
+ 	}
+ 	function recordBidAcceptanceOrRejection($assignmentid,$action){
+ 		$sql="UPDATE assigneditems SET accepted = '$action' WHERE id = $assignmentid";
+ 		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$upd=$dbconnect->updateData($db,$sql);
+		$response="";
+		if($upd){
+			$response = $response."Item assignment status successgfully updated to :".$action;
+			//if(strcmp($action, "accepted")==0){
+				//Get item that got assigned and update its status to "accepted"
+				$sql="SELECT b.id AS bidid, a.id, b.item from bids b, assigneditems a WHERE a.bidid = b.id and a.id=$assignmentid";
+				$iteminAssignment = $dbconnect->queryData($db,$sql);
+				$row = $iteminAssignment->fetch_assoc();
+				$itemid = $row['item'];
+				$sql="UPDATE listeditems SET status = '$action' WHERE id = $itemid";
+				$upd=$dbconnect->updateData($db,$sql);
+				if($upd){
+					$response = $response."</br>Item status successgfully updated to:".$action;
+				}
+				
+			
+
+		}
+		else{
+			$response = $response."Unable to record your response for this offer".mysqli_error($db);
+
+		}
+ 		return $response;
+ 	}
+ 	function getConfirmedBidsAssignedByUser($username){
+ 		//Get the list of bids that this user has assigned to other travellers and of which those travelers have accepted to deliver. This will now enable this user to pay to the commcourier platform
+ 		$response = " <h3>Items Waiting for Payment</h3>";
+
+ 		$sql = "SELECT i.*,a.transporter,a.sender, a.id FROM listedItems i,assigneditems a WHERE status='accepted' AND a.sender = '$username'";
+ 		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$myacceptedoffers = $dbconnect->queryData($db,$sql);
+		if($myacceptedoffers->num_rows > 0){
+			while ( $row = $myacceptedoffers->fetch_assoc()) {
+				$response = $response.'My accepted offers will appear here';
+
+			}
+		}
+		else{
+			$response = $response.'You do not have accepted offers due for payment';
+		}
+
+
+
+ 		return $response;
+ 	}
 	 
  }
  
@@ -533,10 +614,10 @@
 		$server1 = "localhost";$username = "root";$password="";
 		$connection = new mysqli($server1, $username, $password, "commcourier");// A more secure method required for production database
 		//$this->$connection = $connection;
-		
-		
 		return $connection;
 	  }
+
+
 	  function insertData($connection,$insertString){
 		  return mysqli_query($connection, $insertString);
 		  
@@ -588,5 +669,23 @@
 			return $row['counter'];
 		}
   	}
+  	function currencyConverter($from_currency, $to_currency, $amount) {
+		$amount    = urlencode($amount);
+		$from    = urlencode($from_currency);
+		$to        = urlencode($to_currency);
+		$url    = "http://www.google.com/ig/calculator?hl=en&q=$amount$from=?$to";
+		$ch     = @curl_init();
+		$timeout= 0;
+		curl_setopt ($ch, CURLOPT_URL, $url);
+		curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt ($ch,  CURLOPT_USERAGENT , "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)");
+		curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+		$rawdata = curl_exec($ch);
+		curl_close($ch);
+		$data = explode('"', $rawdata);
+		$data = explode(' ', $data['3']);
+		$var = $data['0'];
+		return round($var,3);
+	}
 
   }
