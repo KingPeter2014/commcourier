@@ -252,16 +252,32 @@ if(isset($_POST['listitemSubmitBtn'])){
 
 	}
 	if(isset($_POST['submitBidAcceptance'])){
-		$response = "Yet to process offer acceptance";
-
+		
+		if (empty($_POST['assignitem'])){
+			echo $error = "Reference to item being accepted not found";
+			return;
+		}
+		else{
+			$assignmentid = $securityguard->removeHackCharacters($_POST['assignitem']); 
+		}
+		
+		$assitem = new SelectedTransporters();
+		$response = $assitem->recordBidAcceptanceOrRejection($assignmentid,'accepted');
 
 		echo $response;
-
 	}
 
 	if(isset($_POST['submitBidRejection'])){
 		$response = "Yet to process offer Rejection";
-
+		if (empty($_POST['assignitem'])){
+			echo $error = "Reference to item bid being rejected not found";
+			return;
+		}
+		else{
+			$assignmentid = $securityguard->removeHackCharacters($_POST['assignitem']); 
+		}
+		$assitem = new SelectedTransporters();
+		$response = $assitem->recordBidAcceptanceOrRejection($assignmentid,'rejected');
 
 		echo $response;
 

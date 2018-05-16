@@ -381,13 +381,7 @@
 
 	 }
 
-	 function includeItemAssignment($item){
-
-	 }
-
-	 function includeInterestedInSendingItem($item){
-
-	 }
+	 
 
 	function getItemAssignment($item){
 		//Get the assigments and status and possibly link to payment page if transporter has accepted to transport
@@ -518,6 +512,10 @@
 		
 		return $response;
 
+ 	}
+ 	function recordBidAcceptanceOrRejection($assignmentid,$action){
+ 		$sql="UPDATE assigneditems SET accepted = '$action' WHERE id = $assignmentid";
+ 		return $sql;
  	}
  	function getConfirmedBidsAssignedByUser($username){
  		//Get the list of bids that this user has assigned to other travellers and of which those travelers have accepted to deliver. This will now enable this user to pay to the commcourier platform
