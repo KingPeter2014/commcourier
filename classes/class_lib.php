@@ -552,7 +552,20 @@
  		//Get the list of bids that this user has assigned to other travellers and of which those travelers have accepted to deliver. This will now enable this user to pay to the commcourier platform
  		$response = " <h3>Items Waiting for Payment</h3>";
 
- 		$sql = "SELECT * FROM listItems WHERE status='accepted'";
+ 		$sql = "SELECT i.*,a.transporter,a.sender, a.id FROM listedItems i,assigneditems a WHERE status='accepted' AND a.sender = '$username'";
+ 		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$myacceptedoffers = $dbconnect->queryData($db,$sql);
+		if($myacceptedoffers->num_rows > 0){
+			while ( $row = $myacceptedoffers->fetch_assoc()) {
+				$response = $response.'My accepted offers will appear here';
+
+			}
+		}
+		else{
+			$response = $response.'You do not have accepted offers due for payment';
+		}
+
 
 
  		return $response;
