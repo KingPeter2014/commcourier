@@ -367,8 +367,14 @@
 					
 
 				}
-				else{
-					$response =$response.'<a href="interestedinsending.php?item='.$row['id'].'">Indicate interest to Send this Item</a>';
+				else{//Handle listed items not belonging to current loggen User
+					if(strcmp("notassigned", $row['status'])==0 ||strcmp("rejected", $row['status'])==0){
+						$response =$response.'<a href="interestedinsending.php?item='.$row['id'].'">Indicate interest to Send this Item</a>';
+					}
+					else{
+						$response =$response.'Bidding to send this Item has closed';
+
+					}
 				}
 				$response =$response.'</td></tr>';
 			}
@@ -515,11 +521,39 @@
  	}
  	function recordBidAcceptanceOrRejection($assignmentid,$action){
  		$sql="UPDATE assigneditems SET accepted = '$action' WHERE id = $assignmentid";
- 		return $sql;
+ 		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$upd=$dbconnect->updateData($db,$sql);
+		$response="";
+		if($upd){
+			$response = $response."Item assignment status successgfully updated to :".$action;
+			//if(strcmp($action, "accepted")==0){
+				//Get item that got assigned and update its status to "accepted"
+				$sql="SELECT b.id AS bidid, a.id, b.item from bids b, assigneditems a WHERE a.bidid = b.id and a.id=$assignmentid";
+				$iteminAssignment = $dbconnect->queryData($db,$sql);
+				$row = $iteminAssignment->fetch_assoc();
+				$itemid = $row['item'];
+				$sql="UPDATE listeditems SET status = '$action' WHERE id = $itemid";
+				$upd=$dbconnect->updateData($db,$sql);
+				if($upd){
+					$response = $response."</br>Item status successgfully updated to:".$action;
+				}
+				
+			
+
+		}
+		else{
+			$response = $response."Unable to record your response for this offer".mysqli_error($db);
+
+		}
+ 		return $response;
  	}
  	function getConfirmedBidsAssignedByUser($username){
  		//Get the list of bids that this user has assigned to other travellers and of which those travelers have accepted to deliver. This will now enable this user to pay to the commcourier platform
  		$response = " <h3>Items Waiting for Payment</h3>";
+
+ 		$sql = "SELECT * FROM listItems WHERE status='accepted'";
+
 
  		return $response;
  	}
@@ -567,10 +601,10 @@
 		$server1 = "localhost";$username = "root";$password="";
 		$connection = new mysqli($server1, $username, $password, "commcourier");// A more secure method required for production database
 		//$this->$connection = $connection;
-		
-		
 		return $connection;
 	  }
+
+
 	  function insertData($connection,$insertString){
 		  return mysqli_query($connection, $insertString);
 		  
