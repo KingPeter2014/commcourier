@@ -79,6 +79,7 @@ if(isset($_POST['loginSubmitBtn'])){//Login a  courier user
 	echo $response;
 }	
 if(isset($_POST['listjourneySubmitBtn'])){//List Journey
+//if(!empty($_POST['listjourneySubmitBtn'])){//List Journey
 	ini_set('upload_max_filesize', '10M');
 	ini_set('post_max_size', '10M');
 	ini_set('max_input_time', 600);

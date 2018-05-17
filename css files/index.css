@@ -49,3 +49,16 @@ text-decoration: underline;
   padding: 30px;
   font-weight: bold
 }
+.error{
+  font-weight: bold;
+  color: red;
+
+}
+.success{
+  font-weight: bold;
+  color: green;
+}
+#result-show{
+  color: red;
+  font-weight: bold
+}

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Start Journey</title>
     <link rel="stylesheet" href="css files/header.css">
+    <link rel="stylesheet" href="css files/index.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -18,6 +19,8 @@
 		var uname = document.getElementById("uname").value;
 		var depcountry = document.getElementById("dep-country").value;
 		var descountry = document.getElementById("des-country").value;
+    //var listjourneySubmitBtn = document.getElementById("listjourneySubmitBtn").value;
+
 		var data = new FormData();
 		data.append('fileToUpload', document.querySelector('#traveldocument').files[0]);
 		data.append('des-country', descountry);
@@ -27,6 +30,7 @@
 		data.append('arrivalport', arrivalport);
 		data.append('arrivaldate', arrivaldate);
 		data.append('departuredate', departuredate);
+    //data.append('listjourneySubmitBtn',listjourneySubmitBtn);
 		if (window.XMLHttpRequest){
 			xmlhttp = new XMLHttpRequest();
 		}
@@ -41,6 +45,7 @@
 			}
 		};
 		xmlhttp.open("POST", "process_list_journey.php", true);
+    //xmlhttp.open("POST", "process.php", true);
 		xmlhttp.send(data);
 	}
   </script>
@@ -59,7 +64,9 @@
   <div class="container"><br>
   <div class="card" style="width: 45rem; height: 45rem; ">
   <div class="card-body">
-  <h3 style="text-align: center;"><b>New Travel Details</b></h3><br>
+  <h3 style="text-align: center;"><b>New Travel Details</b></h3>
+  <br><div align = "center"><div id = "result-show"></div></div>
+  
   <form id = "data" method = "POST" enctype = "multipart/form-data">
   <input type = "hidden" id = "uname" name = "uname" value = "<?php echo($_SESSION['username']); ?>"/>
   <select class="custom-select" id = "dep-country" name = "dep-country" required="true">
@@ -127,7 +134,7 @@
   <button type="reset" class="btn btn-secondary col-md-2" id="Reset">Cancel</button>
   </form>
 
-  <br><div align = "center"><div id = "result-show"></div></div>
+  
 
   </div>
   </div>

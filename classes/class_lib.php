@@ -361,6 +361,9 @@
 						$response =$response.'|<a href="edititem.php?item='.$row['id'].'">Edit</a>';
 						$response =$response.'|<a href="deleteitem.php?item='.$row['id'].'">Delete</a>';
 					}
+					elseif (strcmp("accepted", $row['status'])==0) {
+						$response =$response.'Waiting for your Payment';
+					}
 					else{
 						$response =$response.'Waiting for traveller\'s acceptance';
 					}
