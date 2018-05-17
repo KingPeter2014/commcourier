@@ -3,7 +3,7 @@
         session_start();
     }
 	
-	include("classes/class_lib.php"); 
+	include("../classes/class_lib.php"); 
 	$securityguard = new SecurityManager();
 
 	ini_set('upload_max_filesize', '10M');
@@ -71,10 +71,10 @@
 		$uname = $securityguard->removeHackCharacters($_POST['uname']);
 	}
 	if (!(empty($_FILES["fileToUpload"]["name"]))){
-		$target_dir = "Travel Documents/";
+		$target_dir = "../Travel Documents/";
 		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 		$fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-		$docName = "Travel Documents/".$uname."_travel_doc_".time()."";
+		$docName = "../Travel Documents/".$uname."_travel_doc_".time()."";
 		$docpath = "".$docName.".".$fileType."";
 		move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $docpath);
 	}

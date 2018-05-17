@@ -40,7 +40,7 @@
 				}
 			}
 		};
-		xmlhttp.open("POST", "process_list_journey.php", true);
+		xmlhttp.open("POST", "serverscripts/process_list_journey.php", true);
 		xmlhttp.send(data);
 	}
   </script>
