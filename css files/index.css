@@ -1,0 +1,51 @@
+#myTab{
+  color: black;
+  font-weight: bold;
+
+  /* padding-top: -15px; */
+}
+
+/* #Tochi{
+ background-color: white ;
+} */
+
+
+#aboutus{
+text-align: center;
+text-indent: inherit;
+color: brown;
+font-size: 28px;
+font-style: serif;
+font-weight:800;
+text-decoration: underline;
+}
+
+#aboutcontent{
+  padding: 0px  130px 0px 130px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#maincontact{
+  margin: auto;
+  height: 21rem;
+}
+
+#contact{
+  border-left: solid 2px black;
+}
+
+.card-title{
+  text-indent: inherit;
+  color: brown;
+  font-size: 20px;
+  font-style: serif;
+  font-weight:800;
+  text-decoration: underline;
+
+}
+
+#list{
+  padding: 30px;
+  font-weight: bold
+}

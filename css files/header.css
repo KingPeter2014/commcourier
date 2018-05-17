@@ -1,0 +1,33 @@
+
+body{
+  background-image:url("https://www.schornsteinmarkt.de/images/product_options/2255_0.jpg");
+
+}
+
+header{
+  background-color: black;
+  color:orange;
+  text-align: center;
+
+}
+
+footer{
+  background-color: black;
+  text-align:center;
+  color: orange;
+
+}
+
+.card{
+  width: 990px;
+  margin: 40px auto;
+}
+
+.card-body{
+  background-color: #eaeff7;
+}
+
+#Submit{
+  text-align: center;
+  margin-left: 220px
+}
