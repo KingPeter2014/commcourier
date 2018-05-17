@@ -505,7 +505,7 @@
 		$response ='<h3>Bids You have won</h3><form action="process.php" METHOD="POST">';
 		if($wonbids->num_rows > 0){
 			while ( $row = $wonbids->fetch_assoc()) {
-				$response =$response.'<form action="process.php" METHOD="POST"><table border="1"';
+				$response =$response.'<form action="process.php" METHOD="POST"><table border="1">';
 				$response =$response.'<tr><th><input type="hidden" name="assignitem" value="'.$row['id'].'"/>'.'<a href="viewprofile.php?username='.$row['sender'].'">'.$row['sender'].'</a>(You will receive:'.$row['agreedprice'].')</th></br>';
 				$response =$response.'<td><button type="submit" name="submitBidAcceptance"> Accept</button></td>';
 			$response =$response.'<td><button type="submit" name="submitBidRejection"> Reject</button></td></tr></table>';
@@ -552,13 +552,17 @@
  		//Get the list of bids that this user has assigned to other travellers and of which those travelers have accepted to deliver. This will now enable this user to pay to the commcourier platform
  		$response = " <h3>Items Waiting for Payment</h3>";
 
- 		$sql = "SELECT i.*,a.transporter,a.sender, a.id FROM listedItems i,assigneditems a WHERE status='accepted' AND a.sender = '$username'";
+ 		$sql = "SELECT i.id as itemid,i.description, a.transporter,a.sender,a.agreedprice, a.id FROM listedItems i,assigneditems a WHERE status='accepted' AND a.sender = '$username'";
  		$dbconnect = new DatabaseManager();
 		$db = $dbconnect->connectToDatabase();
 		$myacceptedoffers = $dbconnect->queryData($db,$sql);
 		if($myacceptedoffers->num_rows > 0){
 			while ( $row = $myacceptedoffers->fetch_assoc()) {
-				$response = $response.'My accepted offers will appear here';
+				$response =$response.'<table border="1">';
+				$response =$response.'<tr><th><input type="hidden" name="assignitem" value="'.$row['itemid'].'"/>'.'<a href="pay.php?item='.$row['itemid'].'&amount='.$row['agreedprice'].'">'.'Pay for:'.$row['description'].'</a>(You will pay:'.$row['agreedprice'].')</th>';
+				
+			$response =$response.'</table>';
+				
 
 			}
 		}
