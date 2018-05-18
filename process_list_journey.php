@@ -1,16 +1,18 @@
 <?php
+include("header.php");
+
 	if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
-	
-	include("classes/class_lib.php"); 
+
+	include("classes/class_lib.php");
 	$securityguard = new SecurityManager();
 
 	ini_set('upload_max_filesize', '10M');
 	ini_set('post_max_size', '10M');
 	ini_set('max_input_time', 600);
 	ini_set('max_execution_time', 600);
-	
+
 	if (empty($_POST['dep-country'])){
 		echo $depcountryErr = "Departure Country is Required!";
 		return;
@@ -54,7 +56,7 @@
 	else{
 		$arrivalport = $securityguard->removeHackCharacters($_POST['arrivalport']);
 	}
-	
+
 	if (empty($_POST['travellernote'])){
 		echo $error = "Traveller Note is Required!";
 		return;
@@ -62,7 +64,7 @@
 	else{
 		$travellernote = $securityguard->removeHackCharacters($_POST['travellernote']);
 	}
-	
+
 	if (empty($_POST['uname'])){
 		echo $error = "Username is Required!";
 		return;
@@ -82,8 +84,20 @@
 		echo $error = "Document File is Required!";
 		return;
 	}
-	
+
 	$register_journey = new Journeys();
 	$response = $register_journey->listJourney($uname,$depcountry,$descountry,$departuredate,$arrivaldate,$arrivalport,$travellernote,$docpath);
 	echo $response;
 ?>
+
+<div class="fixed-bottom">
+		<footer>
+		Copyright&copy;commcourier.com
+		<br>
+		<a href="#">Privacy policy</a> -
+		<a href="#">Terms and condition</a>
+		</footer>
+		</div>
+
+	</body>
+</html>

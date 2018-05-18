@@ -26,7 +26,7 @@ function finished(s){
   }else {
     s1=s.split(":");
   if(s1[0]=="error"){$('span#output').html('<div class="warning-bar">'+s1[1]+'</div>');}
-  } 
+  }
 }
 </script>
 
@@ -207,7 +207,24 @@ function finished(s){
  <h2 id="aboutus" >Our goal </h2><br>
  <p id="aboutcontent">Our goal is to enable real-time courier services through the community as well as provide extra income for participants. </p>
  </div>
- </div>
+</div>
+
+<div class="container-fluid">
+<div class="jumbotron jumbotron-fluid">
+<h2 id="aboutus" >How to Navigate the Site</h2><br>
+<ul id="aboutcontent">
+  <li>On the index page, sign up</li>
+  <li>Log in using your email and password. This action leads you to the homepage</li>
+  <li>On the homepage, to opt as a traveler, click on the menu tab "New Journey"</li>
+  <li>On the  homepage, to opt as a sender, click on the menu tab "New Item"</li>
+  <li>To bid for an item as a traveler, click on "see details" under the other listed items located below the homepage menu bar</li>
+  <li>If the sender accepts your bid, that sender will be assigned to you. The sender go ahead to make payment</li>
+
+</ul>
+  <p id="aboutcontent">NOTE: Please you might encounter slight technical challenges while navigating through
+  the site as the site is still under design,development and testing!</p>
+</div>
+</div>
 </div>
 
  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">

@@ -1,4 +1,4 @@
-<?php 
+<?php
 include("header.php");
 
 if (session_status() == PHP_SESSION_NONE) {
@@ -7,10 +7,10 @@ if (session_status() == PHP_SESSION_NONE) {
 
     $item = $_GET['item'];
     include("classes/class_lib.php");
-    $listedItems = new DeliveryItems();  
+    $listedItems = new DeliveryItems();
     $response = $listedItems->getListedItemById($item);
     echo $response."</br>";
+
    
 include("footer.php");
 ?>
-

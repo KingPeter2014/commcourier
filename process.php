@@ -1,9 +1,12 @@
-<?php 
+<?php
+
+include("header.php");
+
 if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
-    
-include("classes/class_lib.php"); 
+
+include("classes/class_lib.php");
 $securityguard = new SecurityManager();
 
 if(isset($_POST['signUpSubmitBtn'])){//Check if signUpSubmitBtn was clicked to register a new courier user
@@ -18,7 +21,7 @@ if(isset($_POST['signUpSubmitBtn'])){//Check if signUpSubmitBtn was clicked to r
 	}
 
 	if (empty($_POST['fname'])){
-	echo "At least first name is Required!"; 
+	echo "At least first name is Required!";
 	return;
 	}
 	else{
@@ -57,9 +60,9 @@ if(isset($_POST['signUpSubmitBtn'])){//Check if signUpSubmitBtn was clicked to r
 
 	echo $response;
 	}//End Signup Page Processing
-	
+
 if(isset($_POST['loginSubmitBtn'])){//Login a  courier user
-	
+
 	if (empty($_POST['username'])){
 	echo $usernameErr = "Username/Email is Required!";
 	return;
@@ -77,14 +80,14 @@ if(isset($_POST['loginSubmitBtn'])){//Login a  courier user
 	$loginUser = new CourierUsers();
 	$response = $loginUser->loginCourierUser($username,$pword);
 	echo $response;
-}	
+}
 if(isset($_POST['listjourneySubmitBtn'])){//List Journey
 //if(!empty($_POST['listjourneySubmitBtn'])){//List Journey
 	ini_set('upload_max_filesize', '10M');
 	ini_set('post_max_size', '10M');
 	ini_set('max_input_time', 600);
 	ini_set('max_execution_time', 600);
-	
+
 	if (empty($_POST['dep-country'])){
 		echo $depcountryErr = "Departure Country is Required!";
 		return;
@@ -128,7 +131,7 @@ if(isset($_POST['listjourneySubmitBtn'])){//List Journey
 	else{
 		$arrivalport = $securityguard->removeHackCharacters($_POST['arrivalport']);
 	}
-	
+
 	if (empty($_POST['travellernote'])){
 		echo $error = "Traveller Note is Required!";
 		return;
@@ -136,7 +139,7 @@ if(isset($_POST['listjourneySubmitBtn'])){//List Journey
 	else{
 		$travellernote = $securityguard->removeHackCharacters($_POST['travellernote']);
 	}
-	
+
 	if (empty($_POST['uname'])){
 		echo $error = "Username is Required!";
 		return;
@@ -156,7 +159,7 @@ if(isset($_POST['listjourneySubmitBtn'])){//List Journey
 		echo $error = "Document File is Required!";
 		return;
 	}
-	
+
 	$register_journey = new Journeys();
 	$response = $register_journey->listJourney($uname,$depcountry,$descountry,$departuredate,$arrivaldate,$arrivalport,$travellernote,$docpath);
 	echo $response;
@@ -164,7 +167,7 @@ if(isset($_POST['listjourneySubmitBtn'])){//List Journey
 
 if(isset($_POST['listitemSubmitBtn'])){
 //Processes listing Item a courier user wants to send
-	
+
 	ini_set('upload_max_filesize', '10M');
 	ini_set('post_max_size', '10M');
 	ini_set('max_input_time', 600);
@@ -210,7 +213,7 @@ if(isset($_POST['listitemSubmitBtn'])){
 		return;
 		}
 		else{
-		$item = $securityguard->removeHackCharacters($_POST['item']); 
+		$item = $securityguard->removeHackCharacters($_POST['item']);
 		}
 
 		if (empty($_POST['amount'])){
@@ -218,7 +221,7 @@ if(isset($_POST['listitemSubmitBtn'])){
 		return;
 		}
 		else{
-		$amount = $securityguard->removeHackCharacters($_POST['amount']); 
+		$amount = $securityguard->removeHackCharacters($_POST['amount']);
 		}
 
 		if (empty($_POST['journey'])){
@@ -226,16 +229,16 @@ if(isset($_POST['listitemSubmitBtn'])){
 			return;
 		}
 		else{
-			$journey = $securityguard->removeHackCharacters($_POST['journey']); 
+			$journey = $securityguard->removeHackCharacters($_POST['journey']);
 		}
 		if (empty($_POST['bidder'])){
 			echo $error = "You need to be logged in to bid for an item";
 			return;
 		}
 		else{
-			$bidder = $securityguard->removeHackCharacters($_POST['bidder']); 
+			$bidder = $securityguard->removeHackCharacters($_POST['bidder']);
 		}
-		
+
 		$bidding = new InterestedTransporters();
 		$response = $bidding->registerBid($bidder,$item,$journey,$amount);
 		echo $response;
@@ -249,7 +252,7 @@ if(isset($_POST['listitemSubmitBtn'])){
 			return;
 		}
 		else{
-			$bestbid = $securityguard->removeHackCharacters($_POST['assignitem']); 
+			$bestbid = $securityguard->removeHackCharacters($_POST['assignitem']);
 		}
 
 		$assitem = new SelectedTransporters();
@@ -259,15 +262,15 @@ if(isset($_POST['listitemSubmitBtn'])){
 
 	}
 	if(isset($_POST['submitBidAcceptance'])){
-		
+
 		if (empty($_POST['assignitem'])){
 			echo $error = "Reference to item being accepted not found";
 			return;
 		}
 		else{
-			$assignmentid = $securityguard->removeHackCharacters($_POST['assignitem']); 
+			$assignmentid = $securityguard->removeHackCharacters($_POST['assignitem']);
 		}
-		
+
 		$assitem = new SelectedTransporters();
 		$response = $assitem->recordBidAcceptanceOrRejection($assignmentid,'accepted');
 
@@ -281,7 +284,7 @@ if(isset($_POST['listitemSubmitBtn'])){
 			return;
 		}
 		else{
-			$assignmentid = $securityguard->removeHackCharacters($_POST['assignitem']); 
+			$assignmentid = $securityguard->removeHackCharacters($_POST['assignitem']);
 		}
 		$assitem = new SelectedTransporters();
 		$response = $assitem->recordBidAcceptanceOrRejection($assignmentid,'rejected');
@@ -289,7 +292,18 @@ if(isset($_POST['listitemSubmitBtn'])){
 		echo $response;
 
 	}
-	
-	
+
+
 
 ?>
+
+<div class="fixed-bottom">
+    <footer>
+    Copyright&copy;commcourier.com
+    <br>
+    <a href="#">Privacy policy</a> -
+    <a href="#">Terms and condition</a>
+    </footer>
+    </div>
+  </body>
+  </html>
