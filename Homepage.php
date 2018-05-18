@@ -37,7 +37,7 @@
         else{
             $username = $_SESSION['username'];
         }
-
+    
       }
 
 ?>
@@ -48,7 +48,7 @@
      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <header>
         <div class="imagelogo">
-        <img src="images/picturelogo.PNG" alt="">
+        <img src="images/picturelogo.png" alt="">
         <!-- <h6><i><font color="white">Making money while journeying!!!</font></i></h6> -->
       </div>
       </header>
@@ -136,9 +136,9 @@
     <div class="fixed-bottom">
     <footer>
     Copyright&copy;commcourier.com
-    <br>
-    <a href="#">Privacy policy</a> -
-    <a href="#">Terms and condition</a>
+    <p><a href="#">Privacy policy</a> -
+    <a href="#">Terms and condition</a> -
+    <a href="#">Contact Us</a></p>
     </footer>
     </div>
 
