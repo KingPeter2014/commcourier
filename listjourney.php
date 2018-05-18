@@ -11,43 +11,42 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src = "jquery-3.2.1.min.js"></script>
   <script type = "text/javascript">
-	function ProcessJourney(){
-		var departuredate = document.getElementById("departuredate").value;
-		var arrivaldate = document.getElementById("arrivaldate").value;
-		var arrivalport = document.getElementById("arrivalport").value;
-		var travellernote = document.getElementById("travellernote").value;
-		var uname = document.getElementById("uname").value;
-		var depcountry = document.getElementById("dep-country").value;
-		var descountry = document.getElementById("des-country").value;
-    //var listjourneySubmitBtn = document.getElementById("listjourneySubmitBtn").value;
+  function ProcessJourney(){
+    var departuredate = document.getElementById("departuredate").value;
+    var arrivaldate = document.getElementById("arrivaldate").value;
+    var arrivalport = document.getElementById("arrivalport").value;
+    var travellernote = document.getElementById("travellernote").value;
+    var uname = document.getElementById("uname").value;
+    var depcountry = document.getElementById("dep-country").value;
+    var descountry = document.getElementById("des-country").value;
+    var data = new FormData();
+    data.append('fileToUpload', document.querySelector('#traveldocument').files[0]);
+    data.append('des-country', descountry);
+    data.append('dep-country', depcountry);
+    data.append('uname', uname);
+    data.append('travellernote', travellernote);
+    data.append('arrivalport', arrivalport);
+    data.append('arrivaldate', arrivaldate);
+    data.append('departuredate', departuredate);
+    
+    if (window.XMLHttpRequest){
+      xmlhttp = new XMLHttpRequest();
+    }
+    else{
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function(){
+      if (this.readyState == 4 && this.status == 200){
+        if (this.responseText != ""){
+          document.getElementById("result-show").innerHTML = this.responseText;
+        }
+      }
+    };
 
-		var data = new FormData();
-		data.append('fileToUpload', document.querySelector('#traveldocument').files[0]);
-		data.append('des-country', descountry);
-		data.append('dep-country', depcountry);
-		data.append('uname', uname);
-		data.append('travellernote', travellernote);
-		data.append('arrivalport', arrivalport);
-		data.append('arrivaldate', arrivaldate);
-		data.append('departuredate', departuredate);
-    //data.append('listjourneySubmitBtn',listjourneySubmitBtn);
-		if (window.XMLHttpRequest){
-			xmlhttp = new XMLHttpRequest();
-		}
-		else{
-			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		xmlhttp.onreadystatechange = function(){
-			if (this.readyState == 4 && this.status == 200){
-				if (this.responseText != ""){
-					document.getElementById("result-show").innerHTML = this.responseText;
-				}
-			}
-		};
-		xmlhttp.open("POST", "process_list_journey.php", true);
-    //xmlhttp.open("POST", "process.php", true);
-		xmlhttp.send(data);
-	}
+    xmlhttp.open("POST", "serverscripts/process_list_journey.php", true);
+
+    xmlhttp.send(data);
+  }
   </script>
   </head>
   <body>
@@ -74,12 +73,6 @@
   <option value="Nigeria">Nigeria</option>
   <option value="United States">United States</option>
   <option value="United Kingdom">United Kingdom</option>
-  <option value="Algeria">Algeria</option>
-  <option value="Cameroon">Cameroon</option>
-  <option value="Malawi"> Malawi</option>
-  <option value="Egypt">Egypt</option>
-  <option value="Kenya">Kenya</option>
-  <option value="Ghana">Ghana</option>
   </select><br>
   <br>
 
@@ -88,12 +81,6 @@
   <option value="Nigeria">Nigeria</option>
   <option value="United States">United States</option>
   <option value="United Kingdom">United Kingdom</option>
-  <option value="Algeria">Algeria</option>
-  <option value="Cameroon">Cameroon</option>
-  <option value="Malawi"> Malawi</option>
-  <option value="Egypt">Egypt</option>
-  <option value="Kenya">Kenya</option>
-  <option value="Ghana">Ghana</option>
   </select><br>
   <br>
 
@@ -119,7 +106,7 @@
   </div>
 
   <div class="form-group row">
-  <label for="travellernote" class="col-sm-4 col-form-label">Traveler Note</label>
+  <label for="travellernote" class="col-sm-4 col-form-label">Traveller Note</label>
   <div class="col-sm-8">
   <textarea class="form-control" id="travellernote" name = "travellernote" placeholder="Leave detailed note here for Item senders" name="Traveller Note"></textarea>
   </div>
@@ -135,6 +122,8 @@
   </form>
 
   
+  <br><div align = "center"><div id = "result-show"></div></div>
+
 
   </div>
   </div>
@@ -142,9 +131,10 @@
 
   <div class="fixed-bottom">
   <footer>
-  Copyright&copy;commcourier.com <br>
-  <a href="#">Privacy policy</a> -
-  <a href="#">Terms and condition</a>
+  Copyright&copy;commcourier.com
+  <p><a href="#">Privacy policy</a> -
+  <a href="#">Terms and condition</a> -
+  <a href="#">Contact Us</a></p>
   </footer>
   </div>
 
