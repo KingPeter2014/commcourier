@@ -25,18 +25,20 @@
     <h3 style="text-align: center;"><b>Pay Here</b></h3><br>
 
     <form action="charge.php" method = "POST" enctype = "multipart/form-data">
-      <input type = "hidden" name = "amount" value = "<?php echo "512"; ?>"/>
-      <select class="custom-select custom-select-lg mb-3" name = "des-country">
+      <input type = "hidden" name = "amount" value = "<?php echo $_GET['amount'] * 100; ?>"/>
+      <input type = "hidden" name = "item" value = "<?php echo $_GET['item']; ?>"/>
+      <!--<select class="custom-select custom-select-lg mb-3" name = "des-country">
       <option value = "" selected>Choose your traveller</option>
       <option value="MS">Micheal smith</option>
       <option value="SI">Shaibu Ibrahim</option>
       <option value="CI">Chuks Ifeanyi</option>
-      </select><br>
+      </select> -->
+      <br>
 
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<?php echo $stripe['publishable_key']; ?>"
           data-description="Commcourier Package Delivery"
-          data-amount="<?php echo "512"; ?>"
+          data-amount="<?php echo $_GET['amount']* 100; ?>"
           data-locale="auto"></script>
 
       <!--<button type="submit" class="btn btn-primary col-md-2" id="Submit" name = "listjourneySubmitBtn">Pay</button> -->
