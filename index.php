@@ -9,6 +9,27 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+function start(){
+  $('span#output').html(' Possible Authentication error. Try again!')
+}
+function finished(s){
+  if(s.indexOf("success")!=-1){
+    s1=s.split(":");
+    if(s1[0]=="success"){//&& s1[1].toLowerCase()=="dvcAdmin"
+    $('span#output').html('<img src="images/loading.gif"> Preparing for first time use...');
+    //Boxy.load('/highacademia/configure.php',{title:'Configure your Institution',afterHide:function(){location.href='home.php';}});
+    }else{
+      location.href='staffhome.php';
+    }
+  }else {
+    s1=s.split(":");
+  if(s1[0]=="error"){$('span#output').html('<div class="warning-bar">'+s1[1]+'</div>');}
+  } 
+}
+</script>
+
   </head>
   <body>
 
@@ -49,6 +70,8 @@
     <br>
 
     <form action="process.php" method="post">
+      <!-- <form id="form1" name="form1" method="post" action="process.php" onsubmit="return AIM.submit(this, {'onStart' : start, 'onComplete' : finished})"> -->
+    <center><span id="output" class="error">Status update here</span></center></br>
     <div class="form-group row">
 
    <label for="fname" class="col-sm-4 col-form-label">First name</label>
