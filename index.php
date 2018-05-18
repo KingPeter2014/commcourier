@@ -212,6 +212,7 @@ function finished(s){
 <div class="container-fluid">
 <div class="jumbotron jumbotron-fluid">
 <h2 id="aboutus" >How to Navigate the Site</h2><br>
+<ul id="aboutcontent">
   <li>On the index page, sign up</li>
   <li>Log in using your email and password. This action leads you to the homepage</li>
   <li>On the homepage, to opt as a traveler, click on the menu tab "New Journey"</li>
