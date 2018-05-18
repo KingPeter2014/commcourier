@@ -21,7 +21,7 @@ function finished(s){
     $('span#output').html('<img src="images/loading.gif"> Preparing for first time use...');
     //Boxy.load('/highacademia/configure.php',{title:'Configure your Institution',afterHide:function(){location.href='home.php';}});
     }else{
-      location.href='staffhome.php';
+      location.href='login.php';
     }
   }else {
     s1=s.split(":");
