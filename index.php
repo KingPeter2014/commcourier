@@ -156,7 +156,7 @@ function finished(s){
   <select id="inputcountry" class="form-control" name="country" required="true">
     <option selected>Choose</option>
     <?php
-    //Site visit counter
+    //Load all the Countries in the World
     require_once("classes/class_lib.php");
     $countries = new Utilities();
     $response = $countries->loadCountries();

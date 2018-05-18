@@ -70,17 +70,27 @@
   <input type = "hidden" id = "uname" name = "uname" value = "<?php echo($_SESSION['username']); ?>"/>
   <select class="custom-select" id = "dep-country" name = "dep-country" required="true">
   <option value = "" selected>Choose your departure country</option>
-  <option value="Nigeria">Nigeria</option>
-  <option value="United States">United States</option>
-  <option value="United Kingdom">United Kingdom</option>
+  <?php
+    //Load all the Countries in the World
+    require_once("classes/class_lib.php");
+    $countries = new Utilities();
+    $response = $countries->loadCountries();
+    echo $response;
+
+    ?>
   </select><br>
   <br>
 
   <select class="custom-select" id = "des-country" name = "des-country" required="true">
   <option value = "" selected>Choose your destination country</option>
-  <option value="Nigeria">Nigeria</option>
-  <option value="United States">United States</option>
-  <option value="United Kingdom">United Kingdom</option>
+  <?php
+    //Load all the Countries in the World
+    require_once("classes/class_lib.php");
+    $countries = new Utilities();
+    $response = $countries->loadCountries();
+    echo $response;
+
+    ?>
   </select><br>
   <br>
 

@@ -31,7 +31,7 @@
 		else{
 			$isInserted=$dbconnect->insertData($db,$sql);//Create new CommCourier user
 			if($isInserted){
-				$response= $response.'success: Dear'. $lastname.', has been successfully registered. <a href="login.php"> Login Here</a>';
+				$response= $response.'success: Dear '. $lastname.', has been successfully registered. <a href="login.php"> Login Here</a>';
 			} else{
 				$response= $response. "error: Could not execute $sql. " . mysqli_error($db);
 			}
