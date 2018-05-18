@@ -1,4 +1,7 @@
-<?php if (session_status() == PHP_SESSION_NONE) {
+<?php
+include("header.php");
+
+if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
     $username = $_SESSION['username'];
@@ -21,17 +24,29 @@
       <input type = "number" name = "amount" placeholder="Cost of Sending"/>
       <select class="custom-select custom-select-lg mb-3" name = "journey">
       <option value = "" selected>Choose your journey</option>
-      <?php 
-      	require_once("classes/class_lib.php"); 
+      <?php
+      	require_once("classes/class_lib.php");
       	$getjourneys = new Journeys();
 		$response = $getjourneys->getActiveJourniesForCurrentUser($username);
 		echo $response;
 
       ?>
-      
+
       </select><br>
-      
-      <button type="submit" class="btn btn-primary col-md-2" id="Submit" name = "bidToSendItemBtn">Send Bid</button> 
+
+      <button type="submit" class="btn btn-primary col-md-2" id="Submit" name = "bidToSendItemBtn">Send Bid</button>
       <button type="reset" class="btn btn-secondary col-md-2" id="Reset">Cancel</button>
     </form>
     </div>
+
+    <div class="fixed-bottom">
+        <footer>
+        Copyright&copy;commcourier.com
+        <br>
+        <a href="#">Privacy policy</a> -
+        <a href="#">Terms and condition</a>
+        </footer>
+        </div>
+
+      </body>
+    </html>
