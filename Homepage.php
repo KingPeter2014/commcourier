@@ -48,7 +48,7 @@
      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <header>
         <div class="imagelogo">
-        <img src="images/picturelogo.png" alt="">
+        <img src="images/picturelogo.PNG" alt="">
         <!-- <h6><i><font color="white">Making money while journeying!!!</font></i></h6> -->
       </div>
       </header>
