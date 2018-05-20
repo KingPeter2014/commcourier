@@ -100,31 +100,30 @@
       </div>
    </nav>
 
-
-
-     <div id="welcome" style="top:6rem;" class="card">
-      <h3> <font color="red"> <?php echo "<br/>Welcome:".$username;?></font> </h3>
+     <div id="welcome" style="top:4.3rem;" class="card">
+      <h3>Welcome: <font color="green"> <?php echo $username;?></font> </h3>
+      <hr/>
       <span id="centralcontainer" >
         <?php
         include("classes/class_lib.php");
         $journey = new Journeys();
         //$response = $journey->getAllJourneys();
         $response = $journey->getMyJournies($username);
-        echo $response."</br>";
+        echo $response."<hr/>";
 
         $listedItems = new DeliveryItems();
         //$response = $listedItems->getAllListedItems();
         $response = $listedItems->getMyListedItems($username);
-        echo $response."</br>";
+        echo $response."<hr/>";
         $response = $listedItems->getOtherListedItems($username);
-        echo $response."</br>";
+        echo $response."<hr/>";
 
         //Get Bids won by user and the bids of this user won by others
         $wonbids = new SelectedTransporters();
         $response = $wonbids->getBidsAssignedToTraveler($username);
-        echo $response."</br>";
+        echo $response."<hr/>";
         $response = $wonbids->getConfirmedBidsAssignedByUser($username);
-        echo $response."</br>";
+        echo $response."<br/>";
 
         ?>
 

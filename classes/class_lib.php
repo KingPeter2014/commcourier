@@ -128,7 +128,7 @@
 		$db = $dbconnect->connectToDatabase();
 		$sql = "SELECT * FROM `listjourney`";
 		$alljournies = $dbconnect->queryData($db,$sql);
-		$response ='<h3>All Journeys</h3><table border="1"><tr><th> Traveller</th><th>Depature </th><th>Destination </th><th>Date From </th><th>Arrival Date</th><th>Arrival Port </th><th>Actions </th></tr>';
+		$response ='<h3>All Journeys</h3>';
 		$response =$response.$this->formatJourneysForDisplay($alljournies);
 		$response =$response.'<table>';
 		return $response;
@@ -139,12 +139,14 @@
 	 	//Format a query to display journey as a table
 	 	$response="";
 	 	if($queryResult->num_rows > 0){
+	 		$response='<table border="1"><tr><th> Traveller</th><th>Depature </th><th>Destination </th><th>Date From </th><th>Arrival Date</th><th>Arrival Port </th><th>Actions </th></tr>';
 			while ( $row = $queryResult->fetch_assoc()) {
 				$response =$response.'<tr><td>'. $row['username'].'</td><td>'.$row['departurecountry'].'</td><td>'.$row['destinationcountry'].'</td><td>'.$row['departuredate'].'</td><td>'.$row['arrivaldate'].'</td><td>'.$row['arrivalport'].'</td><td><a href="journeydetails.php?journey='.$row['id'].'">Details</a>'.'</td></tr>';
 			}
+			$response =$response.'<table>';
 		}
 		else{
-			$response =$response. "No Journey was found";
+			$response =$response. "<i>No Journey was found</i>";
 		}
 		return $response;
 
@@ -156,9 +158,9 @@
 		$db = $dbconnect->connectToDatabase();
 		$sql = "SELECT * FROM `listjourney` WHERE username='".$username."'";
 		$alljournies = $dbconnect->queryData($db,$sql);
-		$response ='<h3>My Journies</h3><table border="1"><tr><th> Traveller</th><th>Depature </th><th>Destination </th><th>Date From </th><th>Arrival Date</th><th>Arrival Port </th><th>Actions </th></tr>';
+		$response ='<h3>My Journies</h3>';
 		$response =$response.$this->formatJourneysForDisplay($alljournies);
-		$response =$response.'<table>';
+		
 		return $response;
 
 
@@ -286,9 +288,9 @@
 		$db = $dbconnect->connectToDatabase();
 		$sql = "SELECT * FROM `listeditems`";
 		$allitems = $dbconnect->queryData($db,$sql);
-		$response ='<h3>All Listed Items</h3><table border="1"><tr><th> Listed By</th><th>Description </th><th>Receiver Address </th><th>Time Listed </th><th>Status</th><th>Actions </th></tr>';
+		$response ='<h3>All Listed Items</h3>';
 		$response =$response.$this->formatListedItemsForDisplay($allitems);
-		$response =$response.'<table>';
+		
 		return $response;
 
  	}
@@ -296,12 +298,14 @@
 	 	//Format a query to display Item as a table
 	 	$response="";
 	 	if($queryResult->num_rows > 0){
+	 		$response='<table border="1"><tr><th> Listed By</th><th>Description </th><th>Receiver Address </th><th>Time Listed </th><th>Status</th><th>Actions </th></tr>';
 			while ( $row = $queryResult->fetch_assoc()) {
 				$response =$response.'<tr><td>'. $row['listedby'].'</td><td>'.$row['description'].'</td><td>'.$row['receiveraddress'].'</td><td>'.$row['timelisted'].'</td><td>'.$row['status'].'</td>'.'<td><a href="itemdetails.php?item='.$row['id'].'">See Details</a></td></tr>';
 			}
+			$response =$response.'<table>';
 		}
 		else{
-			$response =$response. "No Listed Items found";
+			$response =$response. "<i>No Listed Items found</i>";
 		}
 		return $response;
 
@@ -315,9 +319,9 @@
 		$db = $dbconnect->connectToDatabase();
 		$sql = "SELECT * FROM `listeditems` WHERE listedby = '". $username."'";
 		$allitems = $dbconnect->queryData($db,$sql);
-		$response ='<h3>My Listed Items</h3><table border="1"><tr><th> Listed By</th><th>Description </th><th>Receiver Address </th><th>Time Listed </th><th>Status</th><th>Actions </th></tr>';
+		$response ='<h3>My Listed Items</h3>';
 		$response =$response.$this->formatListedItemsForDisplay($allitems);
-		$response =$response.'<table>';
+		
 		return $response;
 
 	}
@@ -329,9 +333,8 @@
 		$db = $dbconnect->connectToDatabase();
 		$sql = "SELECT * FROM `listeditems` WHERE listedby <> '". $username."'";
 		$allitems = $dbconnect->queryData($db,$sql);
-		$response ='<h3>Other Listed Items</h3><table border="1"><tr><th> Listed By</th><th>Description </th><th>Receiver Address </th><th>Time Listed </th><th>Status</th><th>Actions </th></tr>';
+		$response ='<h3>Other Listed Items</h3>';
 		$response =$response.$this->formatListedItemsForDisplay($allitems);
-		$response =$response.'<table>';
 		return $response;
 
 	}
@@ -505,7 +508,7 @@
  		$dbconnect = new DatabaseManager();
 		$db = $dbconnect->connectToDatabase();
 		$wonbids = $dbconnect->queryData($db,$sql);
-		$response ='<h3>Bids You have won</h3><form action="process.php" METHOD="POST">';
+		$response ='<h3>Bids You have won</h3>';
 		if($wonbids->num_rows > 0){
 			while ( $row = $wonbids->fetch_assoc()) {
 				$response =$response.'<form action="process.php" METHOD="POST"><table border="1">';
@@ -516,7 +519,7 @@
 
 		}
 		else{
-			return "You have not won any bids";
+			return $response=$response."You have not won any bids";
 		}
 		
 		return $response;
@@ -555,7 +558,7 @@
 					$response = $response."</br>Item in Assignment no longer exists";
 					return $response;
 					}
-					
+
 				$row = $iteminAssignment->fetch_assoc();
 				$itemid = $row['item'];
 				$sql="UPDATE listeditems SET status = '$action' WHERE id = $itemid";
