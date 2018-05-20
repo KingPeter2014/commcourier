@@ -661,7 +661,32 @@
 			}
 
 		}
+		else{
+			$response =$response. '<option value="">Error getting Countries</option>';
+
+		}
 		return $response;
+  	}
+  	function getCountryCurrencyCodes(){
+  		$sql = "SELECT * FROM `currency`";
+  		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$countries = $dbconnect->queryData($db,$sql);
+		$response='';
+		if($countries->num_rows > 0){
+			while ( $row = $countries->fetch_assoc()) {
+				
+				$response =$response. '<option value="'.$row['code'].'">'.$row['code'].'</option>';
+
+			}
+
+		}
+		else{
+			$response =$response. '<option value="">Error getting currencies</option>';
+
+		}
+		return $response;
+
   	}
   	function updateSiteVisitCounter(){
   		$sql="UPDATE counter SET counter = counter + 1";
