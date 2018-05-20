@@ -23,7 +23,7 @@ if (session_status() == PHP_SESSION_NONE) {
       <input type = "hidden" name = "item" value = "<?php echo $item; ?>"/>
       <input type = "hidden" name = "bidder" value = "<?php echo $username; ?>"/>
       <select class="custom-select custom-select-lg mb-3" name = "currencycode">
-      <option value = "" selected>Choose Currency Code</option>
+      <option value = "" selected>Choose Your Currency</option>
       <?php
         
         $getCurrencyCodes = new Utilities();

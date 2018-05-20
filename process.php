@@ -216,12 +216,24 @@ if(isset($_POST['listitemSubmitBtn'])){
 		$item = $securityguard->removeHackCharacters($_POST['item']);
 		}
 
+		if (empty($_POST['currencycode'])){
+		echo $error = "Select base currency for this bid";
+		return;
+		}
+		else{
+		$currencycode = $securityguard->removeHackCharacters($_POST['currencycode']);
+		}
+
 		if (empty($_POST['amount'])){
 		echo $error = "At what amount would you send the item?";
 		return;
 		}
 		else{
 		$amount = $securityguard->removeHackCharacters($_POST['amount']);
+			if($amount <0){
+				echo $error = "Amount must be greater than zero";
+				return;
+			}
 		}
 
 		if (empty($_POST['journey'])){
@@ -240,7 +252,7 @@ if(isset($_POST['listitemSubmitBtn'])){
 		}
 
 		$bidding = new InterestedTransporters();
-		$response = $bidding->registerBid($bidder,$item,$journey,$amount);
+		$response = $bidding->registerBid($bidder,$item,$journey,$amount,$currencycode);
 		echo $response;
 
 	}
