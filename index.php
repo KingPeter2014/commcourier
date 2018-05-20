@@ -71,7 +71,9 @@ function finished(s){
 
     <form action="process.php" method="post">
       <!-- <form id="form1" name="form1" method="post" action="process.php" onsubmit="return AIM.submit(this, {'onStart' : start, 'onComplete' : finished})"> -->
-    <center><span id="output" class="error">Status update here</span></center></br>
+    <center><span id="output" class="error"> </span></center></br>
+
+
     <div class="form-group row">
 
    <label for="fname" class="col-sm-4 col-form-label">First name</label>
@@ -213,12 +215,14 @@ function finished(s){
 <div class="jumbotron jumbotron-fluid">
 <h2 id="aboutus" >How to Navigate the Site</h2><br>
 <ul id="aboutcontent">
-  <li>On the index page, sign up</li>
-  <li>Log in using your email and password. This action leads you to the homepage</li>
-  <li>On the homepage, to opt as a traveler, click on the menu tab "New Journey"</li>
-  <li>On the  homepage, to opt as a sender, click on the menu tab "New Item"</li>
-  <li>To bid for an item as a traveler, click on "see details" under the other listed items located below the homepage menu bar</li>
-  <li>If the sender accepts your bid, that sender will be assigned to you. The sender go ahead to make payment</li>
+  <li>On the index page, <a href="index.php">Sign up</a></li>
+  <li><a href="login.php">Log in</a>  using your email and password. This action leads you to the homepage</li>
+  <li>On the homepage, to opt in as a traveler, click on the menu tab "<b>New Journey</b>"</li>
+  <li>On the  homepage, to opt as a sender, click on the menu tab "<b>New Item</b>"</li>
+  <li>To bid for an item as a traveler, click on "<b>See details</b>" besides the <b>Other listed items</b> located below the homepage menu bar</li>
+  <li>If the sender accepts your bid, that sender assigns the item to you and sends you the offer to send the item. </li>
+  <li> The traveler needs to accept the offer before the sender can go ahead to make payment</li>
+  <li> After payment, a communication channel is established for Sender and traveler to meet for item pickup.</li>
 
 </ul>
   <p id="aboutcontent">NOTE: Please you might encounter slight technical challenges while navigating through
