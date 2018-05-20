@@ -199,7 +199,7 @@
 			}
 		}
 		else{
-			$response =$response. "Item Details not found";
+			$response =$response. "Journey Details not found";
 		}
 		return $response;
 
@@ -319,7 +319,7 @@
 		$db = $dbconnect->connectToDatabase();
 		$sql = "SELECT * FROM `listeditems` WHERE listedby = '". $username."'";
 		$allitems = $dbconnect->queryData($db,$sql);
-		$response ='<h3>My Listed Items</h3>';
+		$response ='<h3>Item I want to Send</h3>';
 		$response =$response.$this->formatListedItemsForDisplay($allitems);
 		
 		return $response;
@@ -333,7 +333,7 @@
 		$db = $dbconnect->connectToDatabase();
 		$sql = "SELECT * FROM `listeditems` WHERE listedby <> '". $username."'";
 		$allitems = $dbconnect->queryData($db,$sql);
-		$response ='<h3>Other Listed Items</h3>';
+		$response ='<h3>Items Others want to Send</h3>';
 		$response =$response.$this->formatListedItemsForDisplay($allitems);
 		return $response;
 
@@ -508,7 +508,7 @@
  		$dbconnect = new DatabaseManager();
 		$db = $dbconnect->connectToDatabase();
 		$wonbids = $dbconnect->queryData($db,$sql);
-		$response ='<h3>Bids You have won</h3>';
+		$response ='<h3>Bids I have won</h3>';
 		if($wonbids->num_rows > 0){
 			while ( $row = $wonbids->fetch_assoc()) {
 				$response =$response.'<form action="process.php" METHOD="POST"><table border="1">';
@@ -587,16 +587,16 @@
  	}
  	function getConfirmedBidsAssignedByUser($username){
  		//Get the list of bids that this user has assigned to other travellers and of which those travelers have accepted to deliver. This will now enable this user to pay to the commcourier platform
- 		$response = " <h3>Items Waiting for Payment</h3>";
+ 		$response = " <h3>Items I need to Pay for</h3>";
 
- 		$sql = "SELECT i.id as itemid,i.description, a.transporter,a.sender,a.agreedprice, a.id FROM listedItems i,assigneditems a WHERE status='accepted' AND a.sender = '$username'";
+ 		$sql = "SELECT i.id as itemid,i.description, a.transporter,a.sender,a.agreedprice,a.bidid, a.id FROM listedItems i,assigneditems a WHERE status='accepted' AND a.sender = '$username'";
  		$dbconnect = new DatabaseManager();
 		$db = $dbconnect->connectToDatabase();
 		$myacceptedoffers = $dbconnect->queryData($db,$sql);
 		if($myacceptedoffers->num_rows > 0){
 			while ( $row = $myacceptedoffers->fetch_assoc()) {
 				$response =$response.'<table border="1">';
-				$response =$response.'<tr><th><input type="hidden" name="assignitem" value="'.$row['itemid'].'"/>'.'<a href="pay.php?item='.$row['itemid'].'&amount='.$row['agreedprice'].'">'.'Pay for:'.$row['description'].'</a>(You will pay:'.$row['agreedprice'].')</th>';
+				$response =$response.'<tr><th><input type="hidden" name="assignitem" value="'.$row['itemid'].'"/>'.'<a href="pay.php?item='.$row['itemid'].'&amount='.$row['agreedprice'].'">'.'Pay for:'.$row['description'].'</a>(You will pay:'.$this->getBaseCurrencyForABid($row['bidid']).$row['agreedprice'].')</th>';
 				
 			$response =$response.'</table>';
 				
