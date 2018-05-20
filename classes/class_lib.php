@@ -431,7 +431,7 @@
 
  	function getBidsForItem($item){
  		//Return a list of the bids for a particular item.These are bids by travelers to send the particular listed item
- 		$sql = "SELECT b.id AS bidid,b.bidder,b.item,b.journey,b.amount,b.timeofbid,b.status,l.id,j.username,j.departuredate,j.arrivaldate,j.arrivalport from bids b, listeditems l, listjourney j WHERE l.id = b.item AND b.bidder = j.username AND j.id = b.journey AND b.item=$item";
+ 		$sql = "SELECT b.id AS bidid,b.bidder,b.item,b.journey,b.amount,b.timeofbid,b.status,b.currencycode, l.id,j.username,j.departuredate,j.arrivaldate,j.arrivalport from bids b, listeditems l, listjourney j WHERE l.id = b.item AND b.bidder = j.username AND j.id = b.journey AND b.item=$item";
  		$response ='<form action="process.php" METHOD="POST">';
 
  		$dbconnect = new DatabaseManager();
@@ -439,7 +439,7 @@
 		$bids = $dbconnect->queryData($db,$sql);
 		if($bids->num_rows > 0){
 			while ( $row = $bids->fetch_assoc()) {
-			$response =$response.'<input type="radio" name="assignitem" value="'.$row['bidid'].'"/>'.'<a href="viewprofile.php?username='.$row['username'].'">'.$row['username'].'</a>('.$row['departuredate'].','.$row['arrivalport'].'), Amount:'.$row['amount'].'</br>';
+			$response =$response.'<input type="radio" name="assignitem" value="'.$row['bidid'].'"/>'.'<a href="viewprofile.php?username='.$row['username'].'">'.$row['username'].'</a>('.$row['departuredate'].','.$row['arrivalport'].'), Amount:'.$row['currencycode'].$row['amount'].'</br>';
 			}
 		}
 		else{
@@ -509,7 +509,7 @@
 		if($wonbids->num_rows > 0){
 			while ( $row = $wonbids->fetch_assoc()) {
 				$response =$response.'<form action="process.php" METHOD="POST"><table border="1">';
-				$response =$response.'<tr><th><input type="hidden" name="assignitem" value="'.$row['id'].'"/>'.'<a href="viewprofile.php?username='.$row['sender'].'">'.$row['sender'].'</a>(You will receive:'.$row['agreedprice'].')</th></br>';
+				$response =$response.'<tr><th><input type="hidden" name="assignitem" value="'.$row['id'].'"/>'.'<a href="viewprofile.php?username='.$row['sender'].'">'.$row['sender'].'</a>(You will receive:'.$this->getBaseCurrencyForABid($row['bidid']).$row['agreedprice'].')</th></br>';
 				$response =$response.'<td><button type="submit" name="submitBidAcceptance"> Accept</button></td>';
 			$response =$response.'<td><button type="submit" name="submitBidRejection"> Reject</button></td></tr></table>';
 			}
@@ -522,27 +522,58 @@
 		return $response;
 
  	}
+ 	function getBaseCurrencyForABid($bidid){
+ 		//Get the base currency used for a bid
+ 		$sql="SELECT * FROM `bids` WHERE id=$bidid";
+ 		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$thisbid = $dbconnect->queryData($db,$sql);
+		if($thisbid->num_rows == 1){
+			$row = $thisbid->fetch_assoc();
+			return $row['currencycode'];
+
+		}
+		else
+			return 'USD';
+
+
+
+ 	}
  	function recordBidAcceptanceOrRejection($assignmentid,$action){
  		$sql="UPDATE assigneditems SET accepted = '$action' WHERE id = $assignmentid";
  		$dbconnect = new DatabaseManager();
 		$db = $dbconnect->connectToDatabase();
 		$upd=$dbconnect->updateData($db,$sql);
 		$response="";
-		if($upd){
-			$response = $response."Item assignment status successgfully updated to :".$action;
+		if(mysqli_affected_rows($db)>0){
+			$response = $response."Item assignment status successfully updated to :".$action;
 			//if(strcmp($action, "accepted")==0){
 				//Get item that got assigned and update its status to "accepted"
 				$sql="SELECT b.id AS bidid, a.id, b.item from bids b, assigneditems a WHERE a.bidid = b.id and a.id=$assignmentid";
 				$iteminAssignment = $dbconnect->queryData($db,$sql);
+				if($iteminAssignment->num_rows < 1){
+					$response = $response."</br>Item in Assignment no longer exists";
+					return $response;
+					}
+					
 				$row = $iteminAssignment->fetch_assoc();
 				$itemid = $row['item'];
 				$sql="UPDATE listeditems SET status = '$action' WHERE id = $itemid";
 				$upd=$dbconnect->updateData($db,$sql);
-				if($upd){
-					$response = $response."</br>Item status successgfully updated to:".$action;
+				if(mysqli_affected_rows($db)>0){
+					$response = $response."</br>Item status successfully updated to:".$action;
 				}
-				
-			
+				elseif(mysqli_affected_rows($db)==0){
+					$response = $response."</br>Item has been previously set to:".$action;
+
+				}
+				else{
+					$response = $response."</br>Item no longer exists".mysqli_error($db);
+
+				}
+		}
+		elseif(mysqli_affected_rows($db)==0){
+			$response = $response."</br>Item Assignment has been previously set to:".$action;
 
 		}
 		else{
