@@ -400,12 +400,12 @@
  
  class InterestedTransporters{
 	 //For listed DeliveryItems, a transporter CourierUser indicates interest on which DeliveryItem to send and at what cost
- 	function registerBid($bidder,$item,$journey,$amount){
+ 	function registerBid($bidder,$item,$journey,$amount,$currencycode){
 
  		
  		$status = "notassigned";
  		$response="";
- 		$sql = "INSERT INTO `bids`(bidder,item,journey,amount,status) VALUES ('". $bidder."','".$item."','".$journey."','".$amount."','".$status."')";
+ 		$sql = "INSERT INTO `bids`(bidder,item,journey,amount,status,currencycode) VALUES ('". $bidder."','".$item."','".$journey."','".$amount."','".$status."','".$currencycode."')";
  		$dbconnect = new DatabaseManager();
 		$db = $dbconnect->connectToDatabase();
 		if($db->connect_error){ 
