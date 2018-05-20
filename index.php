@@ -151,21 +151,19 @@ function finished(s){
  </div>
 
   <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputcountry">Country</label>
+      <select id="inputcountry" class="form-control" name="country" required="true">
+        <option selected>Choose</option>
+        <?php
+      //Load all the Countries in the World
+      require_once("classes/class_lib.php");
+      $countries = new Utilities();
+      $response = $countries->loadCountries();
+      echo $response;
 
-
-  <div class="form-group col-md-6">
-  <label for="inputcountry">Country</label>
-  <select id="inputcountry" class="form-control" name="country" required="true">
-    <option selected>Choose</option>
-    <?php
-    //Load all the Countries in the World
-    require_once("classes/class_lib.php");
-    $countries = new Utilities();
-    $response = $countries->loadCountries();
-    echo $response;
-
-    ?>
-  </select>
+      ?>
+      </select>
   </div>
   <div class="form-group col-md-4">
   <label for="inputstate">State</label>

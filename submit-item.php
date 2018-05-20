@@ -46,11 +46,63 @@
     <input type="tel" class="form-control" id="inputTelephone" placeholder="(000)-111-2222" name="tphone" required="true">
     </div>
     </div>
+    <font color="green">Sending From:</font>
+     <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="fromcountry">Country</label>
+        <select id="fromcountry" class="form-control" name="from_country" required="true">
+        <option selected>Choose</option>
+        <?php
+        //Load all the Countries in the World
+        require_once("classes/class_lib.php");
+        $countries = new Utilities();
+        $response = $countries->loadCountries();
+        echo $response;
+
+        ?>
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="fromstate">State</label>
+        <input type="text" class="form-control" id="fromstate" name="from_state" required="true">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="fromZip">Zip/Post Code</label>
+        <input type="text" class="form-control" id="fromZip" name="from_zip">
+      </div>
+    </div>
+
+    <font color="green">Sending To:</font>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="tocountry">Country</label>
+        <select id="tocountry" class="form-control" name="to_country" required="true">
+        <option selected>Choose</option>
+        <?php
+        //Load all the Countries in the World
+        
+        $countries = new Utilities();
+        $response = $countries->loadCountries();
+        echo $response;
+
+        ?>
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="tostate">State</label>
+        <input type="text" class="form-control" id="tostate" name="to_state" required="true">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="toZip">Zip/Post Code</label>
+        <input type="text" class="form-control" id="toZip" name="to_zip">
+      </div>
+    </div>
+
 
     <div class="form-group row">
-    <label for="inputAddress" class="col-sm-4 col-form-label"> Receiver Address</label>
+    <label for="inputAddress" class="col-sm-4 col-form-label"> Receiver Street Address</label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="inputAddress" placeholder="347 Maxwell Street Karu, Post code: 3098" name="address" required="true">
+    <input type="text" class="form-control" id="inputAddress" placeholder="347 Maxwell Street, Karu" name="address" required="true">
     </div>
     </div>
 
