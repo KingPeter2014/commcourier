@@ -735,6 +735,43 @@
 			return $row['counter'];
 		}
   	}
+  	function sendEmailToRegisteredClients($subject,$message){
+  		//Send only to people who have registered with the app
+  		$from_email = 'commcourier@commcourier.com';
+  		$sql = "SELECT email FROM `commcourierusers`";
+  		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$countries = $dbconnect->queryData($db,$sql);
+		$response='';
+		if($countries->num_rows > 0){
+			while ( $row = $countries->fetch_assoc()) {
+				
+				$to_email=$row['email'];
+				$status = $this->sendMail($to_email, $subject, $message, $from_email);
+				$response= $response.$to_email.':'. $status.'<br>';
+
+			}
+
+		}
+		else{
+			$response =$response. 'No emails retrieved';
+
+		}
+		return $response;
+
+
+  	}
+  	function sendMail($to_email, $subject, $message, $from_email){
+  		//Send email to $to_email including formatted html content
+  		$headers = "From: " . strip_tags($from_email) . "\r\n";
+		$headers .= "Reply-To: commcourier@commcourier.com \r\n";
+		//$headers .= "CC: susan@example.com\r\n";
+		$headers .= "MIME-Version: 1.0\r\n";
+		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+  		$mailSendingStatus = mail($to_email, $subject, $message,$headers);
+  		return $mailSendingStatus;
+  	}
   	function currencyConverter($from_currency, $to_currency, $amount) {
 		$amount    = urlencode($amount);
 		$from    = urlencode($from_currency);

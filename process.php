@@ -304,6 +304,31 @@ if(isset($_POST['listitemSubmitBtn'])){
 		echo $response;
 
 	}
+	if(isset($_POST['sendMailBtn'])){
+		if (empty($_POST['message'])){
+			echo $error = "Empty message cannot be sent";
+			return;
+		}
+		else{
+			$message = $_POST['message'];
+
+		}
+		if (empty($_POST['subject'])){
+			echo $error = "Enter the subject for this message";
+			return;
+		}
+		else{
+			$subject = $_POST['subject'];
+
+		}
+		$emailSend = new Utilities();
+      $response = $emailSend->sendEmailToRegisteredClients($subject,$message);
+      echo $response;
+		
+
+	}
+
+	
 
 
 
