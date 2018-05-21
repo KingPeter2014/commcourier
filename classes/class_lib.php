@@ -644,7 +644,7 @@
 			  
 		  }
 		  else{
-			  header('Location: Homepage.php'); 
+			  header('Location: login.php'); 
 		  }
 	  }
   }
