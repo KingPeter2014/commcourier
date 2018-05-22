@@ -19,9 +19,9 @@
         session_start();
     }
      // echo "<br/>Welcome:".$_SESSION['username'];?>
-     
+
 <div class="container">
-  <div class="card" style="width: 45rem; height: 40rem; ">
+  <div class="card" style="width: 45rem; height: 45rem; ">
   <div class="card-body">
   <h3 style="text-align: center;"><b>List Item to Send</b></h3><br>
   <form action = "process.php" method = "POST" enctype = "multipart/form-data">
@@ -80,7 +80,7 @@
         <option selected>Choose</option>
         <?php
         //Load all the Countries in the World
-        
+
         $countries = new Utilities();
         $response = $countries->loadCountries();
         echo $response;
