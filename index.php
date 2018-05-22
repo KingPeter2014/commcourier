@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Community Courier</title>
     <link rel="stylesheet" href="css files/index.css">
     <link rel="stylesheet" href="css files/header.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -71,7 +71,7 @@ function finished(s){
 
     <form action="process.php" method="post">
       <!-- <form id="form1" name="form1" method="post" action="process.php" onsubmit="return AIM.submit(this, {'onStart' : start, 'onComplete' : finished})"> -->
-    <center><span id="output" class="error"> </span></center></br>
+    <center><span id="output" class="error"> </span></center><br>
 
 
     <div class="form-group row">
