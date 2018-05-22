@@ -1,12 +1,12 @@
 <?php
 
-include("header.php");
+//include("header.php");
 
 if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
 
-include("classes/class_lib.php");
+require_once("classes/class_lib.php");
 $securityguard = new SecurityManager();
 
 if(isset($_POST['signUpSubmitBtn'])){//Check if signUpSubmitBtn was clicked to register a new courier user
@@ -79,7 +79,7 @@ if(isset($_POST['loginSubmitBtn'])){//Login a  courier user
 	}
 	$loginUser = new CourierUsers();
 	$response = $loginUser->loginCourierUser($username,$pword);
-	echo $response;
+	echo $response.'Go to <a href="Homepage.php"> Home Page</a>';
 }
 if(isset($_POST['listjourneySubmitBtn'])){//List Journey
 //if(!empty($_POST['listjourneySubmitBtn'])){//List Journey
@@ -334,13 +334,4 @@ if(isset($_POST['listitemSubmitBtn'])){
 
 ?>
 
-<div class="fixed-bottom">
-    <footer>
-    Copyright&copy;commcourier.com
-    <br>
-    <a href="#">Privacy policy</a> -
-    <a href="#">Terms and condition</a>
-    </footer>
-    </div>
-  </body>
-  </html>
+  
