@@ -187,7 +187,7 @@ function finished(s){
  <div class="container-fluid">
  <div class="jumbotron jumbotron-fluid">
  <h2 id="aboutus" > Who we are </h2><br>
- <p id="aboutcontent">CommCourier stands for Community Courier. We are a start-up company geared towards providing information, computer and technology(ICT)-based business solutions.  Commcourier.com is one of such products. </p>
+ <p id="aboutcontent">CommCourier stands for Community Courier. We are a start-up company geared towards providing connectivity between travelers and individuals who want to send an item in real-time. We believer that communal strength can help save money, time and live. </p>
  </div>
  </div>
 
