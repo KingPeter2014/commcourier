@@ -114,20 +114,27 @@
         include("classes/class_lib.php");
         $journey = new Journeys();
         //$response = $journey->getAllJourneys();
+        // Get the Journies Listed by current user
         $response = $journey->getMyJournies($username);
         echo $response."<hr/>";
+        //Get Journies listed by other users
+        $response = $journey->getOtherJournies($username);
+         echo $response."<hr/>";
 
         $listedItems = new DeliveryItems();
         //$response = $listedItems->getAllListedItems();
+        //Get items listed by current user
         $response = $listedItems->getMyListedItems($username);
         echo $response."<hr/>";
+        // Get items listed by other users
         $response = $listedItems->getOtherListedItems($username);
         echo $response."<hr/>";
 
-        //Get Bids won by user and the bids of this user won by others
+        //Get Bids won by user 
         $wonbids = new SelectedTransporters();
         $response = $wonbids->getBidsAssignedToTraveler($username);
         echo $response."<hr/>";
+        //Get the bids of this user won by others and which they have accepted offer. The Sender can now pay for these
         $response = $wonbids->getConfirmedBidsAssignedByUser($username);
         echo $response."<br/>";
 

@@ -157,9 +157,9 @@
 	 	$dbconnect = new DatabaseManager();
 		$db = $dbconnect->connectToDatabase();
 		$sql = "SELECT * FROM `listjourney` WHERE username='".$username."'";
-		$alljournies = $dbconnect->queryData($db,$sql);
+		$myjournies = $dbconnect->queryData($db,$sql);
 		$response ='<h3>My Journies</h3>';
-		$response =$response.$this->formatJourneysForDisplay($alljournies);
+		$response =$response.$this->formatJourneysForDisplay($myjournies);
 		
 		return $response;
 
@@ -234,8 +234,11 @@
 	 	$dbconnect = new DatabaseManager();
 		$db = $dbconnect->connectToDatabase();
 		$sql = "SELECT * FROM `listjourney` WHERE traveler <> '". $username."'";
-		$allitems = $dbconnect->queryData($db,$sql);
-		$response ='<h3>Jouney Other Want To Make</h3>';
+		$otherJournies = $dbconnect->queryData($db,$sql);
+		$response ='<h3>Jouney Others Want To Make</h3>';
+		$response =$response.$this->formatJourneysForDisplay($otherJournies);
+		
+		return $response;
 	}
 
 	 function getClassOfJourney($filter){
