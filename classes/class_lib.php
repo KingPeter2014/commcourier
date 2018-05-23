@@ -233,7 +233,7 @@
 		//Get Other journey not belonging to current user
 	 	$dbconnect = new DatabaseManager();
 		$db = $dbconnect->connectToDatabase();
-		$sql = "SELECT * FROM `listjourney` WHERE traveler <> '". $username."'";
+		$sql = "SELECT * FROM `listjourney` WHERE username <> '". $username."'";
 		$otherJournies = $dbconnect->queryData($db,$sql);
 		$response ='<h3>Jouney Others Want To Make</h3>';
 		$response =$response.$this->formatJourneysForDisplay($otherJournies);
@@ -600,7 +600,7 @@
  		//Get the list of bids that this user has assigned to other travellers and of which those travelers have accepted to deliver. This will now enable this user to pay to the commcourier platform
  		$response = " <h3>Items I need to Pay for</h3>";
 
- 		$sql = "SELECT i.id as itemid,i.description, a.transporter,a.sender,a.agreedprice,a.bidid,i.status, a.id FROM listedItems i,assigneditems a WHERE status='accepted' AND a.sender = '$username'";
+ 		$sql = "SELECT i.id as itemid,i.description, a.transporter,a.sender,a.agreedprice,a.bidid,i.status, a.id FROM listeditems i,assigneditems a WHERE status='accepted' AND sender = '$username'";
  		$dbconnect = new DatabaseManager();
 		$db = $dbconnect->connectToDatabase();
 		$myacceptedoffers = $dbconnect->queryData($db,$sql);
@@ -651,7 +651,8 @@
 		  @session_start();
 		  if ( ! isset($_SESSION['username'])){
 			  $_SESSION['username']= $username;
-			  header('Location: Homepage.php'); 
+			  header('Location: Homepage.php');
+			  exit; 
 			  
 		  }
 		  else{
@@ -659,13 +660,13 @@
 		  }
 	  }
   }
+
   class DatabaseManager{
 	  var	$connection;
 	
 	  function connectToDatabase(){
 		$server1 = "localhost";$username = "root";$password="";
 		$connection = new mysqli($server1, $username, $password, "commcourier");// A more secure method required for production database
-		//$this->$connection = $connection;
 		return $connection;
 	  }
 
