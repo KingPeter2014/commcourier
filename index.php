@@ -90,6 +90,13 @@ function finished(s){
    </div>
 
    <div class="form-group row">
+  <label for="dob" class="col-sm-4 col-form-label">Date of Birth</label>
+  <div class="col-sm-8">
+  <input type="date" class="form-control" id="dob" name = "dob" placeholder="" required="true">
+  </div>
+  </div>
+
+   <div class="form-group row">
    <label for="username" class="col-sm-4 col-form-label">Username</label>
    <div class="col-sm-8">
    <input type="text" class="form-control" id="username" placeholder="" name="username" required="true">
