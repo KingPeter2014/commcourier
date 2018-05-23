@@ -229,6 +229,14 @@
 
 		return $response;
 	 }
+	 function getOtherJournies($username){
+		//Get Other journey not belonging to current user
+	 	$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		$sql = "SELECT * FROM `listjourney` WHERE traveler <> '". $username."'";
+		$allitems = $dbconnect->queryData($db,$sql);
+		$response ='<h3>Jouney Other Want To Make</h3>';
+	}
 
 	 function getClassOfJourney($filter){
 
@@ -589,7 +597,7 @@
  		//Get the list of bids that this user has assigned to other travellers and of which those travelers have accepted to deliver. This will now enable this user to pay to the commcourier platform
  		$response = " <h3>Items I need to Pay for</h3>";
 
- 		$sql = "SELECT i.id as itemid,i.description, a.transporter,a.sender,a.agreedprice,a.bidid, a.id FROM listedItems i,assigneditems a WHERE status='accepted' AND a.sender = '$username'";
+ 		$sql = "SELECT i.id as itemid,i.description, a.transporter,a.sender,a.agreedprice,a.bidid,i.status, a.id FROM listedItems i,assigneditems a WHERE status='accepted' AND a.sender = '$username'";
  		$dbconnect = new DatabaseManager();
 		$db = $dbconnect->connectToDatabase();
 		$myacceptedoffers = $dbconnect->queryData($db,$sql);
