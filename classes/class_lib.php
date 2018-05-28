@@ -599,8 +599,7 @@
  	function getConfirmedBidsAssignedByUser($username){
  		//Get the list of bids that this user has assigned to other travellers and of which those travelers have accepted to deliver. This will now enable this user to pay to the commcourier platform
  		$response = " <h3>Items I need to Pay for</h3>";
-
- 		$sql = "SELECT i.id as itemid,i.description, a.transporter,a.sender,a.agreedprice,a.bidid,i.status, a.id FROM listeditems i,assigneditems a WHERE status='accepted' AND sender = '$username'";
+ 		$sql="SELECT b.item, b.id AS winningbid, i.id AS itemid,i.description, a.transporter,a.sender,a.agreedprice,a.bidid,i.status, a.id FROM listeditems i,assigneditems a, bids b WHERE b.id=bidid AND item=i.id AND i.status='accepted' AND sender = '$username'";
  		$dbconnect = new DatabaseManager();
 		$db = $dbconnect->connectToDatabase();
 		$myacceptedoffers = $dbconnect->queryData($db,$sql);
