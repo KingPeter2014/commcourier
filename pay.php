@@ -38,7 +38,7 @@
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<?php echo $stripe['publishable_key']; ?>"
           data-description="Commcourier Package Delivery"
-          data-amount="<?php echo 'Pay '. $_GET['amount']* 100 .' with Card'; ?>"
+          data-amount="<?php echo  $_GET['amount']* 100; ?>"
           data-locale="auto"></script>
 
       <!--<button type="submit" class="btn btn-primary col-md-2" id="Submit" name = "listjourneySubmitBtn">Pay</button> -->
