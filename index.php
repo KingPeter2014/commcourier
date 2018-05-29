@@ -30,6 +30,15 @@ function finished(s){
 }
 </script>
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=342627982815026&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
   </head>
   <body>
 
@@ -38,6 +47,7 @@ function finished(s){
   <img src="images/picturelogo.PNG" alt="">
   <h6><i>Making money while journeying!!!</i></h6>
   </div>
+  
   </header>
 
 
@@ -189,6 +199,9 @@ function finished(s){
  </div>
  </div>
  </div>
+
+ <div class="fb-page" data-href="https://www.facebook.com/commcourier/" data-tabs="timeline" data-small-header="false"                   data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/commcourier/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/commcourier/">Community Courier</a></blockquote>
+  </div>
 
  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
  <div class="container-fluid">
