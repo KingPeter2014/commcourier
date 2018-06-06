@@ -32,6 +32,7 @@
   if(s1[0]=="error"){$('span#output').html('<div class="warning-bar">'+s1[1]+'</div>');}
    }
   }
+<<<<<<< HEAD
   </script>
   </head>
   <body>
@@ -66,6 +67,46 @@
      <div class="row">
      <div class="col-12  col-sm-10">
      <?php
+=======
+}
+</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=342627982815026&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  </head>
+  <body>
+
+  <header>
+  <div class="imagelogo">
+  <img src="images/picturelogo.PNG" alt="">
+  <h6><i>Making money while journeying!!!</i></h6>
+  </div>
+  
+  </header>
+
+
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Sign Up</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="about" aria-selected="false">About Us</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact Us</a>
+  </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+<?php
+>>>>>>> 25ca95d2c2b15f07c8e75716a456b40fa766a2e9
     //Site visit counter
      include("classes/class_lib.php");
      $visitor = new Utilities();
@@ -188,6 +229,7 @@
 
       ?>
       </select>
+<<<<<<< HEAD
       </div>
       <div class="form-group col-md-4">
       <label for="inputstate"><b>State</b></label>
@@ -287,6 +329,118 @@
 
 
       <script src="scripts/colorchange.js"></script>
+=======
+  </div>
+  <div class="form-group col-md-4">
+  <label for="inputstate">State</label>
+  <input type="text" class="form-control" id="inputstate" name="state" required="true">
+  </div>
+  <div class="form-group col-md-2">
+  <label for="inputZip">Zip</label>
+  <input type="text" class="form-control" id="inputZip" name="zip">
+  </div>
+  </div>
+
+ <button type="submit" class="btn btn-primary col-md-2" id="Submit" name="signUpSubmitBtn">Submit</button>
+ <button type="reset" class="btn btn-secondary col-md-2" id="Reset" name="signUpCancelBtn">Cancel</button>
+ </form>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <div class="fb-page" data-href="https://www.facebook.com/commcourier/" data-tabs="timeline" data-small-header="false"                   data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/commcourier/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/commcourier/">Community Courier</a></blockquote>
+  </div>
+
+ <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+ <div class="container-fluid">
+ <div class="jumbotron jumbotron-fluid">
+ <h2 id="aboutus" > Who we are </h2><br>
+ <p id="aboutcontent">CommCourier stands for Community Courier. We are a start-up company geared towards providing connectivity between travelers and individuals who want to send an item in real-time. We believe that communal strength can help save money, time and live. </p>
+ </div>
+ </div>
+
+ <div class="container-fluid">
+ <div class="jumbotron jumbotron-fluid">
+ <h2 id="aboutus" >What we do </h2><br>
+ <p id="aboutcontent">Commcourier is a platform that connects verified travelers with verified senders wishing to send packages through the travelers.
+  There are situations in life where an item or package needs to be sent in the next minute without waiting for scheduled parcel or cargo companies to
+  take and transport the package. Our platform connects people in this situation with potential travelers who are going to such
+  destination in real time. People with such intent list their intention and connect with verified travelers who can deliver
+  such items immediately. The sender contributes to the transport fare of the traveler.</p>
+ </div>
+ </div>
+
+ <div class="container-fluid">
+ <div class="jumbotron jumbotron-fluid">
+ <h2 id="aboutus" >Our goal </h2><br>
+ <p id="aboutcontent">Our goal is to enable real-time courier services through the community as well as provide extra income for participants. </p>
+ </div>
+</div>
+
+<div class="container-fluid">
+<div class="jumbotron jumbotron-fluid">
+<h2 id="aboutus" >How to Navigate the Site</h2><br>
+<ul id="aboutcontent">
+  <li>On the index page, <a href="index.php">Sign up</a></li>
+  <li><a href="login.php">Log in</a>  using your email and password. This action leads you to the homepage</li>
+  <li>On the homepage, to opt in as a traveler, click on the menu tab "<b>New Journey</b>"</li>
+  <li>On the  homepage, to opt as a sender, click on the menu tab "<b>New Item</b>"</li>
+  <li>To bid for an item as a traveler, click on "<b>See details</b>" besides the <b>Other listed items</b> located below the homepage menu bar</li>
+  <li>If the sender accepts your bid, that sender assigns the item to you and sends you the offer to send the item. </li>
+  <li> The traveler needs to accept the offer before the sender can go ahead to make payment</li>
+  <li> After payment, a communication channel is established for Sender and traveler to meet for item pickup.</li>
+
+</ul>
+  <p id="aboutcontent">NOTE: Please you might encounter slight technical challenges while navigating through
+  the site as the site is still under design,development and testing!</p>
+</div>
+</div>
+</div>
+
+ <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+ <div class="row">
+ <div class="col-sm-6">
+ <div class="card" id="maincontact">
+ <div class="card-body" id="contact">
+ <h5 class="card-title">Reach us on the following emails:</h5>
+ <ul id="list">
+ <li>commcourier@commcourier.com</li>
+ <li>tochukwu.idika@commcourier.com</li>
+ <li>peter.eze@commcourier.com</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+
+ <div class="col-sm-6">
+ <div class="card" id= "maincontact">
+ <div class="card-body" id="contact">
+ <h5 class="card-title">Reach us on the following numbers:</h5>
+ <ul id="list">
+ <li>Tochi- +1 573 289 9576</li>
+ <li>Peter- +61 469 716 871</li>
+ <li>Chinazom- +234 703 924 7359</li>
+ <li>Nonso- +234 803 925 1728</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="fixed-bottom" id="foot">
+ <footer >
+ Copyright&copy;commcourier.com <br>
+ <a href="#">Privacy policy</a> -
+ <a href="#">Terms and condition</a>
+ </footer>
+ </div>
+
+ <script src="scripts/colorchange.js"></script>
+>>>>>>> 25ca95d2c2b15f07c8e75716a456b40fa766a2e9
 
  </body>
  </html>
