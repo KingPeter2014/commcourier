@@ -1,0 +1,102 @@
+
+/*This code affects the entire navbar items  */
+ .navbar-nav{
+  margin-left: 100px;
+}
+
+/* This code affects the navbar items individually*/
+.nav-item{
+  margin-left: 30px;
+}
+
+/*This code affects the color of the menu item. it changes it from white to specified color.  */
+.navbar-light{
+  background-color: #f2a710;
+   font-weight: bold;
+}
+
+/* This code applies to the blinking commcourier */
+div>h2{
+margin-top: 30px;
+font-weight: bold;
+}
+
+/* This code affects the jumbotron ie the header */
+#jumb1{
+  padding: 70px 30px 70px 30px;
+  margin: 0px auto;
+  background-color:black;
+  color: white;
+  border-radius: 0px;
+}
+
+/* This code affects the color of the footer */
+footer{
+  background-color: black;
+}
+
+/*This code affects all the h5 elements in the footer  */
+footer h5{
+  color: orange;
+  margin-top:25px;
+}
+
+/*This code affects the p element under the footer  */
+footer p{
+  color:orange;
+  font-weight: bold;
+}
+
+/* This affects the contents below the header and above the footer */
+.content{
+background-color: green;
+border-left: solid 8px black;
+border-right: solid 8px black
+}
+
+/*This affects the sign up form */
+  .wrap{
+background-color: white;
+}
+
+/* This affects the h2 element inside the form */
+form h2{
+  text-align: center;
+  color: orange;
+  font-weight: bold;
+  font-family:'Lobster', cursive;
+}
+
+/* This affects the form input elements */
+.form{
+box-shadow: 1px 1px 1px 1px #a0a6af;
+}
+
+/*This affects the content with class side-content1 */
+.side-content1{
+  height:150px;
+  color: orange;
+  font-family: 'Lobster', cursive;
+}
+
+/*This affects the content with class side-content2 */
+.side-content2{
+  height:370px;
+font-size: 30px;
+font-family: 'Kirang Haerang', cursive;
+font-weight: bold;
+color: white;
+}
+
+/* This affects the list items inside the class side-content2 */
+.side-content2 li{
+  margin-bottom: 50px;
+}
+
+/* This affects the content with class side-content3 */
+.side-content3{
+  font-family:'Lobster', cursive;;
+  font-weight:bold;
+  font-size: 25px;
+  color: orange;
+}
