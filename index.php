@@ -40,7 +40,7 @@
     js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=342627982815026&autoLogAppEvents=1';
     fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-    </head>
+  </head>
   <body>
 
     <!--The set of code below creates the navbar  -->
@@ -57,10 +57,10 @@
       <!-- The div below identifies the list item that should be collapsed -->
      <div class="collapse navbar-collapse" id="Navbar">
      <ul class="navbar-nav mr-auto">
-     <li class="nav-item active"><a class="nav-link" href="#">Sign-Up</a></li>
+     <li class="nav-item active"><a class="nav-link" href="index.php">Sign-Up</a></li>
      <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
      <li class="nav-item"><a class="nav-link" href="#">How to  navigate site</a></li>
-     <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+     <li class="nav-item"><a class="nav-link" href="aboutus.php">About Us</a></li>
      <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
      </ul>
      </div>
