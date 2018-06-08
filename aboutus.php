@@ -140,7 +140,7 @@
      </div>
      </footer>
 
-    <script src="colorchange.js"></script>
+    <script src="scripts/colorchange.js"></script>
 
    </body>
  </html>
