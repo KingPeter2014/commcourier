@@ -170,14 +170,14 @@
       <div class="form-group row ">
       <label for="telephone" class="col-xm-12 col-md-2  offset-md-1 col-form-label"><b>Telephone</b></label>
       <div class="col-12 col-md-8 ">
-      <input type="password" class="form-control form" id="telephone" name="telephone" placeholder="" required="true">
+      <input type="tel" class="form-control form" id="telephone" name="telephone" placeholder="" required="true">
       </div>
       </div>
 
       <div class="form-group row ">
       <label for="address" class="col-xm-12 col-md-2  offset-md-1 col-form-label"><b>Home Address</b></label>
       <div class="col-12 col-md-8 ">
-      <input type="password" class="form-control form" id="address" name="address" placeholder="" required="true">
+      <input type="text" class="form-control form" id="address" name="address" placeholder="" required="true">
       </div>
       </div>
 
