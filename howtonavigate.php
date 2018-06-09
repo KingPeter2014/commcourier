@@ -49,7 +49,7 @@
        <p>Our mission  is to connect travelers and individuals who want to send packages to the same destination, in real-time. The intention is to reduce latency in item delivery as well as help travelers make some money.</hp>
        </div>
        <div class="col-12 col-sm offset-sm-0.5">
-       <img src="images/picturelogo.PNG" alt="" height="130" width="130">
+       <img src="images/picturelogo.PNG" alt="" >
        </div>
        </div>
        </div>
