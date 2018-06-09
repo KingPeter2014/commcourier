@@ -46,7 +46,7 @@
     <!--The set of code below creates the navbar  -->
      <nav class="navbar navbar-light navbar-expand-sm fixed-top">
      <div class="container">
-     <a  class="navbar-brand mr-auto" href="#">Commcourier</a>
+     <a  class="navbar-brand mr-auto" href="login.php">Commcourier</a>
 
 
       <!-- The code below creates the button that is formed when the menu bar is collapsed -->
@@ -58,8 +58,8 @@
      <div class="collapse navbar-collapse" id="Navbar">
      <ul class="navbar-nav mr-auto">
      <li class="nav-item active"><a class="nav-link" href="index.php">Sign-Up</a></li>
-     <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
-     <li class="nav-item"><a class="nav-link" href="#">How to  navigate site</a></li>
+     <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+     <li class="nav-item"><a class="nav-link" href="howtonavigate.php">How to  navigate site</a></li>
      <li class="nav-item"><a class="nav-link" href="aboutus.php">About Us</a></li>
      <li class="nav-item"><a class="nav-link" href="contactus.php">Contact Us</a></li>
      </ul>
@@ -254,10 +254,10 @@
         <div class="col-6 col-sm-4">
         <h5>Menu Links</h5>
         <ul class="list-unstyled">
-        <li>  <a href="#"><span class="fas fa-home fa-lg"> </span> Home</a></li>
+        <li>  <a href="login.php"><span class="fas fa-home fa-lg"> </span> Home</a></li>
         <li>  <a href="index.php">Sign-up</a></li>
-        <li>  <a href="#">login</a></li>
-        <li>  <a href="#">How to Navigate site</a></li>
+        <li>  <a href="login.php">login</a></li>
+        <li>  <a href="howtonavigate.php">How to Navigate site</a></li>
         <li>  <a href="aboutus.php">About Us</a></li>
         <li>  <a href="contactus.php">Contact Us</a></li>
         </ul>

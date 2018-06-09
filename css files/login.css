@@ -1,0 +1,105 @@
+
+/*This code affects the entire navbar items  */
+ .navbar-nav{
+  margin-left: 100px;
+}
+
+/* This code affects the navbar items individually*/
+.nav-item{
+  margin-left: 30px;
+}
+
+/*This code affects the color of the menu item. it changes it from white to specified color.  */
+.navbar-light{
+  background-color: #f2a710;
+   font-weight: bold;
+}
+
+/* This code applies to the blinking commcourier */
+div>h2{
+margin-top: 30px;
+font-weight: bold;
+}
+
+/* This code affects the jumbotron ie the header */
+#jumb1{
+  padding: 70px 30px 70px 30px;
+  margin: 0px auto;
+  background-color:black;
+  color: white;
+  border-radius: 0px;
+}
+
+/* This code affects the color of the footer */
+footer{
+  background-color: black;
+}
+
+/*This code affects all the h5 elements in the footer  */
+footer h5{
+  color: orange;
+  margin-top:25px;
+}
+
+/*This code affects the p element under the footer  */
+footer p{
+  color:orange;
+  font-weight: bold;
+}
+
+/* This code removes the underline in the links */
+footer a:link{
+  text-decoration: none;
+}
+
+ /*This code addes a hover to tne footer links when you move around them  */
+footer a:hover{
+  color: green;
+  background-color: pink;
+}
+
+/* This affects the contents below the header and above the footer */
+.content{
+ background-color: green;
+}
+
+/*This affects the sign up form */
+  .wrap{
+background-color: white;
+border-top: solid 40px green;
+}
+
+.row1{
+  margin-top: 50px;
+}
+
+.row1 h1{
+  color: orange;
+  font-weight: bold;
+ font-family: 'Alfa Slab One', cursive;
+}
+
+#line{
+  height: 8px;
+  background-color: green;
+}
+
+.row2{
+  margin-top: 50px;
+}
+
+.main{
+  background-color:#ce9014;
+  margin-top: 10px;
+  border: solid 10px #ce9014;
+  border-radius: 10px;
+}
+
+.form{
+box-shadow: 1px 1px 1px 1px #a0a6af;
+}
+
+
+#Submit, #Reset{
+  margin-bottom: 20px;
+}

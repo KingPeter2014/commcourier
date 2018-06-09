@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1  shrink-to-fit=no">
-    <title>Contact Page</title>
-    <link rel="stylesheet" href="css files/contact.css">
+    <title>How to navigate site.</title>
+    <link rel="stylesheet" href="css files/howtonavigate.css">
     <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css" />
@@ -55,117 +55,32 @@
        </div>
        </header>
 
-       <!-- The code below covers all the body contents -->
        <div class="container-fluid content">
        <div class="container wrap">
        <div class="row row1">
        <div class="col-12">
-       <h1>Contact Us</h1>
+       <h3>How to Navigate site</h3>
        <hr id="line">
        </div>
        </div>
 
-       <div class="row row2">
-       <div class="col-12 col-sm  order-sm-last">
-       <h4><b>Our phone numbers</b></h4>
-       <ul id="list" class="list-unstyled">
-       <li><i class="fas fa-phone-square fa-lg"></i> +1 573 289 9576</li>
-       <li><i class="fas fa-phone-square fa-lg"></i> +61 469 716 871</li>
-       <li><i class="fas fa-phone-square fa-lg"></i> +234 703 924 7359</li>
-       <li><i class="fas fa-phone-square fa-lg"></i> +234 803 925 1728</li>
-       </ul>
-       </div>
+       <div class="row">
+         <div class="col-12 col-md-8 offset-md-2 wrap2">
+           <ul class="list-group wrap2">
+             <li class="list-group-item">On the index page, <a href="index.php">Sign up</a></li>
+             <li class="list-group-item"><a href="login.php">Log in</a>  using your email and password. This action leads you to the homepage</li>
+             <li class="list-group-item">On the homepage, to opt in as a traveler, click on the menu tab "<b>New Journey</b>"</li>
+             <li class="list-group-item">On the  homepage, to opt as a sender, click on the menu tab "<b>New Item</b>"</li>
+             <li class="list-group-item">To bid for an item as a traveler, click on "<b>See details</b>" besides the <b>Other listed items</b> located below the homepage menu bar</li>
+             <li class="list-group-item">If the sender accepts your bid, that sender assigns the item to you and sends you the offer to send the item.</li>
+             <li class="list-group-item">The traveler needs to accept the offer before the sender can go ahead to make payment</li>
+             <li class="list-group-item">After payment, a communication channel is established for Sender and traveler to meet for item pickup.</li>
+           </ul>
+         </div>
 
-       <div class="col-12  col-sm-6 offset-sm-1 order-sm-first">
-       <h4><b>Our email addresses</b></h4>
-       <ul id="list" class="list-unstyled">
-       <li><i class="fas fa-envelope-square fa-lg"></i> commcourier@commcourier.com</li>
-       <li><i class="fas fa-envelope-square fa-lg"></i> tochukwu.idika@commcourier.com</li>
-       <li><i class="fas fa-envelope-square fa-lg"></i> peter.eze@commcourier.com</li>
-       </ul>
        </div>
-       </div>
-
-       <div class="row row3">
-       <div class="col-12 col-sm-10 offset-sm-1">
-       <div class="btn-group" role="group">
-       <a role="button" class="btn btn-primary" href="tel:+61 469 716 871"><i class="fas fa-phone"></i>  Call</a>
-       <a role="button" class="btn btn-info" href="skype: Tochukwu Idika?add"><i class="fab fa-skype"></i>  Skype</a>
-       <a role="button" class="btn btn-success" href="mailto: commcourier@commcourier.com"><i class="fas fa-envelope-square fa-lg"></i>  Mail</a>
-       </div>
-       <small id="call" class="form-text text-muted">Start a phone call, skype call or a mail with just a click.</small>
-       </div>
-       </div>
-
-       <div class="row row4">
-       <div class="col-12 col-md-7 offset-md-2">
-       <h3>Send us your feedback</h3>
-       <small id="feedback" class="form-text text-muted" style="text-align: center">We will love to hear from you!!!</small>
-       <form action="process.php" method="post" class="main">
-       <br>
-       <div class="form-group row" >
-       <label for="fname" class=" col-12 col-md-2 offset-md-1 col-form-label"><b>First Name</b></label>
-       <div class="col-12  col-md-8 " >
-       <input type="text" class="form-control form" id="fname" name="fname" placeholder="" required="true">
-       </div>
-       </div>
-
-       <div class="form-group row">
-       <label for="lname" class="col-xm-12 col-md-2  offset-md-1 col-form-label"><b>Last Name</b></label>
-       <div class="col-12 col-md-8 ">
-       <input type="text" class="form-control form" id="lname" name="lname" placeholder="" required="true">
-       </div>
-       </div>
-
-       <div class="form-group row">
-       <label for="telephone" class="col-xm-12 col-md-2  offset-md-1 col-form-label"><b>Contact Tel.</b></label>
-       <div class="col-4 col-md-3 ">
-       <input type="tel" class="form-control form" id="countrycode" name="Countrycode" placeholder="Country code" required="true">
-       </div>
-       <div class="col-8 col-md-5 ">
-       <input type="telephobe" class="form-control form" id="telephone" name="telephone" placeholder="Tel. number" required="true">
-       </div>
-       </div>
-
-       <div class="form-group row ">
-       <label for="email" class="col-xm-12 col-md-2  offset-md-1 col-form-label"><b>Email Address</b></label>
-       <div class="col-12 col-md-8 ">
-       <input type="text" class="form-control form" id="email" name="email" placeholder="" required="true">
-       </div>
-       </div>
-
-       <div class="form-group row">
-       <div class="col-md-4 offset-md-3">
-       <div class="form-check">
-       <input type="checkbox" class="form-check-input" name="approve" id="approve" value="">
-       <label class="form-check-label" for="approve">
-       <strong>May we contact you?</strong>
-       </label>
-       </div>
-       </div>
-       <div class="col-md-3 offset-md-1">
-       <select class="form-control form">
-       <option>Tel.</option>
-       <option>Email</option>
-       </select>
-       </div>
-       </div>
-
-       <div class="form-group row">
-       <label for="exampleFormControlTextarea1" class="col-12 col-md-2 offset-md-1 ol-form-label"><b>Your feedback</b></label>
-       <div class="col-12 col-md-8">
-       <textarea class="form-control form" id="exampleFormControlTextarea1" rows="7"></textarea>
-       </div>
-       </div>
-
-       <button type="submit" class="btn btn-primary col-12 col-md-4 offset-md-3 form" id="Submit" name="signUpSubmitBtn"><b>Submit</b></button>
-       <button type="reset" class="btn btn-secondary col-12 col-md-4   form" id="Reset" name="signUpCancelBtn"><b>Cancel</b></button>
-       <br>
-       </form>
-       </div>
-       </div>
-       </div>
-       </div>
+      </div>
+      </div>
 
        <!--This set of code handles the footer.  -->
          <footer>
