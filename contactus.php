@@ -30,11 +30,11 @@
             <!-- The div below identifies the list item that should be collapsed -->
        <div class="collapse navbar-collapse" id="Navbar">
        <ul class="navbar-nav mr-auto">
-       <li class="nav-item active"><a class="nav-link" href="index.php">Sign-Up</a></li>
+       <li class="nav-item "><a class="nav-link" href="index.php">Sign-Up</a></li>
        <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
        <li class="nav-item"><a class="nav-link" href="howtonavigate.php">How to  navigate site</a></li>
        <li class="nav-item"><a class="nav-link" href="aboutus.php">About Us</a></li>
-       <li class="nav-item"><a class="nav-link" href="contactus.php">Contact Us</a></li>
+       <li class="nav-item active"><a class="nav-link" href="contactus.php">Contact Us</a></li>
        </ul>
        </div>
        </div>
