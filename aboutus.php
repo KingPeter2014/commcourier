@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1  shrink-to-fit=no">
     <title>About-Us</title>
     <link rel="stylesheet" href="css files/aboutus.css">
-      <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css" />
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -33,7 +33,7 @@
    <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
    <li class="nav-item"><a class="nav-link" href="#">How to  navigate site</a></li>
    <li class="nav-item active"><a class="nav-link" href="aboutus.php">About Us</a></li>
-   <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+   <li class="nav-item"><a class="nav-link" href="contactus.php">Contact Us</a></li>
    </ul>
    </div>
    </div>
@@ -101,11 +101,11 @@
      <h5>Menu Links</h5>
      <ul class="list-unstyled">
      <li>  <a href="#"><span class="fas fa-home fa-lg"> </span> Home</a></li>
-     <li>  <a href="#">Sign-up</a></li>
+     <li>  <a href="index.php">Sign-up</a></li>
      <li>  <a href="#">login</a></li>
      <li>  <a href="#">How to Navigate site</a></li>
-     <li>  <a href="#">About Us</a></li>
-     <li>  <a href="#">Contact Us</a></li>
+     <li>  <a href="aboutus.php">About Us</a></li>
+     <li>  <a href="contactus.php">Contact Us</a></li>
      </ul>
      </div>
 

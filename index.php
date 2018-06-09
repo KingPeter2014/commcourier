@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1  shrink-to-fit=no">
-    <title>Index page</title>
+    <title>Community Courier</title>
     <link rel="stylesheet" href="css files/index2.css">
     <link href="https://fonts.googleapis.com/css?family=Kirang+Haerang|Lobster|Oleo+Script" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
@@ -61,7 +61,7 @@
      <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
      <li class="nav-item"><a class="nav-link" href="#">How to  navigate site</a></li>
      <li class="nav-item"><a class="nav-link" href="aboutus.php">About Us</a></li>
-     <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+     <li class="nav-item"><a class="nav-link" href="contactus.php">Contact Us</a></li>
      </ul>
      </div>
      </div>
@@ -168,9 +168,12 @@
       </fieldset>
 
       <div class="form-group row ">
-      <label for="telephone" class="col-xm-12 col-md-2  offset-md-1 col-form-label"><b>Telephone</b></label>
-      <div class="col-12 col-md-8 ">
-      <input type="tel" class="form-control form" id="telephone" name="telephone" placeholder="" required="true">
+      <label for="telephone" class="col-xm-12 col-md-2  offset-md-1 col-form-label"><b>Telephone Number</b></label>
+      <div class="col-5 col-md-3 ">
+      <input type="tel" class="form-control form" id="countrycode" name="countrycode" placeholder="Country code" required="true">
+      </div>
+      <div class="col-7 col-md-5 ">
+      <input type="tel" class="form-control form" id="telephone" name="telephone" placeholder="Tel. number" required="true">
       </div>
       </div>
 
@@ -252,11 +255,11 @@
         <h5>Menu Links</h5>
         <ul class="list-unstyled">
         <li>  <a href="#"><span class="fas fa-home fa-lg"> </span> Home</a></li>
-        <li>  <a href="#">Sign-up</a></li>
+        <li>  <a href="index.php">Sign-up</a></li>
         <li>  <a href="#">login</a></li>
         <li>  <a href="#">How to Navigate site</a></li>
-        <li>  <a href="#">About Us</a></li>
-        <li>  <a href="#">Contact Us</a></li>
+        <li>  <a href="aboutus.php">About Us</a></li>
+        <li>  <a href="contactus.php">Contact Us</a></li>
         </ul>
         </div>
 
