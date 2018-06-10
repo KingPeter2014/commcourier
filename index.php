@@ -46,7 +46,7 @@
     <!--The set of code below creates the navbar  -->
      <nav class="navbar navbar-light navbar-expand-sm fixed-top">
      <div class="container">
-     <a  class="navbar-brand mr-auto" href="login.php">Commcourier</a>
+     <a  class="navbar-brand mr-auto" href="index.php">Commcourier</a>
 
 
       <!-- The code below creates the button that is formed when the menu bar is collapsed -->
