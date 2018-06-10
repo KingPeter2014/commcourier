@@ -72,7 +72,7 @@
        <div class="form-group row ">
        <label for="email" class="col-xm-12 col-md-2  offset-md-1 col-form-label"><b>Email Address</b></label>
        <div class="col-12 col-md-8 ">
-       <input type="text" class="form-control form" id="email" name="email" placeholder="" required="true">
+       <input type="text" class="form-control form" id="username" name="username" placeholder="" required="true">
        </div>
        </div>
 
@@ -94,8 +94,8 @@
        </div>
        </div>
 
-       <button type="submit" class="btn btn-primary col-12 col-md-4 offset-md-3 form" id="Submit" name="signUpSubmitBtn"><b>Submit</b></button>
-       <button type="reset" class="btn btn-secondary col-12 col-md-4   form" id="Reset" name="signUpCancelBtn"><b>Cancel</b></button>
+       <button type="submit" class="btn btn-primary col-12 col-md-4 offset-md-3 form" id="Submit" name="loginSubmitBtn"><b>Submit</b></button>
+       <button type="reset" class="btn btn-secondary col-12 col-md-4   form" id="Reset" name="LoginCancelBtn"><b>Cancel</b></button>
        <br>
        </form>
        </div>
