@@ -1,7 +1,7 @@
 <?php
  class CourierUsers {
 	 //General user of the system. Could act as transporter, sender or receiver
-	 var	$lastname,$othernames,$username,$pword,$db,$dbconnect;
+	 public	$storeUsername;
 		function __construct() {
 			$dbconnect = new DatabaseManager();
 			$db = $dbconnect->connectToDatabase();		
@@ -46,7 +46,23 @@
 	 }
 	 
 	 function loginCourierUser($username,$pword){
-		 $dbconnect = new DatabaseManager();
+	 	//Verify user and login by setting up session
+	 	$res = $this->isRegisteredUser($username,$pword);
+
+	 	if(strcmp('true', $res[0])==0){ 
+	 		$securityguard = new SecurityManager();
+			$securityguard->setUpSession($res[1]);
+
+	 	}
+	 	else{
+			return "Wrong Username/email or Password Or User does not exist";
+		}
+		
+		
+	 }
+
+	 function isRegisteredUser($username,$pword){
+	 	$dbconnect = new DatabaseManager();
 		$db = $dbconnect->connectToDatabase();
 		$sql = "SELECT * FROM commcourierusers WHERE username='".$username."' OR email='".$username."'";// AND password='".MD5($pword)."' OR password ='".password_verify($pword,PASSWORD_BCRYPT)."'";
 		//return $sql;
@@ -55,27 +71,40 @@
 			//Login by creating session variable and redirect to homepage
 			$row = $courieruser->fetch_assoc();
 			if(strcmp($row['password'], MD5($pword))==0){ // MD5 Passwords
-				$securityguard = new SecurityManager();
-				$securityguard->setUpSession($row['username']);
+				//$storeUsername = $row['username'];
+				return $ret=array("true",$row['username']);
 			}
 			elseif (password_verify($pword,$row['password'])) {// Salted BYCRYPT Passwords
-				$securityguard = new SecurityManager();
-				$securityguard->setUpSession($row['username']);
+				return $ret=array("true",$row['username']);
 			}
 			else{
-				return "Wrong Password";
+				return "false";
 			}
 
 		}
 		else{
-			return "Wrong Username/email or Password Or User does not exist";
+			return "false";
 		}
-		
+
 	 }
 
 	 function changePassword($username,$currentpassword, $newpassword){
 	 	//Verify current user and change the password from current to new password.
-	 	return $username.$currentpassword. $newpassword;
+
+	 	$res = $this->isRegisteredUser($username,$currentpassword);
+	 	if(strcmp('true', $res[0])==0){ 
+	 		$newpassword = password_hash($newpassword,PASSWORD_BCRYPT); // let the salt be automatically generated
+	 		//Now update the database with the new password
+
+
+	 	}
+	 	else{
+			return "Wrong Password entered. Try again";
+		}
+
+	 	
+		 
+	 	return $username.":".$currentpassword. $newpassword;
 
 	 }
 	 

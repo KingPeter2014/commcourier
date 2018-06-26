@@ -93,6 +93,9 @@
                 <a class="dropdown-item" href="#">My Deals</a>
               </div>
             </li>
+             <li class="nav-item">
+                <a class="nav-link" href="becomeagent.php">Become Agent</a>
+             </li>
             <li class="nav-item">
                 <a class="nav-link" href="changepassword.php">Change Password</a>
              </li>
