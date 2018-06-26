@@ -14,9 +14,13 @@
 		function get_db() {		
 		 	 return $this->db;		
 		 }		
-	 //MD5($pword)
+	 
 	 function registerCourierUser($lastname,$othernames,$username,$pword,$email,$gender,$telephone,$address,$state,$country,$postcode){
-		 $pword = MD5($pword);
+		 //$pword = MD5($pword);
+		 
+		 $hashed_password = password_hash($pword,PASSWORD_BCRYPT); // let the salt be automatically generated
+		 $pword = $hashed_password;
+		 //return $pword;
 		 $response="";
 		 $sql = "INSERT INTO `commcourierusers` (lastname,othernames,username ,password,email,gender,telephone, address,state,country,postcode) VALUES ('".$lastname."','".$othernames;
 		$sql = $sql."','".$username ."','".$pword."','".$email."','".$gender."','".$telephone."','".$address."','".$state."','".$country."','".$postcode."')";
@@ -44,18 +48,35 @@
 	 function loginCourierUser($username,$pword){
 		 $dbconnect = new DatabaseManager();
 		$db = $dbconnect->connectToDatabase();
-		$sql = "SELECT * FROM commcourierusers WHERE username='".$username."' OR email='".$username."' AND password='".MD5($pword)."'";
+		$sql = "SELECT * FROM commcourierusers WHERE username='".$username."' OR email='".$username."'";// AND password='".MD5($pword)."' OR password ='".password_verify($pword,PASSWORD_BCRYPT)."'";
+		//return $sql;
 		$courieruser = $dbconnect->queryData($db,$sql);
 		if($courieruser->num_rows == 1){
 			//Login by creating session variable and redirect to homepage
 			$row = $courieruser->fetch_assoc();
-			$securityguard = new SecurityManager();
-			$securityguard->setUpSession($row['username']);
+			if(strcmp($row['password'], MD5($pword))==0){ // MD5 Passwords
+				$securityguard = new SecurityManager();
+				$securityguard->setUpSession($row['username']);
+			}
+			elseif (password_verify($pword,$row['password'])) {// Salted BYCRYPT Passwords
+				$securityguard = new SecurityManager();
+				$securityguard->setUpSession($row['username']);
+			}
+			else{
+				return "Wrong Password";
+			}
+
 		}
 		else{
 			return "Wrong Username/email or Password Or User does not exist";
 		}
 		
+	 }
+
+	 function changePassword($username,$currentpassword, $newpassword){
+	 	//Verify current user and change the password from current to new password.
+	 	return $username.$currentpassword. $newpassword;
+
 	 }
 	 
 	 function editCourierUser($username){

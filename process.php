@@ -86,10 +86,38 @@ if(isset($_POST['loginSubmitBtn'])){//Login a  courier user
 	}
 	$loginUser = new CourierUsers();
 	$response = $loginUser->loginCourierUser($username,$pword);
-	echo $response.'Go to <a href="Homepage.php"> Home Page</a>';
+	echo $response.'. Go to <a href="Homepage.php"> Home Page</a>';
+}
+if(isset($_POST['changePwordBtn'])){// Change Password
+	
+	if (empty($_POST['currentpword'])){
+		echo $error = "Current Password is Required!";
+		return;
+	}
+	else{
+		$currentpword = $securityguard->removeHackCharacters($_POST['currentpword']);
+	}
+
+	if (empty($_POST['newpword'])){
+		echo $error = "New Password is Required!";
+		return;
+	}
+	else{
+		$pword = $securityguard->removeHackCharacters($_POST['newpword']);
+	}
+		$cpword = $securityguard->removeHackCharacters($_POST['cpword']);
+		if (strcmp($pword,$cpword)!=0){
+		echo $error = "Password Mismatch!";
+		return;
+	}
+	$changePword = new CourierUsers();
+	$response = $changePword->changePassword($_SESSION['username'],$currentpword, $pword);
+	echo $response.'. Login  <a href="logout.php"> Here</a>';
+
+
 }
 if(isset($_POST['listjourneySubmitBtn'])){//List Journey
-//if(!empty($_POST['listjourneySubmitBtn'])){//List Journey
+
 	ini_set('upload_max_filesize', '10M');
 	ini_set('post_max_size', '10M');
 	ini_set('max_input_time', 600);

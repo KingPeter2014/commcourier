@@ -94,6 +94,9 @@
               </div>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="changepassword.php">Change Password</a>
+             </li>
+            <li class="nav-item">
                 <a class="nav-link" href="logout.php">Log out</a>
              </li>
 
