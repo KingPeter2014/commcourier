@@ -86,7 +86,7 @@ if(isset($_POST['loginSubmitBtn'])){//Login a  courier user
 	}
 	$loginUser = new CourierUsers();
 	$response = $loginUser->loginCourierUser($username,$pword);
-	echo $response.'. Go to <a href="Homepage.php"> Home Page</a>';
+	echo $response;
 }
 if(isset($_POST['changePwordBtn'])){// Change Password
 	
@@ -112,7 +112,7 @@ if(isset($_POST['changePwordBtn'])){// Change Password
 	}
 	$changePword = new CourierUsers();
 	$response = $changePword->changePassword($_SESSION['username'],$currentpword, $pword);
-	echo $response.'. Login  <a href="logout.php"> Here</a>';
+	echo $response;
 
 
 }

@@ -55,7 +55,7 @@
 
 	 	}
 	 	else{
-			return "Wrong Username/email or Password Or User does not exist";
+			return "Wrong Username,email or Password";
 		}
 		
 		
@@ -95,8 +95,11 @@
 	 	if(strcmp('true', $res[0])==0){ 
 	 		$newpassword = password_hash($newpassword,PASSWORD_BCRYPT); // let the salt be automatically generated
 	 		//Now update the database with the new password
-
-
+	 		$dbconnect = new DatabaseManager();
+			$db = $dbconnect->connectToDatabase();
+			$sql="UPDATE commcourierusers SET password = '$newpassword' WHERE username='$username'";
+ 			$upd=$dbconnect->updateData($db,$sql);
+ 			return 'Password successfully changed. Login  <a href="logout.php"> Here</a>';
 	 	}
 	 	else{
 			return "Wrong Password entered. Try again";
