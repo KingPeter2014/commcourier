@@ -14,6 +14,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+    <script src="https://infograph.venngage.com/js/embed/v1/embed.js" data-vg-id="iwWYDvG8yOE" data-title="CommCourier PitchDeck" data-w="1024" data-h="576" data-multipage="true"></script>
+
     <script type="text/javascript">
     function start(){
     $('span#output').html(' Possible Authentication error. Try again!')
@@ -279,6 +281,7 @@
         <ul class="list-unstyled" >
         <li>  <a href="#">Privacy Policy</a></li>
         <li>  <a href="#">Terms and condition</a></li>
+         <li><a href="https://infograph.venngage.com/ps/iwWYDvG8yOE/commcourier-pitchdeck">Pitch Deck</a></li>
         </ul>
         </div>
         </div>
