@@ -765,6 +765,31 @@
 		}
 		return $response;
   	}
+  	function visitorDetails($ipaddress,$page,$referrer,$datetime,$useragent){
+  		//Record visitor details in the database
+  		$sql = "insert into visitor_details(ip,current_page,referrer,time,user_agent) values('$ipaddress','$page','$referrer','$datetime','$useragent')";
+
+  		$dbconnect = new DatabaseManager();
+		$db = $dbconnect->connectToDatabase();
+		if($db->connect_error){ 
+			$response= $response. "Database Connection Failed</br>";
+			$response= $response. "Error: "  . $db->connect_error;
+			return $response;
+		}
+		$isInserted=$dbconnect->insertData($db,$sql);
+		if($isInserted)
+			return "Success";
+		else
+			return "Error";
+
+  	}
+  	function getUserLocation(){
+  		//Get the location of a client visiting the site.
+
+		$ip=$_SERVER['REMOTE_ADDR'];
+		return var_export(unserialize(file_get_contents('http://www.geoplugin.net/php.gp?ip='.$ip)));
+
+  	}
   	function getCountryCurrencyCodes(){
   		$sql = "SELECT * FROM `currency`";
   		$dbconnect = new DatabaseManager();

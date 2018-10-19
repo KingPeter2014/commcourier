@@ -76,10 +76,21 @@
      <div class="col-12  col-sm-10">
      <?php
     //Site visit counter
+     $ipaddress = $_SERVER['REMOTE_ADDR'];
+     $page = "http://".$_SERVER['HTTP_HOST']."".$_SERVER['PHP_SELF'];
+     if (isset($_SERVER['HTTP_REFERER']))
+      $referrer = $_SERVER['HTTP_REFERER'];
+      else
+        $referrer="";
+
+      $datetime = date("F j, Y, g:i a");
+      $useragent = $_SERVER['HTTP_USER_AGENT'];
      include("classes/class_lib.php");
      $visitor = new Utilities();
      $response = $visitor->updateSiteVisitCounter();
-     echo "You are visitor number:".$response;
+     $response1=$visitor->visitorDetails($ipaddress,$page,$referrer,$datetime,$useragent);
+     echo $locate = $visitor->getUserLocation();
+     echo "You are visitor number:".$response . ", on ".$datetime;
 
      ?>
      <h2>Welcome to CommCourier</h2>
